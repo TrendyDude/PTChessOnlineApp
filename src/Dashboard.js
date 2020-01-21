@@ -42,7 +42,7 @@ function Dashboard() {
                 </tr>
                 <tr>
                     <td className="date">10/17/19</td>
-                    <td>Hi Class! Remember to bring your pamphlet to class and we'll be testing out
+                    <td>Hi Class! Remember to bring your pamphlet too class and we'll be testing out
                         some new chess strategies with...
                     </td>
 
