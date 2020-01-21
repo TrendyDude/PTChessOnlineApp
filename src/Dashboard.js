@@ -1,7 +1,11 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import logo from './logo.svg';
 import './App.css';
 
-function Dash() {
+
+
+function Dashboard() {
     return (
         <html lang="en">
         <head>
@@ -10,7 +14,7 @@ function Dash() {
 
         <body>
         <div className="sidenav">
-            <a className={Dashboard}>Dashboard</a>
+            <a>Dashboard</a>
             <a href="#">Lessons</a>
             <a href="#">Videos</a>
             <a href="#">Quizzes</a>
@@ -23,15 +27,16 @@ function Dash() {
         <div className="content">
             <p>This Week's Lesson:</p>
             <div className="boxes">
-                <h2 style="display:inline">Moving Pieces</h2>
-                <button onClick={Dashboard}>View</button>
+                <h2>Moving Pieces <button>View</button> </h2>
+
             </div>
             <p>Daily Tactic:</p>
             <div className="boxes">
-                <h2 style="display:inline">Pawns</h2>
-                <button>View</button>
+                <h2>Pawns <button >View</button></h2>
+
             </div>
-            <table style="width:100%">
+
+            <table width="100%">
                 <tr>
                     <th colSpan="3">Announcements</th>
                 </tr>
@@ -50,7 +55,7 @@ function Dash() {
 
                 </tr>
             </table>
-            <table style="width:100%">
+            <table width="100%">
                 <tr>
                     <th colSpan="2">Quizzes</th>
                 </tr>
@@ -76,3 +81,4 @@ function Dash() {
         </html>
     );
 }
+export default Dashboard
