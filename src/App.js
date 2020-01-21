@@ -12,12 +12,14 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-          <button onClick={ReactDOM.render(<Dashboard />, document.getElementById('root'))}> Start </button>
+          <button onClick={gotoDashboard}> Start </button>
       </header>
     </div>
   );
 }
-
+function gotoDashboard() {
+    ReactDOM.render(<Dashboard />, document.getElementById('root'));
+}
 
 
 export default App;
