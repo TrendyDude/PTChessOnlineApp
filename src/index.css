@@ -53,19 +53,7 @@ code {
   .sidenav a {font-size: 18px;}
 }
 h2 {
-  font-family: "Comic Sans MS";
-}
-.title {
-  margin-left: 160px; /* Same as the width of the sidebar */
-  font-family: "Comic Sans MS";
-  padding: 0px 10px;
-  text-align: center;
-}
-
-.content {
-  margin-left: 160px;
-  padding: 0px 60px;
-  text-align: left;
+  font-family: "Arial";
 }
 
 .boxes {

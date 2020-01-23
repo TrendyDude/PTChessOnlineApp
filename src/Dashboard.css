@@ -39,3 +39,15 @@
     text-align: center;
 }
 
+.title {
+    font-family: "Arial";
+    text-align: left;
+    padding-top: 20px;
+}
+
+.content {
+    margin-left: 330px;
+    padding: 0px 60px;
+    text-align: left;
+    position: relative;
+}
