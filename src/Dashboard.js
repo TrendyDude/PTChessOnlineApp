@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
+import  './Dashboard.css';
 
 
 
@@ -14,10 +15,14 @@ function Dashboard() {
 
         <body>
         <div className="sidenav">
+            <h3> Welcome Ally!</h3>
             <a>Dashboard</a>
+            <a href="#">Announcements</a>
             <a href="#">Lessons</a>
-            <a href="#">Videos</a>
             <a href="#">Quizzes</a>
+            <a href="#">Videos</a>
+            <a href="#">Tactics</a>
+
         </div>
 
         <div className="title">
