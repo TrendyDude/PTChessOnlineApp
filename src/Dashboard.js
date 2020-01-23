@@ -22,7 +22,6 @@ function Dashboard() {
             <a href="#">Quizzes</a>
             <a href="#">Videos</a>
             <a href="#">Tactics</a>
-
         </div>
 
         <div className="title">
