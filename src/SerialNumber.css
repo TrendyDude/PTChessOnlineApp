@@ -1,11 +1,11 @@
-.contentMember h3 {
+.contentSerial h3 {
     text-align: center;
     padding-top: 100px;
     font-family: "Arial";
     font-size: 40px;
     color: #707070
 }
-.contentMember input {
+.contentSerial input {
     text-align: center;
     display: block;
     border-radius: 50px;
@@ -17,7 +17,11 @@
     background-color: #f5f5f5;
     border-style: hidden;
 }
-.yesno button {
+.serialCancel button {
+    background-color: white;
+    color: #0ec7c6;
+    border-color: #0ec7c6;
+    border-style: solid;
     margin: auto;
     margin-top: 15px;
     border-radius: 50px;
@@ -26,13 +30,4 @@
     width: 300px;
     text-align: center;
     display: block;
-    background-color: #0ec7c6;
-    color: #ffffff;
-    border-style: hidden;
-}
-.memberNo button {
-    background-color: white;
-    color: #0ec7c6;
-    border-color: #0ec7c6;
-    border-style: solid;
 }

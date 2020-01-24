@@ -33,7 +33,9 @@
     color: #707070;
     display: block;
     text-align: center;
-    margin-top: 230px;
+    position: absolute;
+    top: 90%;
+    left: 42%;
 
 }
 .alreadyAccount button {

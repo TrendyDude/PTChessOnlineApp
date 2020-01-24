@@ -2,11 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca0b0aac-e76f-42fe-bb17-5d9e4e87280a" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/Member.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Member.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SerialNumber.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/SerialNumber.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CreateAccount.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateAccount.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/CreateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Member.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Member.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Member.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
