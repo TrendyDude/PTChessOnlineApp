@@ -57,10 +57,8 @@ function Dashboard() {
                     </div>
                     <div className="announcement">
                         <p id="dark_headers">New Announcements:</p>
-                        <p id="item">Hello</p>
                         <svg width="400" height="50">
-                                <rect id="rect1" width="400" height="50" rx="15"/>
-                                <p>Hello</p>
+                            <rect id="rect1" width="400" height="50" rx="15"/>
                         </svg>
                         <svg width="400" height="50">
                             <rect id="rect1" width="400" height="50" rx="15"/>
