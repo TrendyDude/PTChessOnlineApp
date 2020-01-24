@@ -1,18 +1,11 @@
-.content {
-    height: 100%;
-    width: 100%;
-    position: fixed;
-    background-color: #FFFFFFFF;
-}
-
-.contentLogin h3 {
+.contentMember h3 {
     text-align: center;
     padding-top: 100px;
     font-family: "Arial";
     font-size: 40px;
     color: #707070
 }
-.contentLogin input {
+.contentMember input {
     text-align: center;
     display: block;
     border-radius: 50px;
@@ -24,14 +17,9 @@
     background-color: #f5f5f5;
     border-style: hidden;
 }
-.contentLogin a {
-     text-align: center;
-     margin-top: 15px;
-     display: block;
-     color: #707070;
- }
-.loginbutton button {
+.contentMember button {
     margin: auto;
+    margin-top: 15px;
     border-radius: 50px;
     font-size: 15px;
     padding: 15px;
@@ -42,18 +30,9 @@
     color: #ffffff;
     border-style: hidden;
 }
-
-.signup p {
-    color: #707070;
-    display: block;
-    text-align: center;
-    margin-top: 230px;
-}
-.signup button {
+.memberNo button {
+    background-color: white;
     color: #0ec7c6;
-    display: inline;
-    background: none!important;
-    border: none;
-    padding: 0!important;
-    text-decoration: underline;
+    border-color: #0ec7c6;
+    border-style: solid;
 }

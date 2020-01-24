@@ -17,7 +17,7 @@
     background-color: #f5f5f5;
     border-style: hidden;
 }
-.contentAcc button {
+.nextButton button {
     margin: auto;
     border-radius: 50px;
     font-size: 15px;
@@ -29,9 +29,18 @@
     color: #ffffff;
     border-style: hidden;
 }
-.contentAcc a {
-    text-align: center;
-    margin-top: 15px;
-    display: block;
+.alreadyAccount p {
     color: #707070;
+    display: block;
+    text-align: center;
+    margin-top: 230px;
+
+}
+.alreadyAccount button {
+    color: #0ec7c6;
+    display: inline;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    text-decoration: underline;
 }
