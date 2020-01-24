@@ -17,7 +17,7 @@ function SerialNumber() {
         <div className="contentSerial">
             <h3>Enter your serial number</h3>
             <form>
-                <input type="text" name="SerialNumber" placeholder="12345678"/>
+                <input type="text" name="SerialNumber" placeholder="12345678"/> //TODO confirm serial then add to group
             </form>
             <div className="nextButton">
                 <button type="button" onClick={gotoLogin}>Next</button>
