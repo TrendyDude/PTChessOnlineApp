@@ -20,10 +20,10 @@ function CreateAccount() {
             <form>
                 <input type="text" name="username" id="user" placeholder="Username"/>
                 <input type="password" name="password" id="pass" placeholder="New Password"/>
-                <input type="password" name="confirm_password" placeholder="Confirm Password"/>
-                <input type="text" name="username" id="user" placeholder="Username"/>
-
-
+                <input type="password" name="confirm_password" placeholder="Confirm Password"/> //TODO check password
+                <input type="text" name="firstname" id="fname" placeholder="First Name"/>
+                <input type="text" name="lastname" id="lname" placeholder="Last Name"/>
+                //TODO select user type with radio button (bootstrap)
             </form>
             <div className="nextButton">
                 <button type="button" onClick={gotoMember}>Next</button>
@@ -38,13 +38,19 @@ function CreateAccount() {
 }
 
 function gotoMember() {
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("pass").value;
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var usertype = "S";
+    addAccount(user, pass, fname, lname, usertype);
     ReactDOM.render(<Member/>, document.getElementById('root'));
 }
 function gotoLogin() {
     ReactDOM.render(<Login/>, document.getElementById('root'));
 }
 
-function addAccount(user, password, first, last,) {
+function addAccount(user, password, first, last, usertype) {
     var AWS = require("aws-sdk");
 
     AWS.config.update({

@@ -37,7 +37,6 @@ function gotoCreateAccount() {
     ReactDOM.render(<CreateAccount/>, document.getElementById('root'));
 }
 function gotoDashboard() {
-    addAccount();
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
