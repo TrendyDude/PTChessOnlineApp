@@ -1,0 +1,59 @@
+.content {
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: #FFFFFFFF;
+}
+
+.contentLogin h3 {
+    text-align: center;
+    padding-top: 100px;
+    font-family: "Arial";
+    font-size: 40px;
+    color: #707070
+}
+.contentLogin input {
+    text-align: center;
+    display: block;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 15px;
+    margin: auto;
+    margin-bottom: 15px;
+    width: 300px;
+    background-color: #f5f5f5;
+    border-style: hidden;
+}
+.contentLogin a {
+     text-align: center;
+     margin-top: 15px;
+     display: block;
+     color: #707070;
+ }
+.loginbutton button {
+    margin: auto;
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 15px;
+    width: 300px;
+    text-align: center;
+    display: block;
+    background-color: #0ec7c6;
+    color: #ffffff;
+    border-style: hidden;
+}
+
+.signup p {
+    color: #707070;
+    display: block;
+    text-align: center;
+    margin-top: 230px;
+}
+.signup button {
+    color: #0ec7c6;
+    display: inline;
+    background: none!important;
+    border: none;
+    padding: 0!important;
+    text-decoration: underline;
+}

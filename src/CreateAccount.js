@@ -19,8 +19,10 @@ function CreateAccount() {
             <h3>Create Account</h3>
             <form>
                 <input type="text" name="email" placeholder="Your Email"/>
-                <input type="text" name="password" placeholder="New Password"/>
-                <input type="text" name="confirm_password" placeholder="Confirm Password"/>
+                <input type="password" name="password" placeholder="New Password"/>
+                <input type="password" name="confirm_password" placeholder="Confirm Password"/>
+
+
             </form>
             <div className="nextButton">
                 <button type="button" onClick={gotoMember}>Next</button>

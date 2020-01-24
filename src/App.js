@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
-import Dashboard from './Dashboard'
+import Login from './Login'
 
 function App() {
   return (
@@ -12,14 +12,15 @@ function App() {
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-          <button onClick={gotoDashboard}> Start </button>
+          <button onClick={gotoLogin}> Start </button>
       </header>
     </div>
   );
 }
-function gotoDashboard() {
-    ReactDOM.render(<Dashboard />, document.getElementById('root'));
+function gotoLogin() {
+    ReactDOM.render(<Login/>, document.getElementById('root'));
 }
+
 
 
 export default App;
