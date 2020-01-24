@@ -41,6 +41,7 @@ function gotoMember() {
     ReactDOM.render(<Member/>, document.getElementById('root'));
 }
 function gotoLogin() {
+
     ReactDOM.render(<Login/>, document.getElementById('root'));
 }
 

@@ -18,8 +18,8 @@ function Login() {
             <div className="contentLogin">
                 <h3>Member Login</h3>
                 <form>
-                    <input type="text" name="username" placeholder="Username"/>
-                    <input type="password" name="password" placeholder="Password"/>
+                    <input id="username" type="text" name="username" placeholder="Username"/>
+                    <input id="password" type="password" name="password" placeholder="Password"/>
                 </form>
                 <div className="loginbutton">
                     <button type="button" onClick={gotoDashboard}>Login</button>
@@ -37,8 +37,31 @@ function gotoCreateAccount() {
     ReactDOM.render(<CreateAccount/>, document.getElementById('root'));
 }
 function gotoDashboard() {
-    addAccount();
-    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+    var result =  checkAccount(document.getElementById("username").value, document.getElementById("password").value);
+    if (result == 0) {
+        //TODO add error message on lognin screen
+    } else {
+        ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+    }
 }
+function checkAccount(userName, password) {
+    var AWS = require("aws-sdk");
+    var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
+    var params = {
+        TableName: 'Users',
+        Key: {
+            'Username': {N: userName},
+            'Password' : {N: password}
+        },
+    };
 
+    // Call DynamoDB to read the item from the table
+    ddb.getItem(params, function(err, data) {
+        if (err) {
+            return 0;
+        } else {
+            return 1;
+        }
+    });
+}
 export default Login;
