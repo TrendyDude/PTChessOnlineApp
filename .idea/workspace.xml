@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ca0b0aac-e76f-42fe-bb17-5d9e4e87280a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreateAccount.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateAccount.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CreateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateAccount.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -145,7 +146,14 @@
       <option name="project" value="LOCAL" />
       <updated>1579898732128</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added radio buttons for user type">
+      <created>1579975836055</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579975836055</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -182,7 +190,8 @@
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;src/Login.js" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;src/Login.js" />
+    <MESSAGE value="Added radio buttons for user type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added radio buttons for user type" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="107" key="#ESLint" timestamp="1579902688052">
@@ -197,30 +206,30 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="435" y="154" key="#start/0.23.1440.834@0.23.1440.834" timestamp="1579898833451" />
-    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2" timestamp="1579898731920">
+    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2" timestamp="1579975835716">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2/0.23.1440.834@0.23.1440.834" timestamp="1579898731920" />
+    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2/0.23.1440.834@0.23.1440.834" timestamp="1579975835716" />
     <state x="507" y="203" key="FileChooserDialogImpl" timestamp="1579898944114">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="507" y="203" key="FileChooserDialogImpl/0.23.1440.834@0.23.1440.834" timestamp="1579898944114" />
-    <state width="679" height="203" key="GridCell.Tab.0.bottom" timestamp="1579975785686">
+    <state width="679" height="203" key="GridCell.Tab.0.bottom" timestamp="1579975900974">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1579975785686" />
-    <state width="679" height="203" key="GridCell.Tab.0.center" timestamp="1579975785685">
+    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1579975900974" />
+    <state width="679" height="203" key="GridCell.Tab.0.center" timestamp="1579975900972">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1579975785685" />
-    <state width="679" height="203" key="GridCell.Tab.0.left" timestamp="1579975785684">
+    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1579975900972" />
+    <state width="679" height="203" key="GridCell.Tab.0.left" timestamp="1579975900972">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1579975785684" />
-    <state width="679" height="203" key="GridCell.Tab.0.right" timestamp="1579975785686">
+    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1579975900972" />
+    <state width="679" height="203" key="GridCell.Tab.0.right" timestamp="1579975900973">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1579975785686" />
+    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1579975900973" />
     <state width="679" height="252" key="GridCell.Tab.1.bottom" timestamp="1579974741986">
       <screen x="0" y="23" width="1440" height="834" />
     </state>

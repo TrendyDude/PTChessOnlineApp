@@ -20,39 +20,62 @@ function CreateAccount() {
         <body>
         <div className="contentAcc">
             <h3>Create Account</h3>
-            <form>
-                <input type="text" name="username" id="user" placeholder="Username"/>
-                <input type="password" name="password" id="pass" placeholder="New Password"/>
-                <input type="password" name="confirm_password" placeholder="Confirm Password"/> //TODO check password
-                <input type="text" name="firstname" id="fname" placeholder="First Name"/>
-                <input type="text" name="lastname" id="lname" placeholder="Last Name"/>
-                <div className="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label id="button1" className="btn btn-secondary">
-                        <input type="radio" name="options" id="option1" autoComplete="off" onClick={select1}/>
-                        Teacher
-                    </label>
-                    <label id="button2" className="btn btn-secondary">
-                        <input type="radio" name="options" id="option2" autoComplete="off" onClick={select2}/>
-                        Student
-                    </label>
-                    <label  id="button3" className="btn btn-secondary">
-                        <input type="radio" name="options" id="option3" autoComplete="off" onClick={select3} />
-                        Administrator
-                    </label>
-                </div>
-            </form>
-            <div className="row">
-                <div className="col-xs-3"> </div>
-                <div className="col-xs-3">
+            <div className="container">
+                <div className="row">
+                    <div className="col-sm">
 
+                    </div>
+                    <div className="col-sm">
+                        <input type="text" name="username" id="user" placeholder="Username"/>
+                        <input type="password" name="password" id="pass" placeholder="New Password"/>
+                        <input type="password" name="confirm_password" placeholder="Confirm Password"/>
+                        {/*TODO check password*/}
+                        <input type="text" name="firstname" id="fname" placeholder="First Name"/>
+                        <input type="text" name="lastname" id="lname" placeholder="Last Name"/>
+                        <div className="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
+                            <label id="button1" className="btn btn-secondary">
+
+                                <input type="radio" name="options" id="option1" autoComplete="off" onClick={select1}/>
+                                Teacher
+                            </label>
+                            <label id="button2" className="btn btn-secondary">
+                                <input type="radio" name="options" id="option2" autoComplete="off" onClick={select2}/>
+                                Student
+                            </label>
+                            <label  id="button3" className="btn btn-secondary">
+                                <input type="radio" name="options" id="option3" autoComplete="off" onClick={select3} />
+                                Administrator
+                            </label>
+                        </div>
+
+                    </div>
+                    <div className="col-sm">
+
+                    </div>
                 </div>
+                <div className="row">
+                    <div className="col-sm"></div>
+                    <div className="col-sm">&nbsp;</div>
+                    <div className="col-sm"></div>
+                </div>
+                <div className="row">
+                    <div className="col-sm"></div>
+                    <div className="col-sm">
+                        <div className="nextButton">
+                            <button type="button" onClick={gotoMember}>Next</button>
+                        </div>
+                        <div className="alreadyAccount d-flex justify-content-center">
+                            Already have an account?&nbsp;<button onClick={gotoLogin}> Sign in!</button>
+                        </div>
+                    </div>
+                    <div className="col-sm"></div>
+                </div>
+
             </div>
-            <div className="nextButton">
-                <button type="button" onClick={gotoMember}>Next</button>
-            </div>
-            <div className="alreadyAccount">
-                <p>Already have an account? <button onClick={gotoLogin}>Sign in!</button></p>
-            </div>
+
+
+
+
         </div>
         </body>
         </html>
