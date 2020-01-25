@@ -17,7 +17,7 @@ function Dashboard() {
 
         <body>
             <div className="sidenav">
-                <h3> Welcome Ally!</h3>
+                /*<h3> Welcome Ally!</h3>*/
                 <a href="#">Dashboard</a>
                 <a href="#">Announcements</a>
                 <a href="#">Lessons</a>
