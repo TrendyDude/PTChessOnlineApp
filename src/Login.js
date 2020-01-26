@@ -49,8 +49,6 @@ function checkAccount(userName, password) {
     AWS.config.update({
         region: "us-east-1",
         endpoint: "https://dynamodb.us-east-1.amazonaws.com",
-        accessKeyId: "AKIA2F56XJ6UFLFPYJLS",                                           //make private
-        secretAccessKey: "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"
     });
     var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
     var params = {
