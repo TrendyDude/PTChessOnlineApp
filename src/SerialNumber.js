@@ -19,7 +19,7 @@ function SerialNumber() {
         <div className="contentSerial">
             <h3>Enter your serial number</h3>
             <form>
-                <input type="Number" id="SerialNumber" name="SerialNumber" placeholder="1234567"/>
+                <input type="number" id="SerialNumber" name="SerialNumber" placeholder="1234567"/>
             </form>
             <div className="nextButton">
                 <button type="button" onClick={gotoLogin}>Next</button>
@@ -38,9 +38,7 @@ function SerialNumber() {
 
 function gotoLogin() {
     confirmSerial(document.getElementById("SerialNumber").value);
-    if (validCode && !full) {
-        ReactDOM.render(<Login/>, document.getElementById('root'));
-    }
+    ReactDOM.render(<Login/>, document.getElementById('root'));
 }
 
 function confirmSerial(serialNumber) {
@@ -68,7 +66,7 @@ function confirmSerial(serialNumber) {
             "#Code": "Code"
         },
         ExpressionAttributeValues: {
-            ":Code" : serialNumber
+            ":Code" : {N: serialNumber}
         }
 
     };
@@ -78,34 +76,39 @@ function confirmSerial(serialNumber) {
             alert("Invalid Code");
             console.log("Error", err);
         } else {
-            validCode = true;
             console.log("Success", data);
-            data.Items.forEach(function (item) {
-                groupID = item.GroupID.N
+            groupID = data.Items[0].GroupID;
+            var params1 = {
+                TableName:"Groups",
+                Key: {
+                    "GroupID": groupID
+                },
+                UpdateExpression: "set Enrolled = Enrolled + :val",
+                ConditionExpression: "#Enrolled < #Capacity",
+                ExpressionAttributeValues: {
+                    ":val": {N: "1"}
+                },
+                ExpressionAttributeNames: {
+                    "#Enrolled": "Enrolled",
+                    "#Capacity": "Capacity"
+                },
+
+                ReturnValues: "UPDATED_NEW"
+
+            };
+            ddb.updateItem(params1, function (err, data) {
+                if(err) {
+                    full = true;
+                    alert("Class is full");
+                    console.log("Error", err);
+                } else {
+                    full = false;
+                    console.log("Success", data);
+                }
             });
+
         }
     });
-    if (validCode) {
-        var params1 = {
-            TableName:"Groups",
-            Key: {
-                "GroupID": {N: groupID}
-            },
-            UpdateExpression: "set Enrolled = Enrolled + 1",
-            ConditionExpression: "Enrolled < Capacity"
-
-        };
-        ddb.updateItem(params1, function (err, data) {
-            if(err) {
-                full = true;
-                alert("Class is full");
-                console.log("Error", err);
-            } else {
-                full = false;
-                console.log("Success", data);
-            }
-        });
-    }
 
 }
 export default SerialNumber;
