@@ -5,6 +5,8 @@ import './App.css';
 import './CreateAccount.css';
 import Member from "./Member";
 import Login from "./Login";
+var allow;
+var message;
 
 var selectedRole = null;
 function CreateAccount() {
@@ -28,7 +30,7 @@ function CreateAccount() {
                     <div className="col-sm">
                         <input type="text" name="username" id="user" placeholder="Username"/>
                         <input type="password" name="password" id="pass" placeholder="New Password"/>
-                        <input type="password" name="confirm_password" placeholder="Confirm Password"/>
+                        <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"/>
                         {/*TODO check password*/}
                         <input type="text" name="firstname" id="fname" placeholder="First Name"/>
                         <input type="text" name="lastname" id="lname" placeholder="Last Name"/>
@@ -111,7 +113,16 @@ function gotoMember() {
     var lname = document.getElementById("lname").value;
     var usertype = selectedRole;
     addAccount(user, pass, fname, lname, usertype);
-    ReactDOM.render(<Member/>, document.getElementById('root'));
+    allowCreation();
+    if (allow) {
+        addAccount(user, pass, fname, lname, usertype);
+        if (allow) {
+            ReactDOM.render(<Member/>, document.getElementById('root'));
+        }
+    } else {
+        alert(message)
+    }
+
 }
 function gotoLogin() {
 
@@ -149,9 +160,29 @@ function addAccount(user, password, first, last, usertype) {
     ddb.putItem(params, function (err, data) {
         if(err) {
             console.log("Error", err);
+            allow = false;
         } else {
             console.log("Success", data);
         }
     });
+}
+
+function allowCreation() {
+    var user = document.getElementById("user").value;
+    var pass = document.getElementById("pass").value;
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var confirmPass = document.getElementById("confirm_password").value;
+
+    if (user === "" || pass === "" || fname === "" || lname === "" || confirmPass === "") {
+        allow = false;
+        message = "Please fill in all fields"
+    } else if (!(confirmPass === pass)) {
+        allow = false;
+        message = "Your passwords do not match"
+    } else {
+        allow = true;
+    }
+
 }
 export default CreateAccount;
