@@ -100,6 +100,7 @@ function confirmSerial(serialNumber) {
                 if(err) {
                     full = true;
                     alert("Class is full");
+                    alert(JSON.stringify(err));
                     console.log("Error", err);
                 } else {
                     full = false;
