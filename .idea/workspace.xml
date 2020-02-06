@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="ca0b0aac-e76f-42fe-bb17-5d9e4e87280a" name="Default Changelist" comment="">
+    <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreateAccount.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateAccount.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/SerialNumber.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/SerialNumber.js" afterDir="false" />
     </list>
-    <ignored path="$PROJECT_DIR$/node_modules/" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,9 +18,6 @@
         <entry key="last-active-plugin-version" />
       </map>
     </option>
-  </component>
-  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
-    <pharConfigPath>$PROJECT_DIR$/bootstrap-4.0.0/composer.json</pharConfigPath>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
@@ -39,8 +36,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/Login.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
+            <state relative-caret-position="226">
+              <caret line="47" column="33" lean-forward="true" selection-start-line="47" selection-start-column="33" selection-end-line="47" selection-end-column="33" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -108,7 +105,7 @@
         <entry file="file://$PROJECT_DIR$/src/SerialNumber.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1037">
-              <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
+              <caret line="102" column="46" selection-start-line="102" selection-start-column="46" selection-end-line="102" selection-end-column="46" />
               <folding>
                 <element signature="e#0#26#0" expanded="true" />
               </folding>
@@ -143,14 +140,6 @@
       <map>
         <entry key="$PROJECT_DIR$" value="Dante" />
       </map>
-    </option>
-  </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/CreateAccount.js" />
-        <option value="$PROJECT_DIR$/src/SerialNumber.js" />
-      </list>
     </option>
   </component>
   <component name="PhpServers">
@@ -284,8 +273,6 @@
       <workItem from="1579621325987" duration="24000" />
       <workItem from="1579621365324" duration="333000" />
       <workItem from="1579622042186" duration="492000" />
-      <workItem from="1580423219174" duration="2208000" />
-      <workItem from="1581005073026" duration="327000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>
@@ -329,22 +316,21 @@
       <option name="project" value="LOCAL" />
       <updated>1579986214761</updated>
     </task>
-    <task id="LOCAL-00007" summary="Finished Sprint 1">
-      <created>1579999249438</created>
+    <task id="LOCAL-00007" summary="Merge remote-tracking branch 'refs/remotes/origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml">
+      <created>1580060453787</created>
       <option name="number" value="00007" />
       <option name="presentableId" value="LOCAL-00007" />
       <option name="project" value="LOCAL" />
-      <updated>1579999249438</updated>
+      <updated>1580060453787</updated>
     </task>
     <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="10152000" />
+    <option name="totallyTimeSpent" value="35000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="7" />
-    <editor active="true" />
+    <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2718509" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -363,7 +349,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49871466" weight="0.32974428" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" sideWeight="0.49871466" weight="0.32839838" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.49871466" visible="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.5012854" side_tool="true" weight="0.32839838" />
       <window_info anchor="bottom" id="Messages" order="12" weight="0.32974428" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -380,9 +366,49 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ORDER">
+      <list>
+        <option value="0" />
+        <option value="2" />
+        <option value="3" />
+        <option value="1" />
+      </list>
+    </option>
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
+        <entry key="1">
+          <value>
+            <State>
+              <option name="RECENTLY_FILTERED_USER_GROUPS">
+                <collection />
+              </option>
+              <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+                <collection />
+              </option>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="HEAD" />
+                      </list>
+                    </value>
+                  </entry>
+                  <entry key="structure">
+                    <value>
+                      <list>
+                        <option value="dir:/Users/owenmccarty/PTChessOnlineApp/src" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
         <entry key="MAIN">
           <value>
             <State>
@@ -397,6 +423,11 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="OPEN_TABS">
+      <set>
+        <option value="1" />
+      </set>
     </option>
     <option name="RECENT_FILTERS">
       <map>
@@ -414,14 +445,13 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;src/Login.js" />
     <MESSAGE value="Added radio buttons for user type" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/CreateAccount.js" />
-    <MESSAGE value="Finished Sprint 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finished Sprint 1" />
+    <MESSAGE value="Merge remote-tracking branch 'refs/remotes/origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'refs/remotes/origin/master'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml" />
   </component>
   <component name="WindowStateProjectService">
     <state x="320" y="107" key="#ESLint" timestamp="1579902688052">
@@ -436,30 +466,38 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="435" y="154" key="#start/0.23.1440.834@0.23.1440.834" timestamp="1579898833451" />
-    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2" timestamp="1579975835716">
+    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2" timestamp="1580060453331">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
-    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2/0.23.1440.834@0.23.1440.834" timestamp="1579975835716" />
+    <state x="277" y="23" width="886" height="834" key="CommitChangelistDialog2/0.23.1440.834@0.23.1440.834" timestamp="1580060453331" />
     <state x="507" y="203" key="FileChooserDialogImpl" timestamp="1579898944114">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state x="507" y="203" key="FileChooserDialogImpl/0.23.1440.834@0.23.1440.834" timestamp="1579898944114" />
-    <state width="679" height="203" key="GridCell.Tab.0.bottom" timestamp="1579975900974">
-      <screen x="0" y="23" width="1440" height="834" />
+    <state width="679" height="203" key="GridCell.Tab.0.bottom" timestamp="1580062560800">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1579975900974" />
-    <state width="679" height="203" key="GridCell.Tab.0.center" timestamp="1579975900972">
-      <screen x="0" y="23" width="1440" height="834" />
+    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.834@0.23.1440.834" timestamp="1580060719264" />
+    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.835@0.23.1440.835" timestamp="1580061596775" />
+    <state width="679" height="203" key="GridCell.Tab.0.bottom/0.23.1440.836@0.23.1440.836" timestamp="1580062560800" />
+    <state width="679" height="203" key="GridCell.Tab.0.center" timestamp="1580062560798">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1579975900972" />
-    <state width="679" height="203" key="GridCell.Tab.0.left" timestamp="1579975900972">
-      <screen x="0" y="23" width="1440" height="834" />
+    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.834@0.23.1440.834" timestamp="1580060719261" />
+    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.835@0.23.1440.835" timestamp="1580061596771" />
+    <state width="679" height="203" key="GridCell.Tab.0.center/0.23.1440.836@0.23.1440.836" timestamp="1580062560798" />
+    <state width="679" height="203" key="GridCell.Tab.0.left" timestamp="1580062560797">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1579975900972" />
-    <state width="679" height="203" key="GridCell.Tab.0.right" timestamp="1579975900973">
-      <screen x="0" y="23" width="1440" height="834" />
+    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.834@0.23.1440.834" timestamp="1580060719260" />
+    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.835@0.23.1440.835" timestamp="1580061596770" />
+    <state width="679" height="203" key="GridCell.Tab.0.left/0.23.1440.836@0.23.1440.836" timestamp="1580062560797" />
+    <state width="679" height="203" key="GridCell.Tab.0.right" timestamp="1580062560799">
+      <screen x="0" y="23" width="1440" height="836" />
     </state>
-    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1579975900973" />
+    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.834@0.23.1440.834" timestamp="1580060719263" />
+    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.835@0.23.1440.835" timestamp="1580061596773" />
+    <state width="679" height="203" key="GridCell.Tab.0.right/0.23.1440.836@0.23.1440.836" timestamp="1580062560799" />
     <state width="679" height="252" key="GridCell.Tab.1.bottom" timestamp="1579974741986">
       <screen x="0" y="23" width="1440" height="834" />
     </state>
@@ -520,91 +558,14 @@
       <screen x="0" y="23" width="1440" height="834" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.23.1440.834@0.23.1440.834" timestamp="1579973489857" />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/App.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="27" selection-start-line="4" selection-start-column="27" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/CreateAccount.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1938">
-          <caret line="120" column="9" selection-start-line="120" selection-start-column="9" selection-end-line="120" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/App.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Dashboard.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="43" selection-start-line="19" selection-start-column="43" selection-end-line="19" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="11" selection-start-line="9" selection-start-column="11" selection-end-line="9" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Member.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="53" selection-start-line="22" selection-start-column="53" selection-end-line="22" selection-end-column="53" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/serviceWorker.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/SerialNumber.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1037">
-          <caret line="103" column="46" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="46" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/Login.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="58" column="11" selection-start-line="58" selection-start-column="11" selection-end-line="58" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#26#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <state x="397" y="86" width="645" height="708" key="find.popup" timestamp="1580062543424">
+      <screen x="0" y="23" width="1440" height="836" />
+    </state>
+    <state x="397" y="86" width="645" height="708" key="find.popup/0.23.1440.836@0.23.1440.836" timestamp="1580062543424" />
+    <state x="505" y="240" key="git4idea.merge.GitMergeDialog" timestamp="1580061394208">
+      <screen x="0" y="23" width="1440" height="835" />
+    </state>
+    <state x="505" y="240" key="git4idea.merge.GitMergeDialog/0.23.1440.835@0.23.1440.835" timestamp="1580061394207" />
   </component>
   <component name="masterDetails">
     <states>

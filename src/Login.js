@@ -46,20 +46,26 @@ function gotoDashboard() {
 }
 function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
+    AWS.config.update({
+        region: "us-east-1",
+        endpoint: "https://dynamodb.us-east-1.amazonaws.com",
+    });
     var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
     var params = {
         TableName: 'Users',
         Key: {
-            'Username': {N: userName},
-            'Password' : {N: password}
+            'Username': {S: userName},
+            // 'Password' : {S: password}
         },
+        ProjectionExpression: 'ATTRIBUTE_NAME'
     };
-
+    var dataFromGet = null;
     // Call DynamoDB to read the item from the table
-    ddb.getItem(params, function(err, data) {
-        if (err) {
+    var response = ddb.getItem(params, function(err, data) {
+        if (data.Item == null) {
             return 0;
         } else {
+            dataFromGet = data.Item;
             return 1;
         }
     });
