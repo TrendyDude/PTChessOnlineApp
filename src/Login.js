@@ -6,6 +6,9 @@ import './Login.css';
 import CreateAccount from "./CreateAccount";
 import Dashboard from "./Dashboard";
 
+var UserType;
+var FirstName;
+
 function Login() {
     return(
         <html lang="en">
@@ -37,36 +40,42 @@ function gotoCreateAccount() {
     ReactDOM.render(<CreateAccount/>, document.getElementById('root'));
 }
 function gotoDashboard() {
-    var result =  checkAccount(document.getElementById("username").value, document.getElementById("password").value);
-    if (result == 0) {
-        //TODO add error message on lognin screen
-    } else {
-        ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-    }
+    checkAccount(document.getElementById("username").value, document.getElementById("password").value);
 }
 function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
     AWS.config.update({
         region: "us-east-1",
-        endpoint: "https://dynamodb.us-east-1.amazonaws.com",
+
+        endpoint: "https://dynamodb.us-east-1.amazonaws.com"
+
     });
     var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
     var params = {
-        TableName: 'Users',
-        Key: {
-            'Username': {S: userName},
-            // 'Password' : {S: password}
+        TableName: "Users",
+        KeyConditionExpression: "#user = :user",
+        FilterExpression: "#pass = :pass",
+        ExpressionAttributeNames: {
+            "#user" : "Username",
+            "#pass" : "Password"
         },
-        ProjectionExpression: 'ATTRIBUTE_NAME'
+        ExpressionAttributeValues: {
+            ":user" : {S: userName},
+            ":pass" : {S: password}
+        }
     };
-    var dataFromGet = null;
     // Call DynamoDB to read the item from the table
-    var response = ddb.getItem(params, function(err, data) {
-        if (data.Item == null) {
-            return 0;
+    ddb.query(params, function(err, data) {
+        if (err) {
+            alert(JSON.stringify(err));
         } else {
-            dataFromGet = data.Item;
-            return 1;
+            if (data.Items.length === 1) {
+                window.UserType = JSON.stringify(data.Items[0].Usertype.S);
+                window.FirstName = JSON.stringify(data.Items[0].FirstName.S);
+                ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+            } else {
+                alert("Incorrect Username or Password");
+            }
         }
     });
 }

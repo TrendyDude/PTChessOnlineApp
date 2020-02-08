@@ -17,8 +17,8 @@ function Dashboard() {
 
         <body>
             <div className="sidenav">
-                /*<h3> Welcome Ally!</h3>*/
-                <a href="#">Dashboard</a>
+                <h3> Welcome </h3>
+                <a onClick={clickDash}>Dashboard</a>
                 <a href="#">Announcements</a>
                 <a href="#">Lessons</a>
                 <a href="#">Quizzes</a>
@@ -75,6 +75,9 @@ function Dashboard() {
         </body>
         </html>
     );
+}
+function clickDash() {
+    alert(Window.UserType);
 }
 
 export default Dashboard
