@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
 import Videos from "./Videos";
+import AdminVideos from "./AdminVideos";
 
 
 
@@ -113,6 +114,6 @@ function clickDash() {
 }
 
 function clickVideoTab() {
-    ReactDOM.render(<Videos/>, document.getElementById('root'));
+    ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
 }
 export default Dashboard
