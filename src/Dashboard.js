@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import logo from './logo.svg';
 import './App.css';
 import './Dashboard.css';
-import App from "./App";
+import Videos from "./Videos";
 
 
 
@@ -22,7 +21,7 @@ function Dashboard() {
                 <a href="#">Announcements</a>
                 <a href="#">Lessons</a>
                 <a href="#">Quizzes</a>
-                <a href="#">Videos</a>
+                <a onClick={clickVideoTab}>Videos</a>
                 <a href="#">Tactics</a>
             </div>
 
@@ -36,37 +35,70 @@ function Dashboard() {
                     <div className="this_weeks_lesson">
                         <p id="headers">THIS WEEK'S LESSON:</p>
                         <p id="pink_titles">Moving Pieces</p>
-                        <svg width="300" height="120">
-                            <rect id="rect1" width="300" height="120" rx="15"/>
-                        </svg>
+                        <img src="https://image.freepik.com/free-vector/cartoon-character-playing-chess-game_29937-4044.jpg"/>
                     </div>
                     <div className="tactic">
                         <p id="headers">DAILY TACTICS:</p>
                         <p id="pink_titles">Pawns</p>
-                        <svg width="300" height="120">
-                            <rect id="rect1" width="300" height="120" rx="15"/>
-                        </svg>
+                        <img src="https://image.freepik.com/free-vector/cartoon-character-playing-chess-game_29937-4049.jpg"/>
                     </div>
                 </div>
 
                 <div className="bottom_section">
+
                     <div className="to_do">
                         <p id="dark_headers">To Do:</p>
-                        <svg width="350" height="200">
-                            <rect id="todo_rect" width="350" height="200" rx="15"/>
-                        </svg>
+
+                        <div id="notes_background">
+                            <div id="notes_item">
+                                <div id="date">
+                                    <p>October 15, 2019</p>
+                                </div>
+                                <h1>Monday</h1>
+                            </div>
+
+                            <div id="notes_item">
+                                <div id="grey_text">
+                                    <p>Due: Tomorrow, 11:59pm</p>
+                                </div>
+                                <p><strong>Quiz 1: Checkmate</strong></p>
+                            </div>
+
+                            <div id="notes_item">
+                                <div id="grey_text">
+                                    <p>Due: Wednesday, 2:00pm</p>
+                                </div>
+                                <p><strong>Watch Lesson 2: Checkmate</strong></p>
+                            </div>
+                        </div>
+
+
                     </div>
+
                     <div className="announcement">
                         <p id="dark_headers">New Announcements:</p>
-                        <svg width="400" height="50">
-                            <rect id="rect1" width="400" height="50" rx="15"/>
-                        </svg>
-                        <svg width="400" height="50">
-                            <rect id="rect1" width="400" height="50" rx="15"/>
-                        </svg>
-                        <svg width="400" height="50">
-                            <rect id="rect1" width="400" height="50" rx="15"/>
-                        </svg>
+
+                        <div className="item1">
+                            <div id="announcement_item">
+                                <p><strong>10/17/19</strong></p>
+                                <p>Hi class, remember to bring your pamphlet to class... </p>
+                            </div>
+                        </div>
+
+                        <div className="item2">
+                            <div id="announcement_item">
+                                <p><strong>10/15/19</strong></p>
+                                <p>Don't forget to do your homework! It's due by 11:59pm... </p>
+                            </div>
+                        </div>
+                        <div className="item3">
+                            <div id="announcement_item">
+                                <p><strong>10/11/19</strong></p>
+                                <p>I just want to say good job everyone in class today!... </p>
+                            </div>
+                        </div>
+
+
                     </div>
                 </div>
 
@@ -77,7 +109,10 @@ function Dashboard() {
     );
 }
 function clickDash() {
-    alert(Window.UserType);
+    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
+function clickVideoTab() {
+    ReactDOM.render(<Videos/>, document.getElementById('root'));
+}
 export default Dashboard

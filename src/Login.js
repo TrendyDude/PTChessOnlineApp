@@ -40,7 +40,8 @@ function gotoCreateAccount() {
     ReactDOM.render(<CreateAccount/>, document.getElementById('root'));
 }
 function gotoDashboard() {
-    checkAccount(document.getElementById("username").value, document.getElementById("password").value);
+    //checkAccount(document.getElementById("username").value, document.getElementById("password").value);
+    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
