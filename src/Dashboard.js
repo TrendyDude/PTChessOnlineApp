@@ -35,7 +35,6 @@ function Dashboard(){
                         </div>
                         <div className="tactic">
                             <p id="headers">DAILY TACTICS:</p>
-                            <p id="pink_titles">Pawns</p>
                             <img src="https://image.freepik.com/free-vector/cartoon-character-playing-chess-game_29937-4049.jpg" onClick={gotoChessTactic}/>
                         </div>
                     </div>
