@@ -31,7 +31,7 @@ function Dashboard(){
                         <div className="this_weeks_lesson">
                             <p id="headers">THIS WEEK'S LESSON:</p>
                             <p id="pink_titles">Moving Pieces</p>
-                            <img src="https://image.freepik.com/free-vector/cartoon-character-playing-chess-game_29937-4044.jpg" onClick={gotoChessTactic}/>
+                            <img src="https://image.freepik.com/free-vector/cartoon-character-playing-chess-game_29937-4044.jpg"/>
                         </div>
                         <div className="tactic">
                             <p id="headers">DAILY TACTICS:</p>

@@ -8,13 +8,11 @@ import './Dashboard.css';
 
 function Videos() {
     return (
-        <html lang="en">
+        <div lang="en">
 
-        <head>
+
             <title>Videos</title>
-        </head>
 
-        <body>
         <div className="sidenav">
             <h3> Welcome </h3>
             <a onClick={clickDash}>Dashboard</a>
@@ -97,8 +95,7 @@ function Videos() {
 
 
 
-        </body>
-        </html>
+        </div>
     );
 }
 function clickDash() {

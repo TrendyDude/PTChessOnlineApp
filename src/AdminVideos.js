@@ -6,13 +6,9 @@ import './Dashboard.css';
 import App from "./App";
 import './AdminVideos.css';
 import EditVideos from "./EditVideos";
-import Dashboard from "./Login";
+import Dashboard from "./Dashboard";
 
-class AdminVideos extends React.Component{
-    constructor(props) {
-        super(props);
-    }
- render() {
+function AdminVideos() {
      return (
          <div lang="en">
              <title>AdminVideos</title>
@@ -82,7 +78,6 @@ class AdminVideos extends React.Component{
              </div>
          </div>
      );
- }
 }
 function gotoEdit() {
     ReactDOM.render(<EditVideos/>, document.getElementById('root'));
