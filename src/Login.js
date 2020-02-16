@@ -11,13 +11,10 @@ var FirstName;
 
 function Login() {
     return(
-        <html lang="en">
+        <div lang="en">
 
-        <head>
+
             <title>Login</title>
-        </head>
-
-        <body>
             <div className="contentLogin">
                 <h3>Member Login</h3>
                 <form>
@@ -32,21 +29,21 @@ function Login() {
                     <p>Dont have an account?<button onClick={gotoCreateAccount}>Sign up!</button></p>
                 </div>
             </div>
-        </body>
-        </html>
+        </div>
     );
 }
 function gotoCreateAccount() {
     ReactDOM.render(<CreateAccount/>, document.getElementById('root'));
 }
 function gotoDashboard() {
-    //checkAccount(document.getElementById("username").value, document.getElementById("password").value);
-    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+    checkAccount(document.getElementById("username").value, document.getElementById("password").value);
 }
 function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
     AWS.config.update({
         region: "us-east-1",
+        accessKeyId: "AKIA2F56XJ6UA4HHO24L",
+        secretAccessKey: "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",
         endpoint: "https://dynamodb.us-east-1.amazonaws.com"
 
     });
