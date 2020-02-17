@@ -8,6 +8,19 @@ import './EditVideos.css';
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
+import ReactFileReader from 'react-file-reader';
+
+// var handleFile = (event) => {
+//     const content = event.target.result;
+//     console.log('file content',  content)
+//     // You can set content in state and show it in render.
+// }
+//
+// var handleChangeFile = (file) => {
+//     var fileData = new FileReader();
+//     fileData.onloadend = handleFile;
+//     fileData.readAsText(file);
+// }
 
 function EditVideos() {
     return (
@@ -36,6 +49,9 @@ function EditVideos() {
             <div className="text">
                 <h1>Upload local files</h1>
             </div>
+            {/*<ReactFileReader handleFiles={this.handleFiles}>*/}
+            {/*    <button className='btn'>Upload</button>*/}
+            {/*</ReactFileReader>*/}
             <div className="Browse">
                 < a href = "#" onClick ={performClick('theFile')} >Browse</a>
                     <input type="file" id="theFile"/>
@@ -57,7 +73,7 @@ function EditVideos() {
                 <button onClick={clickVideoTab}>Cancel</button>
             </div>
             <div className="save">
-                <button>Save</button>
+                <button onClick={saveVideo}>Save</button>
             </div>
         </div>
 
@@ -67,6 +83,40 @@ function EditVideos() {
         </html>
     );
 }
+
+
+function saveVideo() {
+    const fs = require('fs');
+    const AWS = require('aws-sdk');
+
+    AWS.config.update({
+        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
+        secretAccessKey: "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"
+    });
+
+
+    var s3 = new AWS.S3();
+    const path = require('path');
+
+    //const fileContent = fs.readFile(document.getElementById('theFile'));
+
+
+
+    const params = {
+        Bucket: 'Videos',
+        Key: "video1", // File name you want to save as in S3
+        Body: document.getElementById('theFile')
+    };
+    s3.upload(params, function(err, data) {
+        if (err) {
+            throw err;
+        }
+        console.log(`File uploaded successfully. ${data.Location}`);
+    });
+}
+
+
+
 
 function clickDash() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));

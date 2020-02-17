@@ -38,7 +38,7 @@ function AdminVideos() {
                          <input type="file" id="file-input"/>
                      </div>
                      <div className="upload">
-                         <button>Upload</button>
+                         <button onClick={saveVideo}>Upload</button>
                      </div>
                  </div>
                  <div className="videos">
@@ -86,6 +86,35 @@ function AdminVideos() {
 function gotoEdit() {
     ReactDOM.render(<EditVideos/>, document.getElementById('root'));
 }
+function saveVideo() {
+    const fs = require('fs');
+    const AWS = require('aws-sdk');
+
+    AWS.config.update({
+        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
+        secretAccessKey: "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"
+    });
+
+
+    var s3 = new AWS.S3();
+    const path = require('path');
+    //const fileContent = fs.readFileSync(document.getElementById('theFile'));
+
+
+
+    const params = {
+        Bucket: 'Videos',
+        Key: document.getElementById('theFile'), // File name you want to save as in S3
+        //Body: fileContent
+    };
+    s3.upload(params, function(err, data) {
+        if (err) {
+            throw err;
+        }
+        console.log(`File uploaded successfully. ${data.Location}`);
+    });
+}
+
 
 function gotoDashboard() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));

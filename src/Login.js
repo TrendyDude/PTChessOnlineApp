@@ -41,10 +41,12 @@ function gotoDashboard() {
 function checkAccount(userName, password) {
     // var AWS = require("aws-sdk");
     // AWS.config.update({
-    //     region: "us-east-1",
-    //     endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-    //
+    //     region: "us-east-2",
+    //     accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
+    //     secretAccessKey: "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",
+    //     endpoint: "https://dynamodb.us-east-2.amazonaws.com"
     // });
+    //
     // var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
     // var params = {
     //     TableName: "Users",
@@ -59,7 +61,7 @@ function checkAccount(userName, password) {
     //         ":pass" : {S: password}
     //     }
     // };
-    // // Call DynamoDB to read the item from the table
+    // Call DynamoDB to read the item from the table
     // ddb.query(params, function(err, data) {
     //     if (err) {
     //         alert(JSON.stringify(err));
