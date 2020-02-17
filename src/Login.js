@@ -39,39 +39,39 @@ function gotoDashboard() {
     checkAccount(document.getElementById("username").value, document.getElementById("password").value);
 }
 function checkAccount(userName, password) {
-    var AWS = require("aws-sdk");
-    AWS.config.update({
-        region: "us-east-1",
-        endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-
-    });
-    var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
-    var params = {
-        TableName: "Users",
-        KeyConditionExpression: "#user = :user",
-        FilterExpression: "#pass = :pass",
-        ExpressionAttributeNames: {
-            "#user" : "Username",
-            "#pass" : "Password"
-        },
-        ExpressionAttributeValues: {
-            ":user" : {S: userName},
-            ":pass" : {S: password}
-        }
-    };
-    // Call DynamoDB to read the item from the table
-    ddb.query(params, function(err, data) {
-        if (err) {
-            alert(JSON.stringify(err));
-        } else {
-            if (data.Items.length === 1) {
-                window.UserType = JSON.stringify(data.Items[0].Usertype.S);
-                window.FirstName = JSON.stringify(data.Items[0].FirstName.S);
+    // var AWS = require("aws-sdk");
+    // AWS.config.update({
+    //     region: "us-east-1",
+    //     endpoint: "https://dynamodb.us-east-1.amazonaws.com"
+    //
+    // });
+    // var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
+    // var params = {
+    //     TableName: "Users",
+    //     KeyConditionExpression: "#user = :user",
+    //     FilterExpression: "#pass = :pass",
+    //     ExpressionAttributeNames: {
+    //         "#user" : "Username",
+    //         "#pass" : "Password"
+    //     },
+    //     ExpressionAttributeValues: {
+    //         ":user" : {S: userName},
+    //         ":pass" : {S: password}
+    //     }
+    // };
+    // // Call DynamoDB to read the item from the table
+    // ddb.query(params, function(err, data) {
+    //     if (err) {
+    //         alert(JSON.stringify(err));
+    //     } else {
+    //         if (data.Items.length === 1) {
+    //             window.UserType = JSON.stringify(data.Items[0].Usertype.S);
+    //             window.FirstName = JSON.stringify(data.Items[0].FirstName.S);
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-            } else {
-                alert("Incorrect Username or Password");
-            }
-        }
-    });
+    //         } else {
+    //             alert("Incorrect Username or Password");
+    //         }
+    //     }
+    // });
 }
 export default Login;

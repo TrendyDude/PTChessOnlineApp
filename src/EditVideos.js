@@ -5,6 +5,9 @@ import './App.css';
 import './Dashboard.css';
 import App from "./App";
 import './EditVideos.css';
+import AdminVideos from "./AdminVideos";
+import ChessTactic from "./ChessTactic";
+import Dashboard from "./Dashboard";
 
 function EditVideos() {
     return (
@@ -17,12 +20,12 @@ function EditVideos() {
         <body>
         <div className="sidenav">
             <h3> Welcome </h3>
-            <a href="#">Dashboard</a>
+            <a onClick={clickDash}>DashBoard</a>
             <a href="#">Announcements</a>
             <a href="#">Lessons</a>
             <a href="#">Quizzes</a>
-            <a href="#">Videos</a>
-            <a href="#">Tactics</a>
+            <a onClick={clickVideoTab}>Videos</a>
+            <a onClick={gotoChessTactic}>Tactics</a>
         </div>
 
         <div className="content">
@@ -34,7 +37,8 @@ function EditVideos() {
                 <h1>Upload local files</h1>
             </div>
             <div className="Browse">
-                <button>Browse</button>
+                < a href = "#" onClick ={performClick('theFile')} >Browse</a>
+                    <input type="file" id="theFile"/>
             </div>
             <div className="fileName">
                 <p>Video 1</p>
@@ -50,7 +54,7 @@ function EditVideos() {
                 </form>
             </div>
             <div className="cancel">
-                <button>Cancel</button>
+                <button onClick={clickVideoTab}>Cancel</button>
             </div>
             <div className="save">
                 <button>Save</button>
@@ -62,6 +66,27 @@ function EditVideos() {
         </body>
         </html>
     );
+}
+
+function clickDash() {
+    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+}
+
+function clickVideoTab() {
+    ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+}
+
+function gotoChessTactic() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function performClick(elemId) {
+    var elem = document.getElementById(elemId);
+    if(elem && document.createEvent) {
+    var evt = document.createEvent("MouseEvents");
+    evt.initEvent("click", true, false);
+    elem.dispatchEvent(evt);
+    }
 }
 
 export default EditVideos

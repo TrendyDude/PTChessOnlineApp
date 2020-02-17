@@ -33,6 +33,10 @@ function AdminVideos() {
                          <a href="#">A-Z</a>
                          <a href="#">SORT BY DATE</a>
                      </div>
+                     <div className="browse">
+                         < a href = "#" onClick ={performClick('file-input')} >Browse</a>
+                         <input type="file" id="file-input"/>
+                     </div>
                      <div className="upload">
                          <button>Upload</button>
                      </div>
@@ -86,5 +90,15 @@ function gotoEdit() {
 function gotoDashboard() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
+
+function performClick(elemId) {
+    var elem = document.getElementById(elemId);
+    if(elem && document.createEvent) {
+        var evt = document.createEvent("MouseEvents");
+        evt.initEvent("click", true, false);
+        elem.dispatchEvent(evt);
+    }
+}
+
 
 export default AdminVideos
