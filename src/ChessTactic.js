@@ -5,6 +5,7 @@ import './Videos.css';
 import './Dashboard.css';
 import Dashboard from "./Dashboard";
 import Videos from "./Videos";
+import {FirstName} from "./Login";
 
 function ChessTactic() {
     return (
@@ -14,7 +15,7 @@ function ChessTactic() {
 
         <body>
         <div className="sidenav">
-            <h3> Welcome </h3>
+            <h3> Welcome {FirstName}</h3>
             <a onClick={clickDash}>Dashboard</a>
             <a href="#">Announcements</a>
             <a href="#">Lessons</a>
@@ -23,7 +24,7 @@ function ChessTactic() {
             <a href="#">Tactics</a>
         </div>
         <div className="content">
-            <iframe src={"https://tactics.chessbase.com/en/Solve"} width="80%" height={"80%"}> Tactic </iframe>
+            <iframe src={"https://livetactics.chessbase.com"} width="80%" height={"80%"}> Tactic </iframe>
         </div>
         </body>
         </div>

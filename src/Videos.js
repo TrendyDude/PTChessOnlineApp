@@ -4,7 +4,7 @@ import './App.css';
 import './Videos.css';
 import Dashboard from "./Dashboard";
 import './Dashboard.css';
-
+import {FirstName} from "./Login";
 
 function Videos() {
     return (
@@ -14,7 +14,7 @@ function Videos() {
             <title>Videos</title>
 
         <div className="sidenav">
-            <h3> Welcome </h3>
+            <h3> Welcome {FirstName}</h3>
             <a onClick={clickDash}>Dashboard</a>
             <a href="#">Announcements</a>
             <a href="#">Lessons</a>
@@ -105,4 +105,6 @@ function clickDash() {
 function clickVideoTab() {
     ReactDOM.render(<Videos/>, document.getElementById('root'));
 }
+
+
 export default Videos

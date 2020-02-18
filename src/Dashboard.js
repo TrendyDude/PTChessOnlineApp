@@ -5,6 +5,8 @@ import './Dashboard.css';
 import Videos from "./Videos";
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
+import {FirstName, UserType} from "./Login";
+
 
 function Dashboard(){
         return(
@@ -12,7 +14,8 @@ function Dashboard(){
                 <title>Dashboard</title>
 
                 <div className="sidenav">
-                    <h3> Welcome </h3>
+                    <h3> Welcome {FirstName.toString()}</h3>
+
                     <a onClick={clickDash}>Dashboard</a>
                     <a href="#">Announcements</a>
                     <a href="#">Lessons</a>
@@ -107,7 +110,12 @@ function clickDash() {
 }
 
 function clickVideoTab() {
-    ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+    if (UserType === 'A')  {
+        ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+    } else {
+        ReactDOM.render(<Videos/>, document.getElementById('root'));
+    }
+
 }
 
 function gotoChessTactic() {

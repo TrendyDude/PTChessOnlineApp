@@ -5,9 +5,8 @@ import './App.css';
 import './Login.css';
 import CreateAccount from "./CreateAccount";
 import Dashboard from "./Dashboard";
-
-var UserType;
-var FirstName;
+let UserType;
+let FirstName;
 
 function Login() {
     return(
@@ -42,8 +41,8 @@ function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
     AWS.config.update({
         region: "us-east-2",
-        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
-        secretAccessKey: "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",
+        accessKeyId: "AKIAYDF6HFID66WPVAEM",
+        secretAccessKey: "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",
         endpoint: "https://dynamodb.us-east-2.amazonaws.com"
 
     });
@@ -67,8 +66,8 @@ function checkAccount(userName, password) {
             alert(JSON.stringify(err));
         } else {
             if (data.Items.length === 1) {
-                window.UserType = JSON.stringify(data.Items[0].Usertype);
-                window.FirstName = JSON.stringify(data.Items[0].FirstName);
+                UserType = data.Items[0].UserType.S;
+                FirstName = data.Items[0].FirstName.S;
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
             } else {
                 alert("Incorrect Username or Password");
@@ -77,3 +76,4 @@ function checkAccount(userName, password) {
     });
 }
 export default Login;
+export {FirstName, UserType};
