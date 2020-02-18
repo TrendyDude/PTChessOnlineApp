@@ -91,8 +91,6 @@ function saveVideo() {
     const AWS = require('aws-sdk');
 
     AWS.config.update({
-        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
-        secretAccessKey: "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"
     });
 
 
