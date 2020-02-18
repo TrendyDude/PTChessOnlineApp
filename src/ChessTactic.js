@@ -23,7 +23,7 @@ function ChessTactic() {
             <a href="#">Tactics</a>
         </div>
         <div className="content">
-            <iframe src={"https://livetactics.chessbase.com"} width="100%" height={"100%"}> Tactic </iframe>
+            <iframe src={"https://tactics.chessbase.com/en/Solve"} width="80%" height={"80%"}> Tactic </iframe>
         </div>
         </body>
         </div>

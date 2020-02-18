@@ -41,8 +41,10 @@ function gotoDashboard() {
 function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
     AWS.config.update({
-        region: "us-east-1",
-        endpoint: "https://dynamodb.us-east-1.amazonaws.com"
+        region: "us-east-2",
+        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
+        secretAccessKey: "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",
+        endpoint: "https://dynamodb.us-east-2.amazonaws.com"
 
     });
     var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
@@ -65,8 +67,8 @@ function checkAccount(userName, password) {
             alert(JSON.stringify(err));
         } else {
             if (data.Items.length === 1) {
-                window.UserType = JSON.stringify(data.Items[0].Usertype.S);
-                window.FirstName = JSON.stringify(data.Items[0].FirstName.S);
+                window.UserType = JSON.stringify(data.Items[0].Usertype);
+                window.FirstName = JSON.stringify(data.Items[0].FirstName);
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
             } else {
                 alert("Incorrect Username or Password");
