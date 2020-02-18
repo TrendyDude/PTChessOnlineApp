@@ -41,8 +41,6 @@ function checkAccount(userName, password) {
     var AWS = require("aws-sdk");
     AWS.config.update({
         region: "us-east-2",
-        accessKeyId: "AKIAYDF6HFID66WPVAEM",
-        secretAccessKey: "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",
         endpoint: "https://dynamodb.us-east-2.amazonaws.com"
 
     });
