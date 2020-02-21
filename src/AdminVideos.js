@@ -10,7 +10,47 @@ import Dashboard from "./Dashboard";
 import {FirstName} from "./Login";
 
 
+var VideoList;
+
+function Video(videoId, videoFile, videoName, videoUrl) {
+    this.videoId = videoId;
+    this.videoFile = videoFile;
+    this.videoName = videoName
+    this.videoUrl = videoUrl;
+}
+
+
+var Videos = [Object];
+
+
+
 function AdminVideos() {
+    // var AWS = require("aws-sdk");
+    // AWS.config.update({
+    //     region: "us-east-2",
+    //     accessKeyId: "AKIAYDF6HFIDUC5OY363",
+    //     secretAccessKey: "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",
+    //     endpoint: "https://dynamodb.us-east-2.amazonaws.com"
+    // });
+    //
+    // var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
+    // var params = {
+    //     TableName: "Users",
+    //     Select: "ALL_ATTRIBUTES",
+    // };
+    // //Call DynamoDB to read the item from the table
+    // ddb.scan(params, function(err, data) {
+    //     if (err) {
+    //         alert(JSON.stringify(err));
+    //     } else {
+    //         if (data.Items.length === 1){
+    //
+    //         }
+    //         for(var i = 0; i < data.Count; i++) {
+    //             //var video = Video(data.Items[1])
+    //         }
+    //     }
+    // });
      return (
 
          <div lang="en">

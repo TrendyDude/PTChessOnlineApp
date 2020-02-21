@@ -10,18 +10,17 @@ import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
 import ReactFileReader from 'react-file-reader';
 
- var handleFile = (event) => {
-     const content = event.target.result;
-     console.log('file content',  content)
-     alert(content);
-     // You can set content in state and show it in render.
- };
-
- var handleChangeFile = (file) => {
-     var fileData = new FileReader();
-     fileData.onloadend = handleFile;
-     fileData.readAsText(file);
-};
+// var handleFile = (event) => {
+//     const content = event.target.result;
+//     console.log('file content',  content)
+//     // You can set content in state and show it in render.
+// }
+//
+// var handleChangeFile = (file) => {
+//     var fileData = new FileReader();
+//     fileData.onloadend = handleFile;
+//     fileData.readAsText(file);
+// }
 
 function EditVideos() {
     return (
@@ -55,7 +54,7 @@ function EditVideos() {
             {/*</ReactFileReader>*/}
             <div className="Browse">
                 < a href = "#" onClick ={performClick('theFile')} >Browse</a>
-                    <input onChange={performClick('theFile')} type="file" id="theFile"/>
+                    <input type="file" id="theFile"/>
             </div>
             <div className="fileName">
                 <p>Video 1</p>
@@ -89,22 +88,46 @@ function EditVideos() {
 function saveVideo() {
     const fs = require('fs');
     const AWS = require('aws-sdk');
+    require('dotenv').config(); // Configure dotenv to load in the .env file
 
     AWS.config.update({
+        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
+        secretAccessKey: "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"
     });
 
+    const S3_BUCKET = process.env.bucket;
 
-    var s3 = new AWS.S3();
-    const path = require('path');
+    // exports.sign_s3 = (req,res) => {
+    //     const s3 = new AWS.S3();  // Create a new instance of S3
+    //     const fileName = req.body.fileName;
+    //     const fileType = req.body.fileType;
+    //
+    //     // var s3 = new AWS.S3();
+    //     //const path = require('path');
+    //
+    //     const s3Params = {
+    //         Bucket: S3_BUCKET,
+    //         Key: fileName,
+    //         Expires: 500,
+    //         ContentType: fileType,
+    //         ACL: 'public-read'
+    //     };
+    //
+    // }
+
+
 
     //const fileContent = fs.readFile(document.getElementById('theFile'));
-
+    const s3 = new AWS.S3({
+        accessKeyId: "AKIAYDF6HFIDUC5OY363",
+        secretAccessKey: "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",
+    });
 
 
     const params = {
         Bucket: 'Videos',
         Key: "video1", // File name you want to save as in S3
-        Body: document.getElementById('theFile')
+        Body: document.getElementById('theFile').value
     };
     s3.upload(params, function(err, data) {
         if (err) {

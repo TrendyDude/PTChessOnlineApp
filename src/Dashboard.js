@@ -21,7 +21,7 @@ function Dashboard(){
                     <a href="#">Lessons</a>
                     <a href="#">Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
-                    <a href="#">Tactics</a>
+                    <a onClick={clickTacticTab}>Tactics</a>
                 </div>
 
                 <div className="content">
@@ -107,6 +107,10 @@ function Dashboard(){
 }
 function clickDash() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+}
+
+function clickTacticTab() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickVideoTab() {
