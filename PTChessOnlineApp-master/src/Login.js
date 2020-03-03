@@ -69,6 +69,7 @@ function checkAccount(userName, password) {
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
             } else {
                 alert("Incorrect Username or Password");
+                alert("Random!");
             }
         }
     });
