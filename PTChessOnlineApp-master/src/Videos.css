@@ -1,0 +1,64 @@
+/* Style the links inside the navigation bar */
+#tab_nav a {
+    float: left;
+    display: inline;
+    color: #707070;
+    text-align: center;
+    padding: 5px 16px;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 3px solid transparent;
+    font-family: "Arial";
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#tab_nav a:hover {
+    color: #FFC200;
+}
+
+#tab_nav a.active {
+    border-bottom: 3px solid #FFC200;
+    color: #FFC200;
+}
+
+#tab_nav:after {
+    content:"";
+    display:table;
+    clear: both;
+}
+
+#top_video {
+    height: 200px;
+    width: 85%;
+}
+
+#top_video:after {
+    content:"";
+    display:table;
+    clear: both;
+}
+
+#vid_row {
+    display: flex;
+}
+
+#vid_col {
+    flex: 25%;
+    padding: 5px;
+}
+
+#bottom_video {
+    height: 250px;
+    width: 85%;
+}
+
+#rect {
+    fill: #f5f5f5;
+}
+
+#rect:hover {
+    box-shadow: 0 3px 3px 0 #dcdcdc, 0 2px 8px 0 #f5f5f5;
+    cursor: pointer;
+}

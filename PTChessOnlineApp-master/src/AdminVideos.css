@@ -1,0 +1,95 @@
+/* Style the links inside the navigation bar */
+#sort a {
+    float: left;
+    display: inline;
+    color: #707070;
+    text-align: center;
+    padding: 5px 16px;
+    text-decoration: none;
+    font-size: 13px;
+    border-bottom: 3px solid transparent;
+    font-family: "Arial";
+    font-weight: bold;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+#sort a:hover {
+    color: #FFC200;
+}
+
+#sort a.active {
+    border-bottom: 3px solid #FFC200;
+    color: #FFC200;
+}
+
+#sort:after {
+    content:"";
+    display:inline-block;
+    clear: both;
+}
+.upload button {
+    color: #f5f5f5;
+    background-color: #FD3C3C;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    border-style: hidden;
+    margin-left: 300px;
+
+}
+.videos {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.top {
+    display: inline;
+}
+.textInRect button{
+    color: #707070;
+    background: none;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    text-align: left;
+    border-style: hidden;
+    font-size: 16;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+
+.textInCirc button{
+    color: #c1c1c1;
+    background: none;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    text-align: left;
+    border-style: hidden;
+    font-size: 14;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+
+.edit button{
+    color: #FD3C3C;
+    background: none;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    text-align: left;
+    border-style: hidden;
+    font-size: 16;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+
+.uploadDate h1{
+    color: #707070;
+    font-size: 13px;
+    margin: auto;
+}
