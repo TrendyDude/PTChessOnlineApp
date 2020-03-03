@@ -7,6 +7,9 @@
     </profile>
     <version value="1.0" />
   </component>
+  <component name="JavaScriptSettings">
+    <option name="languageLevel" value="JSX" />
+  </component>
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/PTChessOnlineApp-master.iml" filepath="$PROJECT_DIR$/PTChessOnlineApp-master.iml" />
