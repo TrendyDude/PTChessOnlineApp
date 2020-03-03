@@ -74,3 +74,5 @@ function checkAccount(userName, password) {
     });
 }
 export default Login;
+export {FirstName,UserType};
+
