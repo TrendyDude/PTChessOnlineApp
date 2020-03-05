@@ -7,6 +7,8 @@ import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 
 import {User} from "./Login";
+import Announcements from "./Announcements";
+import TeacherAnnouncements from "./TeacherAnnouncements";
 
 
 function Dashboard(){
@@ -18,7 +20,7 @@ function Dashboard(){
                     <h3> Welcome {User.FirstName.toString()}</h3>
 
                     <a onClick={clickDash}>Dashboard</a>
-                    <a href="#">Announcements</a>
+                    <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
                     <a href="#">Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
@@ -125,5 +127,9 @@ function clickVideoTab() {
 
 function gotoChessTactic() {
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function clickAnnouncementsTab() {
+    ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 export default Dashboard

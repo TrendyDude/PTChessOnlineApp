@@ -8,7 +8,7 @@ import './EditVideos.css';
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
-import ReactFileReader from 'react-file-reader';
+//import ReactFileReader from 'react-file-reader';
 
 // var handleFile = (event) => {
 //     const content = event.target.result;

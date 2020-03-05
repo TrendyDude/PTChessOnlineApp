@@ -50,6 +50,7 @@ function gotoDashboard() {
     checkAccount(document.getElementById("username").value, document.getElementById("password").value);
 }
 function checkAccount(userName, password) {
+
     var AWS = require("aws-sdk");
     AWS.config.update({
         region: "us-east-2",

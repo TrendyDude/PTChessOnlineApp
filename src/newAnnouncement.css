@@ -1,0 +1,43 @@
+.newAnnouncementText h1{
+    color: #FD3C3C;
+    font-size: 20px;
+}
+.titleTextBox textarea{
+    width: 1000px;
+    height: 50px;
+    border-radius: 10px;
+}
+.contentTextBox textarea{
+    width: 1000px;
+    height: 300px;
+    border-radius: 10px;
+}
+.cancelButton button{
+    margin-left: 580px;
+    margin-top: 50px;
+    border-radius: 50px;
+    font-size: 17px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    background-color: #FFFFFF;
+    color: #0ec7c6;
+    border-style: solid;
+    border-color: #0ec7c6;
+    display: inline;
+    float: left;
+}
+.saveButton button{
+    border-radius: 50px;
+    font-size: 15px;
+    padding: 15px;
+    width: 200px;
+    text-align: center;
+    display: inline;
+    background-color: #0ec7c6;
+    color: #ffffff;
+    border-style: hidden;
+    margin-left: 20px;
+    float: left;
+    margin-top: 50px;
+}
