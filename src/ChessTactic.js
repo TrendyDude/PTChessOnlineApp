@@ -5,7 +5,7 @@ import './Videos.css';
 import './Dashboard.css';
 import Dashboard from "./Dashboard";
 import Videos from "./Videos";
-import {FirstName} from "./Login";
+import {User} from "./Login";
 
 function ChessTactic() {
     return (
@@ -15,7 +15,7 @@ function ChessTactic() {
 
         <body>
         <div className="sidenav">
-            <h3> Welcome {FirstName}</h3>
+            <h3> Welcome {User.FirstName.toString()}</h3>
             <a onClick={clickDash}>Dashboard</a>
             <a href="#">Announcements</a>
             <a href="#">Lessons</a>

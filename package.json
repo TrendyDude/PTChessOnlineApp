@@ -9,14 +9,14 @@
     "aws-sdk": "^2.614.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "fs": "0.0.2",
     "fs": "0.0.1-security",
     "fs-es6": "0.0.2",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-file-reader": "^1.1.4",
     "react-native-fs": "^2.0.1-rc.2",
-    "react-scripts": "3.3.0"
+    "react-scripts": "3.3.0",
+    "uuid": "^7.0.2"
   },
   "scripts": {
     "start": "react-scripts start",

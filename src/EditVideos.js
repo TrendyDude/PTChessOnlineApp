@@ -91,8 +91,7 @@ function saveVideo() {
     require('dotenv').config(); // Configure dotenv to load in the .env file
 
     AWS.config.update({
-        accessKeyId: "AKIAYDF6HFIDYV7BBWUA",
-        secretAccessKey: "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"
+
     });
 
     const S3_BUCKET = process.env.bucket;
@@ -119,8 +118,7 @@ function saveVideo() {
 
     //const fileContent = fs.readFile(document.getElementById('theFile'));
     const s3 = new AWS.S3({
-        accessKeyId: "AKIAYDF6HFIDUC5OY363",
-        secretAccessKey: "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",
+
     });
 
 
