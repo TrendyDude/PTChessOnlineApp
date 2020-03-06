@@ -58,8 +58,7 @@ function checkAccount(userName, password) {
 
 
     });
-    AWS.config.accessKeyId = "AKIAYDF6HFID3NPNQ3XA";
-    AWS.config.secretAccessKey = "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";
+
     var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
     var params = {
         TableName: "Users",
