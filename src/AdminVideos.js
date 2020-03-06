@@ -1,5 +1,5 @@
-import React, { useState, useRef } from 'react';
-//import Knockout from 'knockout';
+import React, { useState, useRef, useEffect } from 'react';
+//import Knockout from './bower_components/knockout';
 import ReactDOM from 'react-dom';
 import logo from './logo.svg';
 import './App.css';
@@ -11,14 +11,7 @@ import EditVideos from "./EditVideos";
 import Dashboard from "./Dashboard";
 import {User} from "./Login";
 import uuidv4 from 'uuid/v4';
-
-
-
-
-
-
-
-
+import jQuery from "jquery";
 
 
 
@@ -58,6 +51,20 @@ function AdminVideos() {
         this.VideoName = videoName;
         this.VideoUrl = videoUrl;
     }
+    var SelectedVideo;
+    useEffect(() => {
+        handleEditVideo({SelectedVideo})
+        },
+        [SelectedVideo]
+    )
+
+
+    function handleEditVideo({video}){
+        console.log("DOGS_R_COOL")
+        jQuery('#EditVideoModal').showModal()
+
+    }
+
     function handleAddVideo(e){
         const videoUrl = videoUrlRef.current.value
         const videoName = videoNameRef.current.value;
@@ -177,6 +184,39 @@ function AdminVideos() {
                                  </tbody>
                              </table>
 
+                         </div>
+                     </div>
+
+                     <div className="modal" tabIndex="-1" role="dialog" id="EditVideoModal">
+                         <div className="modal-dialog" role="document">
+                             <div className="modal-content">
+                                 <div className="modal-header">
+                                     <h5 className="modal-title">Modal title</h5>
+                                     <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                                         <span aria-hidden="true">&times;</span>
+                                     </button>
+                                 </div>
+                                 <div className="modal-body">
+                                     <div className="form-group">
+                                         <div className="row">
+                                             <div className="col-sm-4">
+                                                 <label>Name</label>
+                                                 <input className="form-control" type="text" />
+                                             </div>
+                                             <div className="col-sm-4">
+                                                 <label>Url</label>
+                                                 <input className="form-control" type="text" />
+
+                                             </div>
+                                         </div>
+                                     </div>
+                                 </div>
+                                 <div className="modal-footer">
+                                     <button type="button" className="btn btn-primary">Save changes</button>
+                                     <button type="button" className="btn btn-secondary" data-dismiss="modal">Close
+                                     </button>
+                                 </div>
+                             </div>
                          </div>
                      </div>
 
