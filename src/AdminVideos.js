@@ -11,7 +11,7 @@ import EditVideos from "./EditVideos";
 import Dashboard from "./Dashboard";
 import {User} from "./Login";
 import uuidv4 from 'uuid/v4';
-import jQuery from "jquery";
+import $ from "jquery";
 
 
 
@@ -51,19 +51,15 @@ function AdminVideos() {
         this.VideoName = videoName;
         this.VideoUrl = videoUrl;
     }
-    var SelectedVideo;
-    useEffect(() => {
-        handleEditVideo({SelectedVideo})
-        },
-        [SelectedVideo]
-    )
+    // var SelectedVideo = {};
 
 
-    function handleEditVideo({video}){
-        console.log("DOGS_R_COOL")
-        jQuery('#EditVideoModal').showModal()
 
-    }
+    // function handleEditVideo({video}){
+    //     console.log("DOGS_R_COOL")
+    //
+    //
+    // }
 
     function handleAddVideo(e){
         const videoUrl = videoUrlRef.current.value
@@ -72,7 +68,7 @@ function AdminVideos() {
             alert("All Fields Required");
         }
         setVideos(prevVideos => {
-            return [...prevVideos, { videoId: uuidv4(), videoName: videoName, videoFile: "FADF", videoUrl: videoUrl}]
+            return [...prevVideos, { videoId: uuidv4(), videoName: videoName, videoFile: "FADF", videoUrl: videoUrl, selected: false}]
         })
         videoUrlRef.current.value = null;
         videoNameRef.current.value = null;
@@ -85,14 +81,20 @@ function AdminVideos() {
     var Videos = [Object];
     Videos.push(video1);
     Videos.push(video2);
-    const [videos, setVideos] = useState([{videoId: 12, videoName: "video1", videoUrl: "poop.com", videoFile: "poop.jpg"}]);
+    const [videos, setVideos] = useState([{videoId: 12, videoName: "video1", videoUrl: "poop.com", videoFile: "poop.jpg", selected: false}]);
+    useEffect(() => {
 
+        },
+        [videos]
+    );
      return (
          <>
              <html>
              <head>
                  <meta charSet="utf-8" />
                  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+                 <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 
                  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
@@ -177,6 +179,7 @@ function AdminVideos() {
                                      <th>Upload Date</th>
                                      <th>FileName</th>
                                      <th>Url</th>
+                                     <th></th>
                                  </tr>
                                  </thead>
                                  <tbody>
