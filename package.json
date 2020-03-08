@@ -7,11 +7,12 @@
     "@testing-library/react": "^9.4.0",
     "@testing-library/user-event": "^7.2.1",
     "aws-sdk": "^2.614.0",
-    "axios": "^0.19.2",
     "dotenv": "^8.2.0",
-    "fs": "0.0.2",
+    "express": "^4.17.1",
+    "filereader": "^0.10.3",
     "fs": "0.0.1-security",
     "fs-es6": "0.0.2",
+    "mysql": "^2.18.1",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-file-reader": "^1.1.4",
@@ -19,8 +20,8 @@
     "react-scripts": "3.3.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "react-scripts --max_old_space_size=4096 start",
+    "build": "react-scripts --max_old_space_size=4096 build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

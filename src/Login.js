@@ -38,41 +38,32 @@ function gotoDashboard() {
     checkAccount(document.getElementById("username").value, document.getElementById("password").value);
 }
 function checkAccount(userName, password) {
-    var AWS = require("aws-sdk");
-    AWS.config.update({
-        region: "us-east-2",
-        endpoint: "https://dynamodb.us-east-2.amazonaws.com"
-
-    });
-    var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
+    const AWS = require('aws-sdk');
+    const config = require('./config');
+    AWS.config.region = "us-east-1";
+    AWS.config.accessKeyId = config.accessKey;
+    AWS.config.secretAccessKey = config.secretKey;
+    var lambda = new AWS.Lambda();
     var params = {
-        TableName: "Users",
-        KeyConditionExpression: "#user = :user",
-        FilterExpression: "#pass = :pass",
-        ExpressionAttributeNames: {
-            "#user" : "Username",
-            "#pass" : "Password"
-        },
-        ExpressionAttributeValues: {
-            ":user" : {S: userName},
-            ":pass" : {S: password}
-        }
+        FunctionName: 'mysqlUserLambda',
+        Payload: JSON.stringify({"username": userName, "password": password})
     };
-    // Call DynamoDB to read the item from the table
-    ddb.query(params, function(err, data) {
-        if (err) {
+
+    lambda.invoke(params, function (err, data) {
+        if(err) {
+            console.log(err);
             alert(JSON.stringify(err));
         } else {
-            if (data.Items.length === 1) {
-                UserType = data.Items[0].UserType.S;
-                FirstName = data.Items[0].FirstName.S;
+            if(!(data.Payload.toString() === false.toString())){
+                alert(data.Payload);
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-            } else {
-                alert("Incorrect Username or Password");
             }
         }
     });
+
 }
-export default Login;
+
+
+    export default Login;
 export {FirstName,UserType};
 
