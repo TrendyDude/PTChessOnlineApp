@@ -56,7 +56,10 @@ function checkAccount(userName, password) {
         } else {
             if(!(data.Payload.toString() === false.toString())){
                 alert(data.Payload);
+                FirstName = "Justin";
+                UserType = "A";
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+
             }
         }
     });
