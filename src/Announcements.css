@@ -1,0 +1,61 @@
+.leftside {
+    width: 500px;
+    height: 550px;
+    display: inline;
+    float: left;
+    border-right-style: solid;
+    border-right-width: 3px;
+    border-right-color: #c1c1c1;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+#rect1{
+    fill: #0ec7c6;
+}
+.textInRectActive button{
+    color: #f5f5f5;
+    background: none;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    text-align: left;
+    border-style: hidden;
+    font-size: 16;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+.newAnnouncements button{
+    color: #f5f5f5;
+    background: none;
+    border-radius: 50px;
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+    border-style: hidden;
+    font-size: 16;
+    width: 1000px;
+    margin-bottom: 15px;
+}
+.announcement1 h1{
+    color: #FD3C3C;
+    font-size: 24px;
+    font-weight: bold;
+}
+.rightside {
+    width: 500px;
+    height: 550px;
+    display: inline;
+    float: left;
+}
+.rightside h1{
+    color: #282c34;
+    font-size: 20px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}
+.rightside p{
+    color: #282c34;
+    font-size: 16px;
+    margin-left: 50px;
+    margin-bottom: 30px;
+}

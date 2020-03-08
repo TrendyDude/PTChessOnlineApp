@@ -5,8 +5,20 @@ import './App.css';
 import './Login.css';
 import CreateAccount from "./CreateAccount";
 import Dashboard from "./Dashboard";
-let UserType;
-let FirstName;
+export let User;
+
+
+function UserConstructor(username, userType, email, firstName, lastName, password, groupId) {
+    this.UserName = username;
+    this.UserType = userType;
+    this.Email = email;
+    this.FirstName = firstName;
+    this.LastName = lastName;
+    this.Password = password;
+    this.GroupId = groupId;
+}
+
+
 
 function Login() {
     return(
@@ -49,6 +61,7 @@ function checkAccount(userName, password) {
         Payload: JSON.stringify({"username": userName, "password": password})
     };
 
+
     lambda.invoke(params, function (err, data) {
         if(err) {
             console.log(err);
@@ -56,8 +69,6 @@ function checkAccount(userName, password) {
         } else {
             if(!(data.Payload.toString() === false.toString())){
                 alert(data.Payload);
-                FirstName = "Justin";
-                UserType = "A";
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 
             }
@@ -66,7 +77,6 @@ function checkAccount(userName, password) {
 
 }
 
+export default Login;
 
-    export default Login;
-export {FirstName,UserType};
 

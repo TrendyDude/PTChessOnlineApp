@@ -8,8 +8,7 @@ import './EditVideos.css';
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
-import ReactFileReader from 'react-file-reader';
-import {FirstName, UserType} from "./Login";
+//import ReactFileReader from 'react-file-reader';
 
 // var handleFile = (event) => {
 //     const content = event.target.result;
@@ -90,9 +89,10 @@ function saveVideo() {
     const fs = require('fs');
     const AWS = require('aws-sdk');
     require('dotenv').config(); // Configure dotenv to load in the .env file
-    const config = require('./config');
-    AWS.config.accessKeyId = config.accessKey;
-    AWS.config.secretAccessKey = config.secretKey;
+
+    AWS.config.update({
+
+    });
 
     const S3_BUCKET = process.env.bucket;
 
@@ -118,8 +118,7 @@ function saveVideo() {
 
     //const fileContent = fs.readFile(document.getElementById('theFile'));
     const s3 = new AWS.S3({
-        accessKeyId: config.accessKey,
-        secretAccessKey: config.secretKey
+
     });
 
 
