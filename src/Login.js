@@ -68,7 +68,9 @@ function checkAccount(userName, password) {
             alert(JSON.stringify(err));
         } else {
             if(!(data.Payload.toString() === false.toString())){
-                alert(data.Payload);
+
+                var userList = data.Payload.split(',');
+                User = new UserConstructor(userList[0], userList[5], userList[4], userList[2], userList[3],userList[1], userList[6]);
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
             }
         }

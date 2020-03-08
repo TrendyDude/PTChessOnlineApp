@@ -61,6 +61,14 @@ export default function VideoListComponent({video}) {
                                         <button className="btn btn-primary" onClick={saveClick}>Save Video</button>
 
                                     </div>
+
+                                </div>
+                                <div className="row">
+                                    <div className="col-sm-8">
+                                        <label>&nbsp;</label>
+                                        <video></video>
+
+                                    </div>
                                 </div>
                             </div>
 
