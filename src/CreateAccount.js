@@ -34,6 +34,7 @@ function CreateAccount() {
                         {/*TODO check password*/}
                         <input type="text" name="firstname" id="fname" placeholder="First Name"/>
                         <input type="text" name="lastname" id="lname" placeholder="Last Name"/>
+                        <input type="email" name="email" id="email" placeholder="Email"/>
                         <div className="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
                             <label id="button1" className="btn btn-secondary">
 
@@ -111,11 +112,11 @@ function gotoMember() {
     var pass = document.getElementById("pass").value;
     var fname = document.getElementById("fname").value;
     var lname = document.getElementById("lname").value;
+    var email = document.getElementById("email").value;
     var usertype = selectedRole;
-    addAccount(user, pass, fname, lname, usertype);
-    allowCreation();
+    allowCreation(user, pass, fname, lname, usertype, email);
     if (allow) {
-        addAccount(user, pass, fname, lname, usertype);
+        addAccount(user, pass, fname, lname, usertype, email);
         if (allow) {
             ReactDOM.render(<Member/>, document.getElementById('root'));
         }
@@ -129,51 +130,41 @@ function gotoLogin() {
     ReactDOM.render(<Login/>, document.getElementById('root'));
 }
 
-function addAccount(user, password, first, last, usertype) {
-    var AWS = require("aws-sdk");
-
-    AWS.config.update({
-        region: "us-east-1",
-        endpoint: "https://dynamodb.us-east-1.amazonaws.com"
-
-    });
-
-
-
-    var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
-
-
-
+function addAccount(user, password, first, last, usertype, email) {
+    const AWS = require('aws-sdk');
+    const config = require('./config');
+    AWS.config.region = "us-east-1";
+    AWS.config.accessKeyId = config.accessKey;
+    AWS.config.secretAccessKey = config.secretKey;
+    var lambda = new AWS.Lambda();
     var params = {
-        TableName:"Users",
-        Item: {
-            "Username":{S: user},
-            "FirstName":{S: first},
-            "Password":{S: password},
-            "Usertype":{S: usertype},
-            "LastName":{S: last},
-
-        }
-
+        FunctionName: 'mysqlCreateUserLambda',
+        Payload: JSON.stringify({
+            "username": user,
+            "password": password,
+            "first": first,
+            "last": last,
+            "email": email,
+            "usertype": usertype
+        })
     };
-    ddb.putItem(params, function (err, data) {
+
+
+    lambda.invoke(params, function (err, data) {
         if(err) {
-            console.log("Error", err);
+            console.log(err);
+            alert(JSON.stringify(err));
             allow = false;
         } else {
-            console.log("Success", data);
+            allow = true;
         }
     });
 }
 
-function allowCreation() {
-    var user = document.getElementById("user").value;
-    var pass = document.getElementById("pass").value;
-    var fname = document.getElementById("fname").value;
-    var lname = document.getElementById("lname").value;
+function allowCreation(user, pass, fname, lname, usertype, email) {
     var confirmPass = document.getElementById("confirm_password").value;
 
-    if (user === "" || pass === "" || fname === "" || lname === "" || confirmPass === "") {
+    if (user === "" || pass === "" || fname === "" || lname === "" || confirmPass === "" || usertype === "" || email === "") {
         allow = false;
         message = "Please fill in all fields"
     } else if (!(confirmPass === pass)) {

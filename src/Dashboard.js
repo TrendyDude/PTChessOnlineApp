@@ -17,7 +17,7 @@ function Dashboard(){
                 <title>Dashboard</title>
 
                 <div className="sidenav">
-                    <h3> Welcome {User.FirstName.toString()}</h3>
+                    <h3> Welcome </h3>
 
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
