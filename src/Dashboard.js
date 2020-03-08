@@ -5,7 +5,10 @@ import './Dashboard.css';
 import Videos from "./Videos";
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
-import {FirstName, UserType} from "./Login";
+
+import {User} from "./Login";
+import Announcements from "./Announcements";
+import TeacherAnnouncements from "./TeacherAnnouncements";
 
 
 function Dashboard(){
@@ -14,10 +17,10 @@ function Dashboard(){
                 <title>Dashboard</title>
 
                 <div className="sidenav">
-                    <h3> Welcome {FirstName.toString()}</h3>
+                    <h3> Welcome {User.FirstName.toString()}</h3>
 
                     <a onClick={clickDash}>Dashboard</a>
-                    <a href="#">Announcements</a>
+                    <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
                     <a href="#">Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
@@ -114,7 +117,7 @@ function clickTacticTab() {
 }
 
 function clickVideoTab() {
-    if (UserType === 'A')  {
+    if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
         ReactDOM.render(<Videos/>, document.getElementById('root'));
@@ -124,5 +127,9 @@ function clickVideoTab() {
 
 function gotoChessTactic() {
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function clickAnnouncementsTab() {
+    ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 export default Dashboard
