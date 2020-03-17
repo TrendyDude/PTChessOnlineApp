@@ -42,71 +42,25 @@ function gotoLogin() {
 }
 
 function confirmSerial(serialNumber) {
-    var AWS = require("aws-sdk");
-
-    AWS.config.update({
-        region: "us-east-1",
-        endpoint: "https://dynamodb.us-east-1.amazonaws.com",
-
-    });
-
-
-
-    var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
-
-    var groupID;
-
-
-
-    var params2 = {
-        TableName:"AccessCodes",
-        KeyConditionExpression: "#Code = :Code",
-        ExpressionAttributeNames: {
-            "#Code": "Code"
-        },
-        ExpressionAttributeValues: {
-            ":Code" : {N: serialNumber}
-        }
-
+    const AWS = require('aws-sdk');
+    const config = require('./config');
+    AWS.config.region = "us-east-1";
+    AWS.config.accessKeyId = config.accessKey;
+    AWS.config.secretAccessKey = config.secretKey;
+    var lambda = new AWS.Lambda();
+    var params = {
+        FunctionName: 'mysqlCreateUserLambda',
+        Payload: JSON.stringify({
+            "username": user,
+            "id": serialNumber
+        })
     };
-    ddb.query(params2, function (err, data) {
+    lambda.invoke(params, function (err, data) {
         if(err) {
-            validCode = false;
-            alert("Invalid Code");
-            console.log("Error", err);
+            console.log(err);
+            alert(JSON.stringify(err));
         } else {
-            console.log("Success", data);
-            groupID = data.Items[0].GroupID;
-            var params1 = {
-                TableName:"Groups",
-                Key: {
-                    "GroupID": groupID
-                },
-                UpdateExpression: "set Enrolled = Enrolled + :val",
-                ConditionExpression: "#Enrolled < #Capacity",
-                ExpressionAttributeValues: {
-                    ":val": {N: "1"}
-                },
-                ExpressionAttributeNames: {
-                    "#Enrolled": "Enrolled",
-                    "#Capacity": "Capacity"
-                },
-
-                ReturnValues: "UPDATED_NEW"
-
-            };
-            ddb.updateItem(params1, function (err, data) {
-                if(err) {
-                    full = true;
-                    alert("Class is full");
-                    alert(JSON.stringify(err));
-                    console.log("Error", err);
-                } else {
-                    full = false;
-                    console.log("Success", data);
-                }
-            });
-
+            alert("Successfully added to group: " + data);
         }
     });
 
