@@ -1,0 +1,19 @@
+button:hover {
+    cursor: pointer;
+}
+.content button{
+    width: 100%;
+    position: fixed;
+    background-color: #FFFFFFFF;
+    text-align: Center;
+    display: inline-block;
+}
+
+.content h3 {
+    text-align: center;
+    padding-top: 100px;
+    font-family: "Arial";
+    font-size: 40px;
+    color: #707070;
+    display: inline-block;
+}
