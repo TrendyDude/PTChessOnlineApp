@@ -5,6 +5,9 @@ import './App.css';
 import './CreateAccount.css';
 import Member from "./Member";
 import Login from "./Login";
+import UserConstructor from "./Login";
+
+
 var allow;
 var message;
 
@@ -118,7 +121,13 @@ function gotoMember() {
     if (allow) {
         addAccount(user, pass, fname, lname, usertype, email);
         if (allow) {
-            ReactDOM.render(<Member/>, document.getElementById('root'));
+            if(usertype === "T") {
+
+            } else if (usertype === "S") {
+                ReactDOM.render(<Member/>, document.getElementById('root'));
+            } else {
+                ReactDOM.render(<Login/>, document.getElementById('root'));
+            }
         }
     } else {
         alert(message)
@@ -156,6 +165,8 @@ function addAccount(user, password, first, last, usertype, email) {
             alert(JSON.stringify(err));
             allow = false;
         } else {
+            var createUser = UserConstructor(user, password, first, last, email, usertype);
+            localStorage.setItem("User", createUser);
             allow = true;
         }
     });
