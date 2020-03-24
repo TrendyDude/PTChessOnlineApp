@@ -2,11 +2,35 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/AdminQuizzes.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/AdminQuizzes.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NewQuizAdmin.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/NewQuizAdmin.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js.map" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/VideoListComponent.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/VideoListComponent.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,9 +49,10 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
+        <option value="package.json" />
         <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -43,12 +68,6 @@
   </component>
   <component name="PhpServers">
     <servers />
-  </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-137" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
   </component>
   <component name="ProjectId" id="1Wi8zSjROuh4uE5sxvRe53mG4ux" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -86,6 +105,18 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="npm.start">
     <configuration name="Dashboard.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/Dashboard.js" working-dir="$PROJECT_DIR$/src">
@@ -144,6 +175,12 @@
       <workItem from="1583683238881" duration="1438000" />
       <workItem from="1583685075612" duration="1482000" />
       <workItem from="1583686889132" duration="116000" />
+      <workItem from="1584380134793" duration="139000" />
+      <workItem from="1584380298350" duration="808000" />
+      <workItem from="1584983410374" duration="98000" />
+      <workItem from="1584983540471" duration="343000" />
+      <workItem from="1584985220200" duration="1540000" />
+      <workItem from="1585002548275" duration="11739000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>
