@@ -48,7 +48,64 @@ function NewQuizAdmin(){
                 </div>
 
                 <div className="container">
-                    <a href="#" className="add-question-button">Add Question</a>
+                    <a onClick={openModal} className="add-question-button">Add Question</a>
+                </div>
+
+                <div className="container">
+                    <a className="question-item-button">Question 1: What is the difference between a rook and a pawn?</a>
+                    <a className="question-item-button">Question 2: What is a fork?</a>
+                </div>
+
+                <div id="myModal" className="modal">
+                    <div className="modal-content">
+                        <span onClick={closeModal} className="close">&times;</span>
+
+                        <div className="container-modal-title">
+                            <strong>New Question</strong>
+                        </div>
+
+                        <div className="container-modal">
+                            <form>
+                                <label>
+                                    <p id="pink_titles">
+                                        What is the question?
+                                    </p>
+                                    <input type="text" className="question" name="myQuestion"/>
+
+                                    <p id="pink_titles">Type your answer choices (mark the correct answer):</p>
+                                    <span className="container-same-line">
+                                        <input type="radio" id="answer-a" name="choices"/>
+                                        <label className="align-right">A</label>
+                                        <input type="text" className="answer"/>
+
+                                    </span>
+                                    <span className="container-same-line">
+                                        <input type="radio" id="answer-b" name="choices"/>
+                                        <label className="align-right">B</label>
+                                        <input type="text" className="answer"/>
+                                    </span>
+                                    <span className="container-same-line">
+                                        <input type="radio" id="answer-c" name="choices"/>
+                                        <label className="align-right">C</label>
+                                        <input type="text" className="answer"/>
+                                    </span>
+                                    <span className="container-same-line">
+                                        <input type="radio" id="answer-d" name="choices"/>
+                                        <label className="align-right">D</label>
+                                        <input type="text" className="answer"/>
+                                    </span>
+                                    <div className="container-same-line">
+                                        <a onClick={closeModal} className="done-button">Done</a>
+                                    </div>
+
+
+
+                                </label>
+                            </form>
+                        </div>
+
+                    </div>
+
                 </div>
 
                 <div className="bottom">
@@ -62,6 +119,26 @@ function NewQuizAdmin(){
 
         </div>
     );
+}
+
+
+
+// When the user clicks the button, open the modal
+function openModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "block";
+}
+
+function closeModal() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+    var modal = document.getElementById("myModal");
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
 }
 
 function clickDash() {

@@ -2,33 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/AdminQuizzes.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/AdminQuizzes.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NewQuizAdmin.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/NewQuizAdmin.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminQuizzes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminQuizzes.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NewQuizAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewQuizAdmin.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/NewQuizAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewQuizAdmin.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -180,7 +157,8 @@
       <workItem from="1584983410374" duration="98000" />
       <workItem from="1584983540471" duration="343000" />
       <workItem from="1584985220200" duration="1540000" />
-      <workItem from="1585002548275" duration="11739000" />
+      <workItem from="1585002548275" duration="11839000" />
+      <workItem from="1585260601049" duration="11899000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>
