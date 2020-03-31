@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/TeacherQuizAvg.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TeacherQuizAvg.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TeacherQuizzes.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/TeacherQuizzes.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminQuizzes.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminQuizzes.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NewQuizAdmin.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewQuizAdmin.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NewQuizAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewQuizAdmin.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -158,7 +161,9 @@
       <workItem from="1584983540471" duration="343000" />
       <workItem from="1584985220200" duration="1540000" />
       <workItem from="1585002548275" duration="11839000" />
-      <workItem from="1585260601049" duration="11899000" />
+      <workItem from="1585260601049" duration="12257000" />
+      <workItem from="1585674479681" duration="156000" />
+      <workItem from="1585676514733" duration="4087000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>

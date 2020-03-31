@@ -1,0 +1,29 @@
+table {
+    width: 90%;
+}
+
+table, th, td {
+    border-bottom: 1px solid #dedede;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 10px 5px 10px 20px;
+    text-align: left;
+    font-size: 14px;
+}
+
+th {
+    color: #ff3360;
+}
+
+h1 {
+    margin-bottom: 40px;
+}
+.name {
+    width: 30%;
+}
+
+.cancel-button {
+    margin-left: 30px;
+    cursor: pointer;
+}

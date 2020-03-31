@@ -9,6 +9,7 @@ import ChessTactic from "./ChessTactic";
 import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import AdminQuizzes from "./AdminQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
 
 
 function Dashboard(){
@@ -22,7 +23,7 @@ function Dashboard(){
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
-                    <a onClick={clickQuizzesAdmin}>Quizzes</a>
+                    <a onClick={clickQuizzesTeacher}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
                 </div>
@@ -135,5 +136,9 @@ function clickAnnouncementsTab() {
 
 function clickQuizzesAdmin() {
     ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+}
+
+function clickQuizzesTeacher() {
+    ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
 }
 export default Dashboard
