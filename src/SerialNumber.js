@@ -4,7 +4,6 @@ import logo from './logo.svg';
 import './App.css';
 import './SerialNumber.css';
 import Login from "./Login";
-import {User} from "./Login";
 
 var validCode;
 var full;
@@ -48,11 +47,12 @@ function confirmSerial(serialNumber) {
     AWS.config.region = "us-east-1";
     AWS.config.accessKeyId = config.accessKey;
     AWS.config.secretAccessKey = config.secretKey;
+    alert(this.state.user.UserName);
     var lambda = new AWS.Lambda();
     var params = {
         FunctionName: 'mysqlCreateUserLambda',
         Payload: JSON.stringify({
-            "username": localStorage.getItem("User").username,
+            "username": this.state.user.UserName,
             "id": serialNumber
         })
     };

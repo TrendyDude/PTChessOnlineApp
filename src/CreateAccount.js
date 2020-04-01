@@ -4,14 +4,15 @@ import logo from './logo.svg';
 import './App.css';
 import './CreateAccount.css';
 import Member from "./Member";
-import Login from "./Login";
-import UserConstructor from "./Login";
+import Login from "./Login"
+
 
 
 var allow;
 var message;
 
 var selectedRole = null;
+
 function CreateAccount() {
     return(
         <html lang="en">
@@ -165,8 +166,16 @@ function addAccount(user, password, first, last, usertype, email) {
             alert(JSON.stringify(err));
             allow = false;
         } else {
-            var createUser = UserConstructor(user, password, first, last, email, usertype);
-            localStorage.setItem("User", createUser);
+            this.setState({
+                UserName: user,
+                UserType: usertype,
+                Email: email,
+                FirstName: first,
+                LastName: last,
+                Password: password,
+                GroupID: "0"});
+
+            alert(this.state.UserName);
             allow = true;
         }
     });

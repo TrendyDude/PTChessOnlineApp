@@ -2,7 +2,6 @@ import React, { useState, useRef, useEffect } from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
-import {User} from "./Login";
 import Dashboard from "./Dashboard";
 import Videos from "./Videos";
 import './Announcements.css';
@@ -48,7 +47,7 @@ function TeacherAnnouncements() {
             <div>
 
                 <div className="sidenav">
-                    <h3> Welcome {User.FirstName.toString()}</h3>
+                    <h3> Welcome {this.state.FirstName.toString()}</h3>
                     <a onClick={clickDash}>Dashboard</a>
                     <a href="#">Announcements</a>
                     <a href="#">Lessons</a>
@@ -140,7 +139,7 @@ function clickTacticTab() {
 }
 
 function clickVideoTab() {
-    if (User.UserType.toString() === 'A')  {
+    if (this.state.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
         ReactDOM.render(<Videos/>, document.getElementById('root'));

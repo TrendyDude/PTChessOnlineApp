@@ -6,7 +6,6 @@ import Videos from "./Videos";
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 
-import {User} from "./Login";
 import Announcements from "./Announcements";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 
@@ -17,7 +16,7 @@ function Dashboard(){
                 <title>Dashboard</title>
 
                 <div className="sidenav">
-                    <h3> Welcome </h3>
+                    <h3> Welcome {this.state.FirstName}</h3>
 
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
@@ -117,7 +116,7 @@ function clickTacticTab() {
 }
 
 function clickVideoTab() {
-    if (User.UserType.toString() === 'A')  {
+    if (this.state.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
         ReactDOM.render(<Videos/>, document.getElementById('root'));

@@ -9,7 +9,6 @@ import './AdminVideos.css';
 import VideoList from './VideoList';
 import EditVideos from "./EditVideos";
 import Dashboard from "./Dashboard";
-import {User} from "./Login";
 import uuidv4 from 'uuid/v4';
 import $ from "jquery";
 
@@ -109,7 +108,7 @@ function AdminVideos() {
                  <body>
 
                  <div className="sidenav">
-                     <h3> Welcome {User.FirstName.toString()}</h3>
+                     <h3> Welcome {this.state.FirstName.toString()}</h3>
                      <a onClick={gotoDashboard}>Dashboard</a>
                      <a href="#">Announcements</a>
                      <a href="#">Lessons</a>

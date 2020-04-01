@@ -5,20 +5,6 @@ import './App.css';
 import './Login.css';
 import CreateAccount from "./CreateAccount";
 import Dashboard from "./Dashboard";
-export let User;
-
-
-export function UserConstructor(username, userType, email, firstName, lastName, password, groupId) {
-    this.UserName = username;
-    this.UserType = userType;
-    this.Email = email;
-    this.FirstName = firstName;
-    this.LastName = lastName;
-    this.Password = password;
-    this.GroupId = groupId;
-}
-
-
 
 function Login() {
     return(
@@ -70,15 +56,23 @@ function checkAccount(userName, password) {
             if(!(data.Payload.toString() === false.toString())){
 
                 var userList = data.Payload.split(',');
-                User = new UserConstructor(userList[0], userList[5], userList[4], userList[2], userList[3],userList[1], userList[6]);
+                React.useState({
+                    UserName: userList[0],
+                    UserType: userList[5],
+                    Email: userList[4],
+                    FirstName: userList[2],
+                    LastName: userList[3],
+                    Password: userList[1],
+                    GroupID: userList[6]});
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-                localStorage.setItem("User", User);
 
             }
         }
     });
 
 }
+
+
 
 export default Login;
 

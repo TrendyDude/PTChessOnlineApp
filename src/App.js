@@ -19,6 +19,7 @@ function App() {
   );
 }
 function gotoLogin() {
+    React.state = {UserName: "", UserType: "", Email: "", FirstName: "", LastName: "", Password: "", GroupID: ""};
     ReactDOM.render(<Login/>, document.getElementById('root'));
 }
 
