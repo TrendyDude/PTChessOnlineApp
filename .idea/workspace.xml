@@ -6,6 +6,34 @@
       <change afterPath="$PROJECT_DIR$/src/StudentSingleQuiz.css" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/StudentSingleQuiz.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/AdminVideos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminVideos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Announcements.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/Announcements.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreateGroup.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateGroup.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/CreateGroup.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/CreateGroup.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/TeacherAnnouncements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TeacherAnnouncements.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Videos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Videos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-grid.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap-reboot.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/css/bootstrap.min.css.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.bundle.min.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.js.map" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/bootstrap-4.4.1-dist/bootstrap-4.4.1-dist/js/bootstrap.min.js.map" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -79,22 +107,10 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
       <recent name="$PROJECT_DIR$" />
       <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
+      <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
     </key>
-  </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
   </component>
   <component name="RunManager" selected="npm.start">
     <configuration name="Dashboard.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/Dashboard.js" working-dir="$PROJECT_DIR$/src">
@@ -159,6 +175,12 @@
       <workItem from="1584983540471" duration="343000" />
       <workItem from="1584985220200" duration="1540000" />
       <workItem from="1585002548275" duration="11839000" />
+      <workItem from="1585260601049" duration="11899000" />
+      <workItem from="1585415459932" duration="1364000" />
+      <workItem from="1585424641537" duration="1143000" />
+      <workItem from="1585428764924" duration="1365000" />
+      <workItem from="1585845587618" duration="1705000" />
+      <workItem from="1585847397054" duration="441000" />
       <workItem from="1585260601049" duration="12257000" />
       <workItem from="1585674479681" duration="156000" />
       <workItem from="1585676514733" duration="4136000" />

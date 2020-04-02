@@ -9,13 +9,19 @@ import './AdminVideos.css';
 import VideoList from './VideoList';
 import EditVideos from "./EditVideos";
 import Dashboard from "./Dashboard";
-import {User} from "./Login";
+import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
 import $ from "jquery";
 
 
 
-
+export function VideoConstructor(videoId, videoFile, videoName, videoUrl, lessonId) {
+    this.VideoId = videoId;
+    this.VideoFile = videoFile;
+    this.VideoName = videoName;
+    this.VideoUrl = videoUrl;
+    this.LessonId = lessonId;
+}
 
 function AdminVideos() {
     // var AWS = require("aws-sdk");
@@ -45,11 +51,32 @@ function AdminVideos() {
     // });
     const videoUrlRef = useRef();
     const videoNameRef = useRef();
-    function VideoConstructor(videoId, videoFile, videoName, videoUrl) {
-        this.VideoId = videoId;
-        this.VideoFile = videoFile;
-        this.VideoName = videoName;
-        this.VideoUrl = videoUrl;
+
+    function getVideos() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetVideos',
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                if(!(data.Payload.toString() === false.toString())){
+
+                    var videoAttributes = data.Payload.split(',');
+                    Videos = new VideoConstructor(videoAttributes[0], videoAttributes[1], videoAttributes[2], videoAttributes[3], videoAttributes[4]);
+                    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+                    localStorage.setItem("User", User);
+
+                }
+            }
+        });
     }
     // var SelectedVideo = {};
 
@@ -73,6 +100,7 @@ function AdminVideos() {
         videoUrlRef.current.value = null;
         videoNameRef.current.value = null;
         console.log(videoUrl);
+        getVideos();
     }
 
     var video1 = new VideoConstructor(12,"poop.jpg", "video1", "poop.com" );
