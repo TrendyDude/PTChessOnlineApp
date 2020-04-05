@@ -4,33 +4,33 @@ import AdminVideos from "./AdminVideos";
 export default function VideoListComponent({video}) {
     function editClick() {
         //ReactDOM.render(<NewAnnouncement/>, document.getElementById('root'));
-        var edit = document.getElementById(video.videoId + "edit");
-        var notEdit = document.getElementById(video.videoId + "notEdit");
+        var edit = document.getElementById(video.VideoId + "edit");
+        var notEdit = document.getElementById(video.VideoId + "notEdit");
         edit.removeAttribute("hidden");
         notEdit.setAttribute("hidden", "hidden");
 
     }
     function saveClick() {
         //ReactDOM.render(<NewAnnouncement/>, document.getElementById('root'));
-        var edit = document.getElementById(video.videoId + "edit");
-        var notEdit = document.getElementById(video.videoId + "notEdit");
+        var edit = document.getElementById(video.VideoId + "edit");
+        var notEdit = document.getElementById(video.VideoId + "notEdit");
         notEdit.removeAttribute("hidden");
         edit.setAttribute("hidden", "hidden");
 
     }
-
+    const today = new Date();
     return (
 
         <>
-            <tr id={video.videoId + "notEdit"}>
+            <tr id={video.VideoId + "notEdit"}>
                 <td>
                     {video.videoName}
                 </td>
                 <td>
-                    {video.videoId}
+                    {(today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear()}
                 </td>
                 <td>
-                    {video.videoFile}
+                    {video.LessonId}
                 </td>
                 <td>
                     {video.videoUrl}
@@ -39,7 +39,7 @@ export default function VideoListComponent({video}) {
                     <button className="btn btn-primary" onClick={editClick}>Edit</button>
                 </td>
             </tr>
-            <tr id={video.videoId + "edit"} hidden>
+            <tr id={video.VideoId + "edit"} hidden>
                 <td colSpan="3">
                     <div className="card" >
                         <div className="card-header">Edit Video</div>

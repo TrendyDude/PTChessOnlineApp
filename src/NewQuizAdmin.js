@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
@@ -8,6 +8,7 @@ import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
 import AdminQuizzes from "./AdminQuizzes";
 import './NewQuizAdmin.css';
+import LessonList from './LessonList';
 
 
 
@@ -17,6 +18,34 @@ import TeacherAnnouncements from "./TeacherAnnouncements";
 
 
 function NewQuizAdmin(){
+
+    // function getLessons() {
+    //     const AWS = require('aws-sdk');
+    //     const config = require('./config');
+    //     AWS.config.region = "us-east-1";
+    //     AWS.config.accessKeyId = config.accessKey;
+    //     AWS.config.secretAccessKey = config.secretKey;
+    //     var lambda = new AWS.Lambda();
+    //     var params = {
+    //         FunctionName: 'mysqlGetLessons',
+    //     };
+    //     lambda.invoke(params, function (err, data) {
+    //         if(err) {
+    //             console.log(err);
+    //             alert(JSON.stringify(err));
+    //         } else {
+    //             if(!(data.Payload.toString() === false.toString())){
+    //
+    //                 var videoAttributes = data.Payload.split(',');
+    //                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+    //                 localStorage.setItem("User", User);
+    //
+    //             }
+    //         }
+    //     });
+    // }
+    const [lessons, setlessons] = useState([{LessonId: 1}, {LessonId: 2}]);
+
     return(
         <div>
             <title>Admin Quizzes</title>
@@ -39,13 +68,13 @@ function NewQuizAdmin(){
 
                 <p className="extra-top-space">Which lesson is this quiz a part of?</p>
                 <div className="container">
-                    <select class="select-css">
-                        <option>Select your lesson from below</option>
-                        <option>Lesson 6</option>
-                        <option>Lesson 7</option>
-                        <option>Lesson 8</option>
+                    <select id="LessonSelect" class="select-css">
+                        <LessonList lessons = {lessons} />
+
                     </select>
                 </div>
+
+
 
                 <div className="container">
                     <a onClick={openModal} className="add-question-button">Add Question</a>
@@ -118,6 +147,7 @@ function NewQuizAdmin(){
 
 
         </div>
+
     );
 }
 

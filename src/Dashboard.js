@@ -24,7 +24,7 @@ function Dashboard(){
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
-                    <a onClick={clickStudentQuizzes}>Quizzes</a>
+                    <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
                 </div>
@@ -135,15 +135,18 @@ function clickAnnouncementsTab() {
     ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 
-function clickQuizzesAdmin() {
-    ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
-}
+function clickQuizzes() {
+    if (User.UserType == "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
-function clickQuizzesTeacher() {
-    ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
-}
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
 
-function clickStudentQuizzes(){
-    ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+    }
+    else if (User.UserType == "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
 }
 export default Dashboard

@@ -11,19 +11,21 @@ import EditVideos from "./EditVideos";
 import Dashboard from "./Dashboard";
 import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
+import LessonList from './LessonList';
 import $ from "jquery";
 
 
 
-export function VideoConstructor(videoId, videoFile, videoName, videoUrl, lessonId) {
-    this.VideoId = videoId;
-    this.VideoFile = videoFile;
-    this.VideoName = videoName;
-    this.VideoUrl = videoUrl;
-    this.LessonId = lessonId;
-}
+// export function VideoConstructor(videoId, videoFile, videoName, videoUrl, lessonId) {
+//     this.VideoId = videoId;
+//     this.VideoFile = videoFile;
+//     this.VideoName = videoName;
+//     this.VideoUrl = videoUrl;
+//     this.LessonId = lessonId;
+// }
 
 function AdminVideos() {
+
     // var AWS = require("aws-sdk");
     // AWS.config.update({
     //     region: "us-east-2",
@@ -51,7 +53,87 @@ function AdminVideos() {
     // });
     const videoUrlRef = useRef();
     const videoNameRef = useRef();
+    const videoLessonRef = useRef();
 
+    // var SelectedVideo = {};
+
+
+
+    // function handleEditVideo({video}){
+    //     console.log("DOGS_R_COOL")
+    //
+    //
+    // }
+    function getLessons() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetLessons',
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                if(!(data.Payload.toString() === false.toString())){
+
+                    var lessonObjects = data.Payload.split('|');
+                    //data.Payload.split('|')[0].split(',')[0].split('\"')[1]
+                    console.log(lessonObjects);
+                    for (var i = 0; i < lessonObjects.length; i++) {
+                        var lessonAttributes = lessonObjects[i].split(',');
+                        if (i == 0) {
+                            lessonAttributes[0] = lessonAttributes[0].split('\"')[1];
+                        }
+                        if (i == lessonAttributes.length - 1) {
+                            lessonAttributes[lessonAttributes.length - 1] = lessonAttributes[lessonAttributes.length - 1].split('\"')[lessonAttributes.length - 1];
+                        }
+                        console.log(lessonAttributes);
+                        setVideos(prevLessons => {
+                            return [...prevLessons, {LessonId: lessonAttributes[0],
+                                LessonName: lessonAttributes[1],
+                                Description: lessonAttributes[2]}]
+                        });
+
+
+                    }
+
+                }
+            }
+        });
+    }
+    const [lessons, setLessons] = useState([{LessonId: 1, LessonName: "", Description: ""}, {LessonId: 2, LessonName: "", Description: ""}]);
+    if (lessons.length == 0) {
+        getLessons();
+    }
+    function handleAddVideo(e){
+        const videoUrl = videoUrlRef.current.value
+        const videoName = videoNameRef.current.value;
+        const lessonId = videoLessonRef.current.value.split(' ')[1];
+
+
+        if (videoUrl === '' || videoName === '') {
+            alert("All Fields Required");
+        }
+        setVideos(prevVideos => {
+            return [...prevVideos, { VideoId: uuidv4(), videoFile: "FADF", videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
+        })
+        //lessonId.current.value = null;
+        videoUrlRef.current.value = null;
+        videoNameRef.current.value = null;
+        console.log(videoUrl);
+    }
+
+    //var Videos = getVideos();
+    // Videos.push({VideoId: 12, videoFile: "poop.jpg", videoName: "video1", videoUrl: "poop.com", LessonId: 123});
+    const [videos, setVideos] = useState([]);
+    if (videos.length == 0) {
+        getVideos();
+    }
     function getVideos() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -68,48 +150,38 @@ function AdminVideos() {
                 alert(JSON.stringify(err));
             } else {
                 if(!(data.Payload.toString() === false.toString())){
+                    console.log(data.Payload);
+                    var videoObjects = data.Payload.split('|');
+                    //data.Payload.split('|')[0].split(',')[0].split('\"')[1]
+                    console.log(videoObjects);
+                    for (var i = 0; i < videoObjects.length; i++) {
+                        var videoAttributes = videoObjects[i].split(',');
+                        if (i == 0) {
+                            videoAttributes[0] = videoAttributes[0].split('\"')[1];
+                        }
+                        if (i == videoObjects.length - 1) {
+                            videoAttributes[4] = videoAttributes[4].split('\"')[0];
+                        }
+                        console.log(videoAttributes);
+                        setVideos(prevVideos => {
+                            return [...prevVideos, {VideoId: videoAttributes[0],
+                                videoFile: videoAttributes[1],
+                                videoName: videoAttributes[2],
+                                videoUrl: videoAttributes[3],
+                                LessonId: videoAttributes[4]}]
+                        });
 
-                    var videoAttributes = data.Payload.split(',');
-                    Videos = new VideoConstructor(videoAttributes[0], videoAttributes[1], videoAttributes[2], videoAttributes[3], videoAttributes[4]);
-                    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-                    localStorage.setItem("User", User);
 
+                    }
                 }
             }
         });
-    }
-    // var SelectedVideo = {};
 
-
-
-    // function handleEditVideo({video}){
-    //     console.log("DOGS_R_COOL")
-    //
-    //
-    // }
-
-    function handleAddVideo(e){
-        const videoUrl = videoUrlRef.current.value
-        const videoName = videoNameRef.current.value;
-        if (videoUrl === '' || videoName === '') {
-            alert("All Fields Required");
-        }
-        setVideos(prevVideos => {
-            return [...prevVideos, { videoId: uuidv4(), videoName: videoName, videoFile: "FADF", videoUrl: videoUrl, selected: false}]
-        })
-        videoUrlRef.current.value = null;
-        videoNameRef.current.value = null;
-        console.log(videoUrl);
-        getVideos();
     }
 
-    var video1 = new VideoConstructor(12,"poop.jpg", "video1", "poop.com" );
-    var video2 = new VideoConstructor(13,"dog.jpg", "video2", "dog.com" );
 
-    var Videos = [Object];
-    Videos.push(video1);
-    Videos.push(video2);
-    const [videos, setVideos] = useState([{videoId: 12, videoName: "video1", videoUrl: "poop.com", videoFile: "poop.jpg", selected: false}]);
+
+
     useEffect(() => {
 
         },
@@ -174,16 +246,27 @@ function AdminVideos() {
 
                                  <div className="form-group">
                                      <div className="row">
-                                         <div className="col-sm-4">
+                                         <div className="col-sm-3">
                                              <label>Name</label>
                                              <input className="form-control" ref={videoNameRef} type="text" />
                                          </div>
-                                         <div className="col-sm-4">
+                                         <div className="col-sm-3">
                                              <label>Url</label>
                                              <input className="form-control" ref={videoUrlRef} type="text" />
 
                                          </div>
-                                         <div className="col-sm-4">
+                                         <div className="col-sm-3">
+                                             <div className="row">
+                                                 <label>Lesson</label>
+                                             </div>
+                                             <div className="row">
+                                                 <select id="mySelect" ref={videoLessonRef}>
+                                                     <LessonList lessons = {lessons} />
+                                                 </select>
+                                             </div>
+
+                                         </div>
+                                         <div className="col-sm-3">
 
                                              <button className="btn btn-primary" onClick={handleAddVideo}>Add Video</button>
 
@@ -205,7 +288,7 @@ function AdminVideos() {
                                  <tr>
                                      <th>Video Name</th>
                                      <th>Upload Date</th>
-                                     <th>FileName</th>
+                                     <th>Lesson</th>
                                      <th>Url</th>
                                      <th></th>
                                  </tr>
