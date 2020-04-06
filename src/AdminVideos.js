@@ -12,9 +12,10 @@ import Dashboard from "./Dashboard";
 import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
 import LessonList from './LessonList';
-import $ from "jquery";
+export let Lessons;
 
 
+Lessons = [];
 
 // export function VideoConstructor(videoId, videoFile, videoName, videoUrl, lessonId) {
 //     this.VideoId = videoId;
@@ -23,6 +24,8 @@ import $ from "jquery";
 //     this.VideoUrl = videoUrl;
 //     this.LessonId = lessonId;
 // }
+var loadedVideos = false;
+var loadedLessons = false;
 
 function AdminVideos() {
 
@@ -93,12 +96,14 @@ function AdminVideos() {
                             lessonAttributes[lessonAttributes.length - 1] = lessonAttributes[lessonAttributes.length - 1].split('\"')[lessonAttributes.length - 1];
                         }
                         console.log(lessonAttributes);
-                        setVideos(prevLessons => {
+                        setLessons(prevLessons => {
                             return [...prevLessons, {LessonId: lessonAttributes[0],
                                 LessonName: lessonAttributes[1],
                                 Description: lessonAttributes[2]}]
                         });
-
+                        Lessons.push({LessonId: lessonAttributes[0],
+                            LessonName: lessonAttributes[1],
+                            Description: lessonAttributes[2]});
 
                     }
 
@@ -106,9 +111,13 @@ function AdminVideos() {
             }
         });
     }
-    const [lessons, setLessons] = useState([{LessonId: 1, LessonName: "", Description: ""}, {LessonId: 2, LessonName: "", Description: ""}]);
-    if (lessons.length == 0) {
+
+    const [lessons, setLessons] = useState([]);
+    if (lessons.length == 0 && loadedLessons != true) {
+        loadedLessons = true;
         getLessons();
+
+
     }
     function handleAddVideo(e){
         const videoUrl = videoUrlRef.current.value
@@ -126,13 +135,43 @@ function AdminVideos() {
         videoUrlRef.current.value = null;
         videoNameRef.current.value = null;
         console.log(videoUrl);
+
+
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlAddVideo',
+            Payload: JSON.stringify({
+                "videoId": videos[videos.length - 1].VideoId,
+                "videoFile": videos[videos.length - 1].videoFile,
+                "videoName": videos[videos.length - 1].videoName,
+                "videoUrl": videos[videos.length - 1].videoUrl,
+                "lessons_LessonId": videos[videos.length - 1].LessonId,
+
+            })
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+
+            } else {
+                console.log("DOG UPLOADED");
+            }
+        });
     }
 
     //var Videos = getVideos();
     // Videos.push({VideoId: 12, videoFile: "poop.jpg", videoName: "video1", videoUrl: "poop.com", LessonId: 123});
     const [videos, setVideos] = useState([]);
-    if (videos.length == 0) {
+    if (videos.length == 0 && loadedVideos != true) {
+        loadedVideos = true;
         getVideos();
+
     }
     function getVideos() {
         const AWS = require('aws-sdk');
@@ -182,11 +221,7 @@ function AdminVideos() {
 
 
 
-    useEffect(() => {
 
-        },
-        [videos]
-    );
      return (
          <>
              <html>
@@ -280,6 +315,7 @@ function AdminVideos() {
                          </div>
 
                      </div>
+
                      <div className="row">&nbsp;</div>
                      <div className="row">
                          <div className="col-sm-8">
@@ -290,6 +326,7 @@ function AdminVideos() {
                                      <th>Upload Date</th>
                                      <th>Lesson</th>
                                      <th>Url</th>
+                                     <th></th>
                                      <th></th>
                                  </tr>
                                  </thead>
