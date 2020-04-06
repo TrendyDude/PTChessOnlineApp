@@ -123,14 +123,16 @@ function AdminVideos() {
         const videoUrl = videoUrlRef.current.value
         const videoName = videoNameRef.current.value;
         const lessonId = videoLessonRef.current.value.split(' ')[1];
-
+        const id = uuidv4();
+        const vidfile = "NewFile"
 
         if (videoUrl === '' || videoName === '') {
             alert("All Fields Required");
         }
         setVideos(prevVideos => {
-            return [...prevVideos, { VideoId: uuidv4(), videoFile: "NewFile", videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
-        });
+
+            return [...prevVideos, { VideoId: id, videoFile: vidfile, videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
+        })
         //lessonId.current.value = null;
         videoUrlRef.current.value = null;
         videoNameRef.current.value = null;
@@ -146,11 +148,11 @@ function AdminVideos() {
         var params = {
             FunctionName: 'mysqlAddVideo',
             Payload: JSON.stringify({
-                "videoId": videos[videos.length - 1].VideoId,
-                "videoFile": videos[videos.length - 1].videoFile,
-                "videoName": videos[videos.length - 1].videoName,
-                "videoUrl": videos[videos.length - 1].videoUrl,
-                "lessons_LessonId": videos[videos.length - 1].LessonId,
+                "videoId": id,
+                "videoFile": vidfile,
+                "videoName": videoName,
+                "videoUrl": videoUrl,
+                "lessons_LessonId": lessonId,
 
             })
         };

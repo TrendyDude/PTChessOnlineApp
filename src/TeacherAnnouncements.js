@@ -15,7 +15,7 @@ import AnnouncementList from "./AnnouncementList";
 var loadedAnnouncements = false;
 
 function TeacherAnnouncements() {
-
+    var user = User;
     function getAnnouncements() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -48,11 +48,14 @@ function TeacherAnnouncements() {
                             announcementAttributes[4] = announcementAttributes[4].split('\"')[0];
                         }
                         console.log(announcementAttributes);
-                        setAnnouncements(prevAnnouncements => {
-                            return [...prevAnnouncements, {idAnnouncement: announcementAttributes[0],
-                                PostDate: announcementAttributes[1],
-                                Description: announcementAttributes[2]}]
-                        });
+                        if (announcementAttributes[3] == user.GroupId) {
+                            setAnnouncements(prevAnnouncements => {
+                                return [...prevAnnouncements, {idAnnouncement: announcementAttributes[0],
+                                    PostDate: announcementAttributes[1],
+                                    Description: announcementAttributes[2]}]
+                            });
+                        }
+
                     }
                 }
             }
@@ -72,12 +75,13 @@ function TeacherAnnouncements() {
         const description = descriptionRef.current.value
         const today = new Date();
         const date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
+        const id = uuidv4();
 
         if (description === '') {
             alert("All Fields Required");
         }
         setAnnouncements(prevAnnouncements => {
-            return [...prevAnnouncements, { idAnnouncement: uuidv4(), PostDate: date, Description: description}]
+            return [...prevAnnouncements, { idAnnouncement: id, PostDate: date, Description: description}]
         });
 
         descriptionRef.current.value = null;
@@ -90,10 +94,10 @@ function TeacherAnnouncements() {
         var params = {
             FunctionName: 'mysqlAddAnnouncement',
             Payload: JSON.stringify({
-                "idAnnouncement": announcements[announcements.length - 1].idAnnouncement,
-                "PostDate": announcements[announcements.length - 1].PostDate,
-                "Description": announcements[announcements.length - 1].Description,
-                "groupID": User.groupId,
+                "idAnnouncements": id,
+                "PostDate": date,
+                "Description": description,
+                "groupID": user.GroupId,
 
             })
         };
