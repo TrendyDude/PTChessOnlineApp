@@ -38,7 +38,7 @@ function TeacherQuizzes(){
                 </div>
 
                 <div className="container">
-
+                    {getQuizzes}
                     <a onClick={clickSingleQuizTeacher} className="quiz-item-button">
                         <span>Lesson 1: Quiz</span>
                         <span className="right-align">Class Average: 85</span>
@@ -62,6 +62,10 @@ function TeacherQuizzes(){
 
         </div>
     );
+}
+
+function getQuizzes() {
+
 }
 
 function clickDash() {

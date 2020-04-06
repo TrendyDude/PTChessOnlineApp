@@ -24,7 +24,7 @@ function Dashboard(){
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
-                    <a onClick={clickStudentQuizzes}>Quizzes</a>
+                    <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
                 </div>
@@ -145,5 +145,15 @@ function clickQuizzesTeacher() {
 
 function clickStudentQuizzes(){
     ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+}
+
+function clickQuizzes() {
+    if (User.UserType.toString() === 'A') {
+        clickQuizzesAdmin();
+    } else if (User.UserType.toString() === 'T') {
+        clickQuizzesTeacher();
+    } else {
+        clickStudentQuizzes();
+    }
 }
 export default Dashboard
