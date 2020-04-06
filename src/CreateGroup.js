@@ -1,7 +1,6 @@
 import React from "react";
 import './App.css';
 import './CreateGroup.css'
-let {Button, ButtonGroup, ButtonToolbar} = require('react-bootstrap-buttons');
 
 function CreateGroup() {
     return(
@@ -10,11 +9,11 @@ function CreateGroup() {
 
             <title>Create Chess Group</title>
             <div className= "mb-2">
-                <ButtonGroup size="lg" aria-label="Basic example">
-                    <Button variant="primary" size="lg">Left</Button>
-                    <Button size="lg" variant="secondary">Middle</Button>
-                    <Button size="lg" variant="secondary">Right</Button>
-                </ButtonGroup>
+                <dv size="lg" aria-label="Basic example">
+                    <button variant="primary" size="lg">Left</button>
+                    <button size="lg" variant="secondary">Middle</button>
+                    <button size="lg" variant="secondary">Right</button>
+                </dv>
             </div>
         </div>
     );

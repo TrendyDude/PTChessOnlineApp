@@ -12,23 +12,100 @@ import NewAnnouncement from "./NewAnnouncement";
 import uuidv4 from 'uuid/v4';
 import AnnouncementList from "./AnnouncementList";
 
+var loadedAnnouncements = false;
 
 function TeacherAnnouncements() {
 
+    function getAnnouncements() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetAnnouncements',
+            Payload: JSON.stringify({
+                "groupId": User.groupId
+            })
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                if(!(data.Payload.toString() === false.toString())){
+                    console.log(data.Payload);
+                    var annoucementObjects = data.Payload.split('|');
+                    //data.Payload.split('|')[0].split(',')[0].split('\"')[1]
+                    console.log(annoucementObjects);
+                    for (var i = 0; i < annoucementObjects.length; i++) {
+                        var announcementAttributes = annoucementObjects[i].split(',');
+                        if (i == 0) {
+                            announcementAttributes[0] = announcementAttributes[0].split('\"')[1];
+                        }
+                        if (i == annoucementObjects.length - 1) {
+                            announcementAttributes[4] = announcementAttributes[4].split('\"')[0];
+                        }
+                        console.log(announcementAttributes);
+                        setAnnouncements(prevAnnouncements => {
+                            return [...prevAnnouncements, {idAnnouncement: announcementAttributes[0],
+                                PostDate: announcementAttributes[1],
+                                Description: announcementAttributes[2]}]
+                        });
+                    }
+                }
+            }
+        });
+
+    }
+
     const descriptionRef = useRef();
 
-    const [announcements, setAnnouncements] = useState([{idAnnouncement: uuidv4(), PostDate: "12/12/2012", Description: "Be Sure to do homework"}]);
+    const [announcements, setAnnouncements] = useState([]);
+    if (announcements.length == 0 && loadedAnnouncements != true) {
+        loadedAnnouncements = true;
+        getAnnouncements();
+    }
 
     function handleAddAnnouncement(e){
         const description = descriptionRef.current.value
+        const today = new Date();
+        const date = (today.getMonth()+1)+'/'+today.getDate()+'/'+today.getFullYear();
 
         if (description === '') {
             alert("All Fields Required");
         }
         setAnnouncements(prevAnnouncements => {
-            return [...prevAnnouncements, { idAnnouncement: uuidv4(), PostDate: "CurrentTime", Description: description}]
-        })
+            return [...prevAnnouncements, { idAnnouncement: uuidv4(), PostDate: date, Description: description}]
+        });
+
         descriptionRef.current.value = null;
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlAddAnnouncement',
+            Payload: JSON.stringify({
+                "idAnnouncement": announcements[announcements.length - 1].idAnnouncement,
+                "PostDate": announcements[announcements.length - 1].PostDate,
+                "Description": announcements[announcements.length - 1].Description,
+                "groupID": User.groupId,
+
+            })
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+
+            } else {
+                console.log("DOG UPLOADED");
+            }
+        });
 
     }
 
@@ -63,32 +140,41 @@ function TeacherAnnouncements() {
                     <div className="announcement1">
                         <svg width="1000" height="80">
                             <rect id="rect1" width="1000" height="70" rx="15"/>
-                            <foreignObject className="newAnnouncements" x="5" y="12" width="1000" height="50">
-                                <button onClick={createAnnouncement}>Create New Announcements</button>
+                            <foreignObject id="createA" className="newAnnouncements" x="5" y="12" width="1000" height="50">
+                                <button  onClick={createAnnouncement}>Add Announcement</button>
+
+                            </foreignObject>
+                            <foreignObject hidden id="cancelA" className="cancelAnnouncement" x="5" y="12" width="1000" height="50">
+                                <button  onClick={createAnnouncement}>Cancel</button>
                             </foreignObject>
                         </svg>
                     </div>
 
-                    <div id="myDIV">
-                        <div className="card">
-                            <div className="card-header">Add New Announcement</div>
-                            <div className="card-body">
+                    <div id="myDIV" hidden>
+                        <div className="row">
+                            <div className="col-sm-8">
+                                <div className="card">
+                                    <div className="card-header">Add New Announcement</div>
+                                    <div className="card-body">
 
-                                <div className="form-group">
-                                    <div className="row">
-                                        <div className="col-sm-4">
-                                            <label>Announcement Content:</label>
-                                            <textarea className="form-control" ref={descriptionRef} type="text" />
+                                        <div className="form-group">
+                                            <div className="row">
+                                                <div className="col-sm-6">
+                                                    <label>Announcement Content:</label>
+                                                    <textarea className="form-control" ref={descriptionRef} type="text" />
+                                                </div>
+                                                <div className="col-sm-4">
+                                                    <label>&nbsp;</label>
+                                                    <button className="btn btn-primary" onClick={handleAddAnnouncement}>Add Announcement</button>
+
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div className="col-sm-4">
 
-                                            <button className="btn btn-primary" onClick={handleAddAnnouncement}>Add Announcement</button>
 
-                                        </div>
+
                                     </div>
                                 </div>
-
-
 
                             </div>
                         </div>
@@ -158,10 +244,19 @@ function clickAnnouncementsTab() {
 function createAnnouncement() {
     //ReactDOM.render(<NewAnnouncement/>, document.getElementById('root'));
     var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-        x.style.display = "block";
+    var cancel = document.getElementById("cancelA");
+    var create = document.getElementById("createA");
+    const dog = x.attributes;
+    console.log(dog);
+    if (dog.length == 1) {
+        x.setAttribute("hidden", "hidden");
+        create.removeAttribute("hidden");
+        cancel.setAttribute("hidden", "hidden")
     } else {
-        x.style.display = "none";
+        x.removeAttribute("hidden");
+        create.setAttribute("hidden", "hidden");
+        cancel.removeAttribute("hidden")
+
     }
 }
 

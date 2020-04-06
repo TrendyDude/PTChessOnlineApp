@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
 import Videos from "./Videos";
-import AdminVideos from "./AdminVideos";
+import AdminVideos, {VideoConstructor} from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
 import './AdminQuizzes.css';
@@ -15,7 +15,11 @@ import NewQuizAdmin from "./NewQuizAdmin";
 
 
 
+
+
 function AdminQuizzes(){
+
+
     return(
         <div>
             <title>Admin Quizzes</title>

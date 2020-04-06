@@ -4,7 +4,33 @@ import './App.css';
 import './Videos.css';
 import Dashboard from "./Dashboard";
 import './Dashboard.css';
-import {User} from "./Login";
+import {User, UserConstructor} from "./Login";
+
+function getVideos() {
+    const AWS = require('aws-sdk');
+    const config = require('./config');
+    AWS.config.region = "us-east-1";
+    AWS.config.accessKeyId = config.accessKey;
+    AWS.config.secretAccessKey = config.secretKey;
+    var lambda = new AWS.Lambda();
+    var params = {
+        FunctionName: 'mysqlGetVideos',
+    };
+    lambda.invoke(params, function (err, data) {
+        if(err) {
+            console.log(err);
+            alert(JSON.stringify(err));
+        } else {
+            if(!(data.Payload.toString() === false.toString())){
+
+                var videoAttributes = data.Payload.split(',');
+                ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+                localStorage.setItem("User", User);
+
+            }
+        }
+    });
+}
 
 function Videos() {
     return (
