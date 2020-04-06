@@ -14,6 +14,7 @@ import StudentQuizzes from "./StudentQuizzes";
 
 
 function Dashboard(){
+        var dog  = User;
         return(
             <div>
                 <title>Dashboard</title>

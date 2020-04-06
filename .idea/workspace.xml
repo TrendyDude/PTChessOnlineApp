@@ -4,6 +4,8 @@
     <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/AdminVideos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminVideos.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Login.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/TeacherAnnouncements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TeacherAnnouncements.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,7 +177,10 @@
       <workItem from="1586191804300" duration="1231000" />
       <workItem from="1586193944571" duration="1272000" />
       <workItem from="1586195759967" duration="1221000" />
-      <workItem from="1586197574444" duration="226000" />
+      <workItem from="1586197574444" duration="1071000" />
+      <workItem from="1586203065248" duration="469000" />
+      <workItem from="1586206228456" duration="1515000" />
+      <workItem from="1586208066572" duration="515000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>
@@ -464,7 +469,7 @@
     </state>
     <state x="120" y="143" width="1200" height="594" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.837@0.23.1440.837" timestamp="1583686837519" />
     <state x="120" y="143" width="1200" height="594" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.838@0.23.1440.838" timestamp="1583686946648" />
-    <state x="390" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1586197573245">
+    <state x="390" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1586208335767">
       <screen x="0" y="23" width="1440" height="838" />
     </state>
     <state x="390" y="273" key="com.intellij.ide.util.TipDialog/0.23.1440.832@0.23.1440.832" timestamp="1582686148253" />
@@ -472,7 +477,7 @@
     <state x="390" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.834@0.23.1440.834" timestamp="1582912367357" />
     <state x="390" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.835@0.23.1440.835" timestamp="1583300160879" />
     <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.837@0.23.1440.837" timestamp="1586143050250" />
-    <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.838@0.23.1440.838" timestamp="1586197573245" />
+    <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.838@0.23.1440.838" timestamp="1586208335767" />
     <state x="524" y="365" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1586125774930">
       <screen x="0" y="23" width="1440" height="838" />
     </state>
