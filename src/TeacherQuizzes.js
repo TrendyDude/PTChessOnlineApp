@@ -10,7 +10,7 @@ import './AdminQuizzes.css';
 import TeacherQuizAvg from "./TeacherQuizAvg";
 
 
-import {User} from "./Login";
+import {User, UserConstructor} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizzes.css'
 
@@ -65,7 +65,43 @@ function TeacherQuizzes(){
 }
 
 function getQuizzes() {
+    const AWS = require('aws-sdk');
+    const config = require('./config');
+    AWS.config.region = "us-east-1";
+    AWS.config.accessKeyId = config.accessKey;
+    AWS.config.secretAccessKey = config.secretKey;
+    var lambda = new AWS.Lambda();
+    var params = {
+        FunctionName: 'mysqlGetQuizzesForGroup',
+        Payload: JSON.stringify({"groupId": User.GroupId})
+    };
 
+
+    lambda.invoke(params, function (err, data) {
+        if(err) {
+            console.log(err);
+            alert(JSON.stringify(err));
+        } else {
+            var QuizObjects = data.Payload.split('|');
+            QuizObjects.forEach(function(quiz) {
+                var vars = quiz.split(',');
+                var quizId = vars[0];
+                var quizName = vars[1];
+                var params1 = {
+                    FunctionName: 'mysqlGetQuizAvgForGroup',
+                    Payload: JSON.stringify({"groupId": User.GroupId, "quizId": parseInt(quizId)})
+                };
+                lambda.invoke(params1, function (err, data) {
+                    if (err) {
+                        console.log(err);
+                        alert(JSON.stringify(err));
+                    } else {
+                        //TODO: Return Component with the avg grade for the specific quiz (ex: data = "13.3333%")
+                    }
+                });
+            });
+        }
+    });
 }
 
 function clickDash() {

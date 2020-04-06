@@ -130,7 +130,7 @@ function AdminVideos() {
         }
         setVideos(prevVideos => {
             return [...prevVideos, { VideoId: uuidv4(), videoFile: "NewFile", videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
-        })
+        });
         //lessonId.current.value = null;
         videoUrlRef.current.value = null;
         videoNameRef.current.value = null;
