@@ -150,4 +150,14 @@ function clickQuizzes() {
 
     }
 }
+
+function clickQuizzes() {
+    if (User.UserType.toString() === 'A') {
+        clickQuizzesAdmin();
+    } else if (User.UserType.toString() === 'T') {
+        clickQuizzesTeacher();
+    } else {
+        clickStudentQuizzes();
+    }
+}
 export default Dashboard
