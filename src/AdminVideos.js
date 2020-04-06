@@ -130,6 +130,7 @@ function AdminVideos() {
             alert("All Fields Required");
         }
         setVideos(prevVideos => {
+
             return [...prevVideos, { VideoId: id, videoFile: vidfile, videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
         })
         //lessonId.current.value = null;
