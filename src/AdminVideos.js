@@ -129,7 +129,7 @@ function AdminVideos() {
             alert("All Fields Required");
         }
         setVideos(prevVideos => {
-            return [...prevVideos, { VideoId: uuidv4(), videoFile: "FADF", videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
+            return [...prevVideos, { VideoId: uuidv4(), videoFile: "NewFile", videoName: videoName,  videoUrl: videoUrl, LessonId: lessonId}]
         })
         //lessonId.current.value = null;
         videoUrlRef.current.value = null;
