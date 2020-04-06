@@ -6,6 +6,7 @@ import './CreateAccount.css';
 import Member from "./Member";
 import Login from "./Login";
 import UserConstructor from "./Login";
+export let userName;
 
 
 var allow;
@@ -13,6 +14,7 @@ var message;
 
 var selectedRole = null;
 function CreateAccount() {
+
     return(
         <html lang="en">
 
@@ -165,8 +167,7 @@ function addAccount(user, password, first, last, usertype, email) {
             alert(JSON.stringify(err));
             allow = false;
         } else {
-            var createUser = UserConstructor(user, password, first, last, email, usertype);
-            localStorage.setItem("User", createUser);
+            userName = user;
             allow = true;
         }
     });
