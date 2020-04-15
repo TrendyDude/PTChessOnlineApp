@@ -22,6 +22,7 @@ import uuidv4 from "uuid/v4";
 var loadedLessons = false;
 var loadedQuestions = false;
 var quizMade = false;
+var QuizID = 0;
 
 function NewQuizAdmin(){
     var quizId = uuidv4();
@@ -96,7 +97,7 @@ function NewQuizAdmin(){
     function handleAddQuiz(e) {
         const QuizName = quizNameRef.current.value;
         const lessonId = lessonRef.current.value;
-        const quizID = 420;
+        QuizID = uuidv4();
 
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -107,7 +108,7 @@ function NewQuizAdmin(){
         var params = {
             FunctionName: 'mysqlAddQuiz',
             Payload: JSON.stringify({
-                "QuizId": quizID,
+                "QuizId": QuizID,
                 "Lessons_LessonID": lessonId,
                 "Name": QuizName
             })
@@ -175,7 +176,7 @@ function NewQuizAdmin(){
                 "ChoiceD": choiceD,
                 "ChoiceE": choiceE,
                 "CorrectAnswer": correctAnswer,
-                "Quizzes_QuizID": 420,
+                "Quizzes_QuizID": QuizID,
                 "QuestionNum": questionNumber
 
 

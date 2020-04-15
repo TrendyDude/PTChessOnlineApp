@@ -72,7 +72,7 @@ function StudentSingleQuiz(){
             </div>
 
             <div className="bottom">
-                <a href="#" className="cancel-button">Save</a>
+                <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
                 <a href="#" className="save-button">Submit</a>
 
             </div>
@@ -80,6 +80,10 @@ function StudentSingleQuiz(){
 
         </div>
     );
+}
+
+function saveClick() {
+    ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
 }
 
 function clickDash() {
