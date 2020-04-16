@@ -5,7 +5,15 @@ import './Videos.css';
 import Dashboard from "./Dashboard";
 import './Dashboard.css';
 import {User, UserConstructor} from "./Login";
+import TeacherAnnouncements from "./TeacherAnnouncements";
+import AdminQuizzes from "./AdminQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
+import StudentQuizzes from "./StudentQuizzes";
+
+import AdminVideos from "./AdminVideos";
+import ChessTactic from "./ChessTactic";
 import StudentVideoList from "./StudentVideoList";
+
 
 var loadedVideos = false;
 
@@ -95,11 +103,11 @@ function Videos() {
             <div className="sidenav">
                 <h3> Welcome {User.FirstName.toString()}</h3>
                 <a onClick={clickDash}>Dashboard</a>
-                <a href="#">Announcements</a>
+                <a onClick={clickAnnouncementsTab}>Announcements</a>
                 <a href="#">Lessons</a>
-                <a href="#">Quizzes</a>
+                <a onClick={clickQuizzes}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
-                <a href="#">Tactics</a>
+                <a onClick={clickTacticTab}>Tactics</a>
             </div>
 
             <div className="content">
@@ -191,8 +199,40 @@ function clickDash() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
+function clickTacticTab() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
 function clickVideoTab() {
-    ReactDOM.render(<Videos/>, document.getElementById('root'));
+    if (User.UserType.toString() === 'A')  {
+        ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+    } else {
+        ReactDOM.render(<Videos/>, document.getElementById('root'));
+    }
+
+}
+
+function gotoChessTactic() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function clickAnnouncementsTab() {
+    ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+}
+
+function clickQuizzes() {
+    if (User.UserType == "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
 }
 
 

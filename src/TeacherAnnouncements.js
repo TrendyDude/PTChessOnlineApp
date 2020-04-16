@@ -8,7 +8,7 @@ import Videos from "./Videos";
 import './Announcements.css';
 import ChessTactic from "./ChessTactic";
 import AdminVideos from "./AdminVideos";
-import NewAnnouncement from "./NewAnnouncement";
+
 import uuidv4 from 'uuid/v4';
 import AnnouncementList from "./AnnouncementList";
 

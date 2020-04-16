@@ -11,6 +11,7 @@ import TeacherAnnouncements from "./TeacherAnnouncements";
 import AdminQuizzes from "./AdminQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
+import Announcements from "./Announcements";
 
 
 function Dashboard(){
@@ -133,7 +134,13 @@ function gotoChessTactic() {
 }
 
 function clickAnnouncementsTab() {
-    ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+    if (User.UserType == "T") {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<Announcements/>, document.getElementById('root'));
+    }
 }
 
 function clickQuizzes() {

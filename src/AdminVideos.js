@@ -7,7 +7,7 @@ import './Dashboard.css';
 import App from "./App";
 import './AdminVideos.css';
 import VideoList from './VideoList';
-import EditVideos from "./EditVideos";
+
 import Dashboard from "./Dashboard";
 import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
@@ -438,9 +438,7 @@ function AdminVideos() {
 
 
 
-function gotoEdit() {
-    ReactDOM.render(<EditVideos/>, document.getElementById('root'));
-}
+
 function saveVideo() {
 
     const fs = require('fs');

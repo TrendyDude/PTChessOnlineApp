@@ -17,6 +17,8 @@ import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import QuizList from "./QuizList";
 import uuidv4 from "uuid/v4";
+import StudentQuizzes from "./StudentQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
 
 
 var loadedLessons = false;
@@ -224,7 +226,7 @@ function NewQuizAdmin(){
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
                     <a href="#">Lessons</a>
-                    <a onClick={clickQuizzesAdmin}>Quizzes</a>
+                    <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
                 </div>
@@ -390,13 +392,6 @@ window.onclick = function(event) {
     }
 }
 
-function clickDash() {
-    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-}
-
-function clickTacticTab() {
-    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
-}
 
 function clickVideoTab() {
     if (User.UserType.toString() === 'A')  {
@@ -407,16 +402,32 @@ function clickVideoTab() {
 
 }
 
-function gotoChessTactic() {
+function clickDash() {
+    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+}
+
+function clickTacticTab() {
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
+
 
 function clickAnnouncementsTab() {
     ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 
-function clickQuizzesAdmin() {
-    ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+function clickQuizzes() {
+    if (User.UserType == "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
 }
 
 export default NewQuizAdmin
