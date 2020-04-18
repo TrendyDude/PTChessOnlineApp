@@ -8,7 +8,7 @@ import Videos from "./Videos";
 import './Announcements.css';
 import ChessTactic from "./ChessTactic";
 import AdminVideos from "./AdminVideos";
-import NewAnnouncement from "./NewAnnouncement";
+
 import uuidv4 from 'uuid/v4';
 import AnnouncementList from "./AnnouncementList";
 
@@ -138,21 +138,30 @@ function TeacherAnnouncements() {
                     <a href="#">Tactics</a>
                 </div>
                 <div className="content">
-                    <div className="title">
-                        <h1>TeacherAnnouncements</h1>
+                    <div className="row">
+                        <div className="col-sm-8">
+                            <div className="title">
+                                <h1>TeacherAnnouncements</h1>
+                            </div>
+                        </div>
                     </div>
-                    <div className="announcement1">
-                        <svg width="1000" height="80">
-                            <rect id="rect1" width="1000" height="70" rx="15"/>
-                            <foreignObject id="createA" className="newAnnouncements" x="5" y="12" width="1000" height="50">
-                                <button  onClick={createAnnouncement}>Add Announcement</button>
+                    <div className="row">
+                        <div className="col-sm-8">
+                            <div className="announcement1">
+                                <svg width="1000" height="80">
+                                    <rect id="rect1" width="1000" height="70" rx="15"/>
+                                    <foreignObject id="createA" className="newAnnouncements" x="5" y="12" width="1000" height="50">
+                                        <button  onClick={createAnnouncement}>Add Announcement</button>
 
-                            </foreignObject>
-                            <foreignObject hidden id="cancelA" className="cancelAnnouncement" x="5" y="12" width="1000" height="50">
-                                <button  onClick={createAnnouncement}>Cancel</button>
-                            </foreignObject>
-                        </svg>
+                                    </foreignObject>
+                                    <foreignObject hidden id="cancelA" className="cancelAnnouncement" x="5" y="12" width="1000" height="50">
+                                        <button  onClick={createAnnouncement}>Cancel</button>
+                                    </foreignObject>
+                                </svg>
+                            </div>
+                        </div>
                     </div>
+
 
                     <div id="myDIV" hidden>
                         <div className="row">

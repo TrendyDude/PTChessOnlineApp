@@ -7,7 +7,7 @@ import './Dashboard.css';
 import App from "./App";
 import './AdminVideos.css';
 import VideoList from './VideoList';
-import EditVideos from "./EditVideos";
+
 import Dashboard from "./Dashboard";
 import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
@@ -237,7 +237,7 @@ function AdminVideos() {
                        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
                        crossOrigin="anonymous" />
 
-                 <title>AdminVideos</title>
+                 <title>Admin Videos</title>
 
              </head>
              <body>
@@ -438,9 +438,7 @@ function AdminVideos() {
 
 
 
-function gotoEdit() {
-    ReactDOM.render(<EditVideos/>, document.getElementById('root'));
-}
+
 function saveVideo() {
 
     const fs = require('fs');

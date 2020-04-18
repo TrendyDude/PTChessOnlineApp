@@ -17,6 +17,7 @@ import Announcements from "./Announcements";
 var loadedAnnouncements = false;
 
 
+
 function Dashboard(){
     var user = User;
     function getAnnouncements() {
@@ -176,6 +177,7 @@ function gotoChessTactic() {
 }
 
 function clickAnnouncementsTab() {
+
     loadedAnnouncements = false;
     if (User.UserType === "T") {
         ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
@@ -191,12 +193,12 @@ function clickQuizzes() {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
     }
-    else if (User.UserType === "S") {
+    else if (User.UserType == "S") {
         ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
 
 
     }
-    else if (User.UserType === "T") {
+    else if (User.UserType == "T") {
         ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
 
     }
