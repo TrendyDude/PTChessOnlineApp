@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
@@ -14,9 +14,59 @@ import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizzes.css'
 import StudentSingleQuiz from "./StudentSingleQuiz";
+import QuizzesList from "./QuizzesList";
+import {parseExpression} from "@babel/parser";
 
+var loadedQuizzes = false;
 
 function StudentQuizzes(){
+    function getQuizzes() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetQuizzesForStudent',
+            Payload: JSON.stringify({"username": User.UserName})
+        };
+
+
+        lambda.invoke(params, function (err, data1) {
+            if (err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                var objectThing = data1.Payload.toString();
+                var QuizObjects = objectThing.substring(1, objectThing.length - 1).split("|");
+                QuizObjects.forEach(function (quiz) {
+                    var vars = quiz.split(',');
+                    var quizId = vars[0];
+                    var quizName = vars[1];
+                    var params1 = {
+                        FunctionName: 'mysqlGetQuizAvgForStudent',
+                        Payload: JSON.stringify({"username": User.UserName, "quizId": parseInt(quizId)})
+                    };
+                    lambda.invoke(params1, function (err, data2) {
+                        if (err) {
+                            console.log(err);
+                            alert(JSON.stringify(err));
+                        } else {
+                            setQuiz(prevQuizzes => {
+                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload}]
+                            })
+                        }
+                    });
+                });
+            }
+        });
+    }
+    const [quizzes, setQuiz] = useState([]);
+    if (quizzes.length === 0 && loadedQuizzes !== true) {
+        loadedQuizzes = true;
+        getQuizzes();
+    }
     return(
         <div>
             <title>Student Quizzes</title>
@@ -38,25 +88,8 @@ function StudentQuizzes(){
                 </div>
 
                 <div className="container">
-                    <p id="pink_titles">Incomplete Quizzes</p>
-                    <a onClick={clickStudentSingleQuiz} className="quiz-item-button">
-                        <span>Lesson 4: Quiz</span>
-                    </a>
-                    <p id="pink_titles">Completed Quizzes</p>
-                    <a href="#" className="quiz-item-button">
-                        <span>Lesson 1: Quiz</span>
-                        <span className="right-align">Grade: 85</span>
-                    </a>
-
-                    <a href="#" className="quiz-item-button">
-                        <span>Lesson 2: Quiz</span>
-                        <span className="right-align">Grade: 95</span>
-                    </a>
-
-                    <a href="#" className="quiz-item-button">
-                        <span>Lesson 3: Quiz</span>
-                        <span className="right-align">Grade: 80</span>
-                    </a>
+                    <p id="pink_titles">Quizzes</p>
+                    <QuizzesList quizzes = {quizzes}/>
                 </div>
 
             </div>
@@ -67,47 +100,9 @@ function StudentQuizzes(){
         </div>
     );
 }
-function getQuizzes() {
-    const AWS = require('aws-sdk');
-    const config = require('./config');
-    AWS.config.region = "us-east-1";
-    AWS.config.accessKeyId = config.accessKey;
-    AWS.config.secretAccessKey = config.secretKey;
-    var lambda = new AWS.Lambda();
-    var params = {
-        FunctionName: 'mysqlGetQuizzesForStudent',
-        Payload: JSON.stringify({"username": User.UserName})
-    };
-
-
-    lambda.invoke(params, function (err, data) {
-        if(err) {
-            console.log(err);
-            alert(JSON.stringify(err));
-        } else {
-            var QuizObjects = data.Payload.split('|');
-            QuizObjects.forEach(function(quiz) {
-                var vars = quiz.split(',');
-                var quizId = vars[0];
-                var quizName = vars[1];
-                var params1 = {
-                    FunctionName: 'mysqlGetQuizAvgForStudent',
-                    Payload: JSON.stringify({"username": User.UserName, "quizId": parseInt(quizId)})
-                };
-                lambda.invoke(params1, function (err, data) {
-                    if (err) {
-                        console.log(err);
-                        alert(JSON.stringify(err));
-                    } else {
-                        //TODO: Return Component with the avg grade for the specific quiz (ex: data = "33.3333%")
-                    }
-                });
-            });
-        }
-    });
-}
 function clickDash() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+
 }
 
 function clickTacticTab() {
