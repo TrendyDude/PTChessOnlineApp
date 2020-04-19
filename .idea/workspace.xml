@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/StudentAnnouncementList.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/StudentAnnouncementListComponent.js" afterDir="false" />
+    <list default="true" id="ca0b0aac-e76f-42fe-bb17-5d9e4e87280a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/Lesson.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Lesson.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewLesson.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ViewLesson.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/AdminVideos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/AdminVideos.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Announcements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Announcements.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Dashboard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Dashboard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EditVideos.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NewAnnouncement.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/NewQuizAdmin.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/NewQuizAdmin.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/TeacherAnnouncements.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/TeacherAnnouncements.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Videos.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Videos.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,8 +29,8 @@
       <list>
         <option value="package.json" />
         <option value="CSS File" />
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -88,6 +83,18 @@
       <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
       <recent name="C:\Users\sliu12\Desktop\PTChessOnline\src" />
     </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="npm.start">
     <configuration name="Dashboard.js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="$PROJECT_DIR$/src/Dashboard.js" working-dir="$PROJECT_DIR$/src">

@@ -1,0 +1,43 @@
+.thisWeek h1 {
+    color: #0ec7c6;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.incomplete h1 {
+    color: #FD3C3C;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.complete h1 {
+    color: #c1c1c1;
+    display: block;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+.lesson button{
+    color: #282c34;
+    background: #c1c1c1;
+    border-radius: 20px;
+    text-align: left;
+    border-style: hidden;
+    font-size: 16px;
+    width: 1000px;
+    margin-bottom: 15px;
+    height: 60px;
+    display: block;
+}
+.lesson h1 {
+    font-size: 16px;
+    margin-top: 0;
+    margin-left: 15px;
+}
+.lesson p {
+    font-size: 14px;
+    margin-top: 10px;
+    margin-bottom: 0;
+    margin-left: 15px;
+}

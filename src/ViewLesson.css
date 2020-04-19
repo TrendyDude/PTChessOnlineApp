@@ -1,0 +1,30 @@
+.dueDate h1 {
+    color: #FD3C3C;
+    font-size: 20px;
+    margin-top: 0px;
+}
+.box rect {
+    color: #FD3C3C;
+    background-color: #FD3C3C;
+    fill: #FFFFFF;
+    border-style: solid;
+    border-color: #0ec7c6;
+    stroke: #0ec7c6;
+    stroke-width: 4px;
+}
+
+.box button {
+    color: #282c34;
+    background: #FFFFFF;
+    text-align: left;
+    border-style: hidden;
+    font-size: 16px;
+    width: 246px;
+    margin-bottom: 0px;
+    margin-top: 0px;
+    height: 80px;
+    display: block;
+}
+.active button{
+    background: #0ec7c6;
+}
