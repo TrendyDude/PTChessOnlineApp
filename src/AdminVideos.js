@@ -12,6 +12,13 @@ import Dashboard from "./Dashboard";
 import {User, UserConstructor} from "./Login";
 import uuidv4 from 'uuid/v4';
 import LessonList from './LessonList';
+import ChessTactic from "./ChessTactic";
+import Videos from "./Videos";
+import TeacherAnnouncements from "./TeacherAnnouncements";
+import Announcements from "./Announcements";
+import AdminQuizzes from "./AdminQuizzes";
+import StudentQuizzes from "./StudentQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
 export let Lessons;
 
 
@@ -29,44 +36,11 @@ var loadedLessons = false;
 
 function AdminVideos() {
 
-    // var AWS = require("aws-sdk");
-    // AWS.config.update({
-    //     region: "us-east-2",
-    //
-    //     endpoint: "https://dynamodb.us-east-2.amazonaws.com"
-    // });
-    //
-    // var ddb = new AWS.DynamoDB({apiVersion: "2012-08-10"});
-    // var params = {
-    //     TableName: "Users",
-    //     Select: "ALL_ATTRIBUTES",
-    // };
-    // //Call DynamoDB to read the item from the table
-    // ddb.scan(params, function(err, data) {
-    //     if (err) {
-    //         alert(JSON.stringify(err));
-    //     } else {
-    //         if (data.Items.length === 1){
-    //
-    //         }
-    //         for(var i = 0; i < data.Count; i++) {
-    //             //var video = Video(data.Items[1])
-    //         }
-    //     }
-    // });
+
     const videoUrlRef = useRef();
     const videoNameRef = useRef();
     const videoLessonRef = useRef();
 
-    // var SelectedVideo = {};
-
-
-
-    // function handleEditVideo({video}){
-    //     console.log("DOGS_R_COOL")
-    //
-    //
-    // }
     function getLessons() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -166,9 +140,6 @@ function AdminVideos() {
             }
         });
     }
-
-    //var Videos = getVideos();
-    // Videos.push({VideoId: 12, videoFile: "poop.jpg", videoName: "video1", videoUrl: "poop.com", LessonId: 123});
     const [videos, setVideos] = useState([]);
     if (videos.length == 0 && loadedVideos != true) {
         loadedVideos = true;
@@ -220,10 +191,6 @@ function AdminVideos() {
 
     }
 
-
-
-
-
      return (
          <>
              <html>
@@ -247,12 +214,13 @@ function AdminVideos() {
 
                  <div className="sidenav">
                      <h3> Welcome {User.FirstName.toString()}</h3>
+
                      <a onClick={gotoDashboard}>Dashboard</a>
-                     <a href="#">Announcements</a>
+                     <a onClick={clickAnnouncementsTab}>Announcements</a>
                      <a href="#">Lessons</a>
-                     <a href="#">Quizzes</a>
-                     <a href="#">Videos</a>
-                     <a href="#">Tactics</a>
+                     <a onClick={clickQuizzes}>Quizzes</a>
+                     <a onClick={clickVideoTab}>Videos</a>
+                     <a onClick={clickTacticTab}>Tactics</a>
                  </div>
 
                  <div className="content">
@@ -260,17 +228,6 @@ function AdminVideos() {
                      <div className="title">
                          <h1>AdminVideos</h1>
                      </div>
-                     {/*<div className="top">*/}
-                     {/*    <div id="sort">*/}
-                     {/*        <a href="#" className="active">ALL VIDEOS</a>*/}
-                     {/*        <a href="#">A-Z</a>*/}
-                     {/*        <a href="#">SORT BY DATE</a>*/}
-                     {/*        <input type="file" id="theFile"/>*/}
-                     {/*    </div>*/}
-                     {/*    <div className="upload">*/}
-                     {/*        <button onClick={() => performClick('theFile')}>Upload</button>*/}
-                     {/*    </div>*/}
-                     {/*</div>*/}
 
 
 
@@ -385,42 +342,7 @@ function AdminVideos() {
 
                      <div className="videos">
 
-                         {/*<svg width="1000" height="60">*/}
-                         {/*    <rect id="rect" width="1000" height="50" rx="15"/>*/}
-                         {/*    <foreignObject className="textInRect" x="0" y="0" width="100" height="50">*/}
-                         {/*        <button>Video 1</button>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <foreignObject className="uploadDate" x="300" y="15" width="200" height="50">*/}
-                         {/*        <h1>Uploaded: 1/2/2019</h1>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <foreignObject className="edit" x="850" y="0" width="100" height="50">*/}
-                         {/*        <button onClick={gotoEdit}>Edit</button>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <svg width="1000" height="60">*/}
-                         {/*        <circle className="circ" r="10" cx="950" cy="25" fill="red"/>*/}
-                         {/*        <foreignObject className="textInCirc" x="929" y="0" width="100" height="50">*/}
-                         {/*            <button>X</button>*/}
-                         {/*        </foreignObject>*/}
-                         {/*    </svg>*/}
-                         {/*</svg>*/}
-                         {/*<svg width="1000" height="60">*/}
-                         {/*    <rect id="rect" width="1000" height="50" rx="15"/>*/}
-                         {/*    <foreignObject className="textInRect" x="0" y="0" width="100" height="50">*/}
-                         {/*        <button>Video 1</button>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <foreignObject className="uploadDate" x="300" y="15" width="200" height="50">*/}
-                         {/*        <h1>Uploaded: 1/2/2019</h1>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <foreignObject className="edit" x="850" y="0" width="100" height="50">*/}
-                         {/*        <button onClick={gotoEdit}>Edit</button>*/}
-                         {/*    </foreignObject>*/}
-                         {/*    <svg width="1000" height="60">*/}
-                         {/*        <circle className="circ" r="10" cx="950" cy="25" fill="red"/>*/}
-                         {/*        <foreignObject className="textInCirc" x="929" y="0" width="100" height="50">*/}
-                         {/*            <button>X</button>*/}
-                         {/*        </foreignObject>*/}
-                         {/*    </svg>*/}
-                         {/*</svg>*/}
+
                      </div>
                  </div>
                  </body>
@@ -438,47 +360,59 @@ function AdminVideos() {
 
 
 
-
-function saveVideo() {
-
-    const fs = require('fs');
-    const AWS = require('aws-sdk');
-
-    AWS.config.update({
-    });
-
-
-    var s3 = new AWS.S3();
-    const path = require('path');
-    const fileContent = fs.readFile(path.parse(document.getElementById('theFile').value));
-
-
-
-    const params = {
-        Bucket: 'Videos',
-        Key: document.getElementById('theFile'), // File name you want to save as in S3
-        Body: fileContent
-    };
-    s3.upload(params, function(err, data) {
-        if (err) {
-            throw err;
-        }
-        console.log(`File uploaded successfully. ${data.Location}`);
-    });
-}
-
-
 function gotoDashboard() {
+    loadedVideos = false;
+    loadedLessons = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
-function performClick(elemId) {
-    var evt = document.createEvent("MouseEvents");
-    evt.initEvent("click", true, false);
-    var elem = document.getElementById(elemId);
-    alert(elem.value);
-    saveVideo();
+function clickTacticTab() {
+    loadedVideos = false;
+    loadedLessons = false;
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
 
+function clickVideoTab() {
+    loadedVideos = false;
+    loadedLessons = false;
+    if (User.UserType.toString() === 'A')  {
+        ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+    } else {
+        ReactDOM.render(<Videos/>, document.getElementById('root'));
+    }
+
+}
+
+function clickAnnouncementsTab() {
+
+    loadedVideos = false;
+    loadedLessons = false;
+    if (User.UserType === "T") {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+    } else if (User.UserType === "S") {
+        ReactDOM.render(<Announcements/>, document.getElementById('root'));
+    }
+    else {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+
+    }
+}
+
+function clickQuizzes() {
+    loadedVideos = false;
+    loadedLessons = false;
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType == "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
 }
 
 export default AdminVideos

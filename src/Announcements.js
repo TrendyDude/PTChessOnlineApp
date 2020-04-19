@@ -103,14 +103,17 @@ function Announcements() {
 }
 
 function clickDash() {
+    loadedAnnouncements = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
 function clickTacticTab() {
+    loadedAnnouncements = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickVideoTab() {
+    loadedAnnouncements = false;
     if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
@@ -120,10 +123,12 @@ function clickVideoTab() {
 }
 
 function gotoChessTactic() {
+    loadedAnnouncements = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickAnnouncementsTab() {
+    loadedAnnouncements = false;
     if (User.UserType == "T") {
         ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 
@@ -134,6 +139,7 @@ function clickAnnouncementsTab() {
 }
 
 function clickQuizzes() {
+    loadedAnnouncements = false;
     if (User.UserType == "A") {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 

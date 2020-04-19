@@ -13,6 +13,7 @@ import StudentQuizzes from "./StudentQuizzes";
 import AdminVideos from "./AdminVideos";
 import ChessTactic from "./ChessTactic";
 import StudentVideoList from "./StudentVideoList";
+import Announcements from "./Announcements";
 
 
 var loadedVideos = false;
@@ -196,14 +197,17 @@ function Videos() {
 
 
 function clickDash() {
+    loadedVideos = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
 function clickTacticTab() {
+    loadedVideos = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickVideoTab() {
+    loadedVideos = false;
     if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
@@ -213,14 +217,22 @@ function clickVideoTab() {
 }
 
 function gotoChessTactic() {
+    loadedVideos = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickAnnouncementsTab() {
-    ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
-}
+    loadedVideos = false;
+    if (User.UserType == "T") {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 
+    }
+    else if (User.UserType == "S") {
+        ReactDOM.render(<Announcements/>, document.getElementById('root'));
+    }
+}
 function clickQuizzes() {
+    loadedVideos = false;
     if (User.UserType == "A") {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
