@@ -13,6 +13,7 @@ import TeacherQuizzes from "./TeacherQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
 import RecentAnnouncementsList from "./RecentAnnouncementsList";
 import Announcements from "./Announcements";
+import DashboardAnnouncementList from "./DashboardAnnouncementList";
 
 var loadedAnnouncements = false;
 
@@ -43,16 +44,16 @@ function Dashboard(){
                     var annoucementObjects = data.Payload.split('|');
                     //data.Payload.split('|')[0].split(',')[0].split('\"')[1]
                     console.log(annoucementObjects);
-                    for (var i = 0; i < 3; i++) {
+                    for (var i = 0; i < annoucementObjects.length; i++) {
                         var announcementAttributes = annoucementObjects[i].split(',');
-                        if (i === 0) {
+                        if (i == 0) {
                             announcementAttributes[0] = announcementAttributes[0].split('\"')[1];
                         }
-                        if (i === annoucementObjects.length - 1) {
+                        if (i == annoucementObjects.length - 1) {
                             announcementAttributes[4] = announcementAttributes[4].split('\"')[0];
                         }
                         console.log(announcementAttributes);
-                        if (announcementAttributes[3] === user.GroupId) {
+                        if (announcementAttributes[3] == user.GroupId) {
                             setAnnouncements(prevAnnouncements => {
                                 return [...prevAnnouncements, {idAnnouncement: announcementAttributes[0],
                                     PostDate: announcementAttributes[1],
@@ -67,14 +68,13 @@ function Dashboard(){
 
     }
 
-    const descriptionRef = useRef();
-
     const [announcements, setAnnouncements] = useState([]);
     if (announcements.length == 0 && loadedAnnouncements != true) {
         loadedAnnouncements = true;
         getAnnouncements();
     }
-        return(
+
+    return(
             <div>
                 <title>Dashboard</title>
 
@@ -140,9 +140,7 @@ function Dashboard(){
 
                         <div className="announcement">
                             <p id="dark_headers">New Announcements:</p>
-                            <RecentAnnouncementsList announcements = {announcements}/>
-
-
+                            <DashboardAnnouncementList announcements={announcements} />
                         </div>
                     </div>
 
@@ -184,7 +182,10 @@ function clickAnnouncementsTab() {
     } else if (User.UserType === "S") {
         ReactDOM.render(<Announcements/>, document.getElementById('root'));
     }
+    else {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 
+    }
 }
 
 function clickQuizzes() {
@@ -195,7 +196,6 @@ function clickQuizzes() {
     }
     else if (User.UserType == "S") {
         ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
-
 
     }
     else if (User.UserType == "T") {
