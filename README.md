@@ -42,17 +42,18 @@ You will also see any lint errors in the console.
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
+<br />
 
 # Release Notes
 
-## New Features (Sprint 5)
+## New Features
 
 - Added Lessons Page for student users
 - Added ability to save student's quiz answers for student users
 - Added grading functionality for quizzes for teacher users
 - Added ability to see class averages for teacher users
 
-## Known Bugs (Sprint 5)
+## Known Bugs
 
 - If the video URL is not a real URL, then app shows another instance of the React start page in the video player
 - Questions in a quiz to the left of the answers instead of above
