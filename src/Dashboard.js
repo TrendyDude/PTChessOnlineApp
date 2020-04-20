@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useRef, useEffect }  from 'react';
 import ReactDOM from 'react-dom';
 import './App.css';
 import './Dashboard.css';
@@ -14,6 +14,7 @@ import StudentQuizzes from "./StudentQuizzes";
 import RecentAnnouncementsList from "./RecentAnnouncementsList";
 import Announcements from "./Announcements";
 import DashboardAnnouncementList from "./DashboardAnnouncementList";
+import Lesson from "./Lesson";
 
 var loadedAnnouncements = false;
 
@@ -202,5 +203,9 @@ function clickQuizzes() {
         ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
 
     }
+}
+
+function clickLessons() {
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 export default Dashboard
