@@ -19,7 +19,14 @@ function CreateAccount() {
         <html lang="en">
 
         <head>
-            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossOrigin="anonymous" />
+            <meta charSet="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+            <script type="text/javascript" src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+            <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+                  integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+                  crossOrigin="anonymous" />
 
             <title>CreateAccount</title>
         </head>
@@ -27,12 +34,12 @@ function CreateAccount() {
         <body>
         <div className="contentAcc">
             <h3>Create Account</h3>
-            <div className="container">
+
                 <div className="row">
-                    <div className="col-sm">
+                    <div className="col-sm-4">
 
                     </div>
-                    <div className="col-sm">
+                    <div className="col-sm-4">
                         <input type="text" name="username" id="user" placeholder="Username"/>
                         <input type="password" name="password" id="pass" placeholder="New Password"/>
                         <input type="password" name="confirm_password" id="confirm_password" placeholder="Confirm Password"/>
@@ -55,36 +62,64 @@ function CreateAccount() {
                                 Administrator
                             </label>
                         </div>
-
-                    </div>
-                    <div className="col-sm">
-
-                    </div>
-                </div>
-                <div className="row">
-                    <div className="col-sm"></div>
-                    <div className="col-sm">&nbsp;</div>
-                    <div className="col-sm"></div>
-                </div>
-                <div className="row">
-                    <div className="col-sm"></div>
-                    <div className="col-sm">
+                        <div className="row">
+                            &nbsp;
+                        </div>
                         <div className="nextButton">
                             <button type="button" onClick={gotoMember}>Next</button>
                         </div>
                         <div className="alreadyAccount d-flex justify-content-center">
                             Already have an account?&nbsp;<button onClick={gotoLogin}> Sign in!</button>
                         </div>
-                    </div>
-                    <div className="col-sm"></div>
-                </div>
 
-            </div>
+                    </div>
+                    <div className="col-sm-4">
+
+                    </div>
+                </div>
 
 
 
 
         </div>
+
+
+            {/*<div className="container">*/}
+            {/*    <div className="row">*/}
+            {/*        <div className="col-sm">*/}
+            {/*            &nbsp;*/}
+            {/*        </div>*/}
+            {/*        <div className="col-sm">*/}
+
+            {/*        </div>*/}
+            {/*        <div className="col-sm">*/}
+
+            {/*        </div>*/}
+            {/*    </div>*/}
+            {/*    <div className="row">*/}
+            {/*        <div className="col-sm"></div>*/}
+            {/*        <div className="col-sm">&nbsp;</div>*/}
+            {/*        <div className="col-sm"></div>*/}
+            {/*    </div>*/}
+            {/*    <div className="row">*/}
+            {/*        <div className="col-sm"></div>*/}
+            {/*        <div className="col-sm">*/}
+            {/*            <div className="nextButton">*/}
+            {/*                <button type="button" onClick={gotoMember}>Next</button>*/}
+            {/*            </div>*/}
+            {/*            <div className="alreadyAccount d-flex justify-content-center">*/}
+            {/*                Already have an account?&nbsp;<button onClick={gotoLogin}> Sign in!</button>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <div className="col-sm"></div>*/}
+            {/*    </div>*/}
+
+            {/*</div>*/}
+
+
+
+
+
         </body>
         </html>
     );
