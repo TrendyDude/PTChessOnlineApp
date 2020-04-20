@@ -218,25 +218,25 @@ function gotoChessTactic() {
 }
 
 function clickAnnouncementsTab() {
-    if (User.UserType == "T") {
+    if (User.UserType === "T") {
         ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 
     }
-    else if (User.UserType == "S") {
+    else if (User.UserType === "S") {
         ReactDOM.render(<Announcements/>, document.getElementById('root'));
     }
 }
 
 function clickQuizzes() {
-    if (User.UserType == "A") {
+    if (User.UserType === "A") {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
     }
-    else if (User.UserType == "S") {
+    else if (User.UserType === "S") {
         ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
 
     }
-    else if (User.UserType == "T") {
+    else if (User.UserType === "T") {
         ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
 
     }
