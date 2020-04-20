@@ -69,6 +69,3 @@ See the section about [running tests](https://facebook.github.io/create-react-ap
 - Fixed create account page
 - Working video player for students
 
-
-# PTChessOnlineApp
-
