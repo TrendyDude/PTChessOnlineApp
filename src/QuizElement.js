@@ -75,10 +75,11 @@ export default function QuizElement({quiz}) {
                     } else {
                         let answersStr = data1.Payload.toString();
                         let answers = answersStr.split(',');
+                        alert(answers);
                         for (var i = 0; i < answers.length; i++) {
-                            var choices = document.getElementsByTagName(i.toString());
-                            for (var j = 0; j < choices.length; j++) {
-                                if (choices[j].id === answers[i]) {
+                            var choices = document.getElementsByTagName("input");
+                            for (var j = i * 5; j < i * 5 + 5; j++) {
+                                if (choices[j].id === answers[i].replace('"', '')) {
                                     choices[j].checked = 'checked';
                                     break;
                                 }
@@ -90,6 +91,56 @@ export default function QuizElement({quiz}) {
             }
         });
 
+    }
+    function saveClick() {
+        var choices = document.getElementsByTagName("input");
+        var answers = {};
+        var i = 1;
+        var max = choices.length/5;
+        var itemsSeen = 0;
+        var choiceSelected = false;
+        var j = 0;
+        while (i <= max) {
+            if (choices[j].checked === true) {
+                answers[i.toString()] =  choices[j].id;
+                choiceSelected = true;
+            }
+            itemsSeen++;
+            if (itemsSeen === 5) {
+                i++;
+                itemsSeen = 0;
+                if (choiceSelected === false) {
+                    answers[i.toString()] = "";
+                }
+            }
+            j++;
+
+        }
+        answers = JSON.stringify(answers);
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlSaveAnswers',
+            Payload: JSON.stringify({
+                "quizId": quiz.idQuiz,
+                "user": quiz.userQuiz,
+                "answers": answers
+            })
+        };
+        lambda.invoke(params, function (err, data) {
+            if (err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                alert("Answers Saved!");
+                loadedQuestions = false;
+                ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+            }
+        });
     }
     const [questions, setQuestions] = useState([]);
     if (questions.length === 0 && loadedQuestions !== true) {
@@ -125,14 +176,17 @@ export default function QuizElement({quiz}) {
 
 }
 function clickDash() {
+    loadedQuestions = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
 function clickTacticTab() {
+    loadedQuestions = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickVideoTab() {
+    loadedQuestions = false;
     if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
@@ -142,10 +196,12 @@ function clickVideoTab() {
 }
 
 function gotoChessTactic() {
+    loadedQuestions = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickAnnouncementsTab() {
+    loadedQuestions = false;
     if (User.UserType === "T") {
         ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
     } else if (User.UserType === "S") {
@@ -155,6 +211,7 @@ function clickAnnouncementsTab() {
 }
 
 function clickQuizzes() {
+    loadedQuestions = false;
     if (User.UserType === "A") {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
@@ -169,9 +226,7 @@ function clickQuizzes() {
 
     }
 }
-function saveClick() {
-    ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
-}
+
 
 
 

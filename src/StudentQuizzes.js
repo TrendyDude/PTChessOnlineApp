@@ -90,6 +90,7 @@ function StudentQuizzes(){
 
                 <div className="container">
                     <p id="pink_titles">Quizzes</p>
+                    {loadedQuizzes = false}
                     <QuizzesList quizzes = {quizzes}/>
                 </div>
 
@@ -105,15 +106,18 @@ function StudentQuizzes(){
 
 
 function clickDash() {
+    loadedQuizzes = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 
 }
 
 function clickTacticTab() {
+    loadedQuizzes = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickVideoTab() {
+    loadedQuizzes = false;
     if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
@@ -123,26 +127,32 @@ function clickVideoTab() {
 }
 
 function gotoChessTactic() {
+    loadedQuizzes = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 function clickAnnouncementsTab() {
+    loadedQuizzes = false;
     ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 
 function clickQuizzesTeacher() {
+    loadedQuizzes = false;
     ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
 }
 
 function clickSingleQuizTeacher(){
+    loadedQuizzes = false;
     ReactDOM.render(<TeacherQuizAvg/>, document.getElementById('root'));
 }
 
 function clickStudentQuizzes(){
+    loadedQuizzes = false;
     ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
 }
 
 function clickStudentSingleQuiz(){
+    loadedQuizzes = false;
     ReactDOM.render(<StudentSingleQuiz/>, document.getElementById('root'));
 }
 
