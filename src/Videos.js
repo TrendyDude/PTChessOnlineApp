@@ -69,16 +69,6 @@ function Videos() {
 
     }
 
-    function getSelectedVideo() {
-        var videoResult;
-        for (var i = 0; i < videos.length; i++) {
-            if (videos[i].selected) {
-                videoResult = videos[i];
-            }
-        }
-        return videoResult;
-    }
-
     if (videos.length == 0 && loadedVideos != true) {
         loadedVideos = true;
         getVideos();
@@ -116,11 +106,6 @@ function Videos() {
                     <h1>Videos</h1>
                 </div>
 
-                <div className="row">
-                    <div className="col-sm-8">
-                        <video src={getSelectedVideo() == null ? null : getSelectedVideo().videoUrl}></video>
-                    </div>
-                </div>
 
                 <div className="row">
                     <div className="col-sm-8">
@@ -132,60 +117,6 @@ function Videos() {
                     </div>
                 </div>
 
-                {/*<div id="top_video">*/}
-                {/*    <div id="tab_nav">*/}
-                {/*        <a href="#" className="active">RESUME WATCHING</a>*/}
-                {/*        <a href="#">RECENTLY WATCHED</a>*/}
-                {/*        <a href="#">FAVORITES</a>*/}
-                {/*    </div>*/}
-
-                {/*    <div id="vid_row">*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-                {/*</div>*/}
-
-                {/*<div id="bottom_video">*/}
-                {/*    <div id="tab_nav">*/}
-                {/*        <a href="#" className="active">NEW VIDEOS</a>*/}
-                {/*        <a href="#">ALL VIDEOS</a>*/}
-                {/*    </div>*/}
-
-                {/*    <div id="vid_row">*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*    <div id="vid_row">*/}
-                {/*        <div id="vid_col">*/}
-                {/*            <svg width="220" height="120">*/}
-                {/*                <rect id="rect" width="220" height="120" rx="15" />*/}
-                {/*            </svg>*/}
-                {/*        </div>*/}
-                {/*    </div>*/}
-
-                {/*</div>*/}
 
             </div>
         </body>
