@@ -121,7 +121,7 @@ function Lesson() {
             <div className="content">
                 <div className="row">
                     <div className="col-sm-8">
-                        <title>Lessons</title>
+                        <h2>Lessons</h2>
                     </div>
                 </div>
                 <div className="row">
@@ -129,8 +129,11 @@ function Lesson() {
                         <label>
                             Current Lesson
                         </label>
-                        <table>
-                            <LessonTableList lessons={currentLesson} />
+                        <table className="table table-hover">
+                            <tbody>
+                                <LessonTableList lessons={currentLesson} />
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
@@ -140,8 +143,11 @@ function Lesson() {
                         <label>
                             Previous Lessons
                         </label>
-                        <table>
-                            <LessonTableList lessons={lessons} />
+                        <table className="table table-hover">
+                            <tbody>
+                                <LessonTableList lessons={lessons} />
+
+                            </tbody>
                         </table>
                     </div>
                 </div>
