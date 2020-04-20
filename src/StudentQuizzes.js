@@ -16,6 +16,7 @@ import './TeacherQuizzes.css'
 import StudentSingleQuiz from "./StudentSingleQuiz";
 import QuizzesList from "./QuizzesList";
 import {parseExpression} from "@babel/parser";
+import QuizElement from "./QuizzesListComponent";
 
 var loadedQuizzes = false;
 
@@ -54,7 +55,7 @@ function StudentQuizzes(){
                             alert(JSON.stringify(err));
                         } else {
                             setQuiz(prevQuizzes => {
-                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload}]
+                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload, userQuiz: User.UserName}]
                             })
                         }
                     });
@@ -100,6 +101,9 @@ function StudentQuizzes(){
         </div>
     );
 }
+
+
+
 function clickDash() {
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 
