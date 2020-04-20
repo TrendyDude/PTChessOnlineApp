@@ -45,6 +45,7 @@ function StudentQuizzes(){
                     var vars = quiz.split(',');
                     var quizId = vars[0];
                     var quizName = vars[1];
+                    var submitted = vars[2];
                     var params1 = {
                         FunctionName: 'mysqlGetQuizAvgForStudent',
                         Payload: JSON.stringify({"username": User.UserName, "quizId": parseInt(quizId)})
@@ -55,7 +56,7 @@ function StudentQuizzes(){
                             alert(JSON.stringify(err));
                         } else {
                             setQuiz(prevQuizzes => {
-                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload, userQuiz: User.UserName}]
+                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload, userQuiz: User.UserName, submitted: submitted}]
                             })
                         }
                     });

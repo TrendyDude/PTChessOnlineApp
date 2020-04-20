@@ -10,7 +10,7 @@ export default function QuizzesListComponent({quiz}) {
 
         <a onClick={handleQuiz} className="quiz-item-button">
             <span>{quiz.nameQuiz}</span>
-            <span className="right-align">Grade: {quiz.avgQuiz}</span>
+            <span className="right-align">{quiz.submitted.toString() !== "0" ? "Grade: " + quiz.avgQuiz : "Not Completed"}</span>
         </a>
 
     )

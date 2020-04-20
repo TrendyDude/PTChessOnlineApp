@@ -123,12 +123,17 @@ export default function QuizElement({quiz}) {
         AWS.config.accessKeyId = config.accessKey;
         AWS.config.secretAccessKey = config.secretKey;
         var lambda = new AWS.Lambda();
+        var submitted = 0;
+        if (quiz.submitted.toString() !== "0") {
+            submitted = 1
+        }
         var params = {
             FunctionName: 'mysqlSaveAnswers',
             Payload: JSON.stringify({
                 "quizId": quiz.idQuiz,
                 "user": quiz.userQuiz,
-                "answers": answers
+                "answers": answers,
+                "submitted": submitted
             })
         };
         lambda.invoke(params, function (err, data) {
@@ -141,6 +146,10 @@ export default function QuizElement({quiz}) {
                 ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
             }
         });
+    }
+    function submitClick() {
+        quiz.submitted = 1;
+        saveClick();
     }
     const [questions, setQuestions] = useState([]);
     if (questions.length === 0 && loadedQuestions !== true) {
@@ -164,7 +173,7 @@ export default function QuizElement({quiz}) {
             </div>
             <div className="bottom">
                 <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
-                <a href="#" className="save-button">Submit</a>
+                <a href="#" className="save-button" onClick={submitClick}>Submit</a>
 
             </div>
         </div>
