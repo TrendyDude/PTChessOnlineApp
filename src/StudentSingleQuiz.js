@@ -73,7 +73,7 @@ function StudentSingleQuiz(){
 
             <div className="bottom">
                 <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
-                <a href="#" className="save-button">Submit</a>
+                <a href="#" className="save-button" >Submit</a>
 
             </div>
 
