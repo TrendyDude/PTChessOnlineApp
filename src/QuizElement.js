@@ -1,0 +1,177 @@
+import React, {useRef, useState} from 'react';
+import ReactDOM from 'react-dom';
+import './App.css';
+import './Dashboard.css';
+import Videos from "./Videos";
+import AdminVideos from "./AdminVideos";
+import ChessTactic from "./ChessTactic";
+
+import {User} from "./Login";
+import TeacherAnnouncements from "./TeacherAnnouncements";
+import AdminQuizzes from "./AdminQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
+import StudentQuizzes from "./StudentQuizzes";
+import RecentAnnouncementsList from "./RecentAnnouncementsList";
+import Announcements from "./Announcements";
+import Dashboard from "./Dashboard";
+import QuestionsList from "./QuestionsList";
+
+var loadedQuestions = false;
+export default function QuizElement({quiz}) {
+    function getQuestions() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetQuestions',
+            Payload: JSON.stringify({
+                "quizId": quiz.idQuiz
+            })
+        };
+        lambda.invoke(params, function (err, data) {
+            if(err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                if(!(data.Payload.toString() === false.toString())){
+                    var questionObjects = data.Payload.split('|');
+                    //data.Payload.split('|')[0].split(',')[0].split('\"')[1]
+                    for (var i = 0; i < questionObjects.length; i++) {
+                        var questionAttributes = questionObjects[i].split(',');
+                        if (i === 0) {
+                            questionAttributes[0] = questionAttributes[0].split('\"')[1];
+                        }
+                        if (i === questionObjects.length - 1) {
+                            questionAttributes[questionObjects.length - 1] = questionAttributes[questionObjects.length - 1].split('\"')[0];
+                        }
+                        console.log(questionAttributes);
+                        setQuestions(prevQuestions => {
+                            return [...prevQuestions, {idQuestion: questionAttributes[0],
+                                questionContents: questionAttributes[1],
+                                A: questionAttributes[2],
+                                B: questionAttributes[3],
+                                C: questionAttributes[4],
+                                D: questionAttributes[5],
+                                E: questionAttributes[6]}]
+                        });
+
+
+                    }
+                }
+                let params1 = {
+                    FunctionName: 'mysqlGetStudentAnswers',
+                    Payload: JSON.stringify({
+                        "quizId": quiz.idQuiz,
+                        "user": quiz.userQuiz
+                    })
+                };
+                lambda.invoke(params1, function (err, data1) {
+                    if (err) {
+                        console.log(err);
+                        alert(JSON.stringify(err));
+                    } else {
+                        let answersStr = data1.Payload.toString();
+                        let answers = answersStr.split(',');
+                        for (var i = 0; i < answers.length; i++) {
+                            var choices = document.getElementsByTagName(i.toString());
+                            for (var j = 0; j < choices.length; j++) {
+                                if (choices[j].id === answers[i]) {
+                                    choices[j].checked = 'checked';
+                                    break;
+                                }
+                            }
+
+                        }
+                    }
+                });
+            }
+        });
+
+    }
+    const [questions, setQuestions] = useState([]);
+    if (questions.length === 0 && loadedQuestions !== true) {
+        loadedQuestions = true;
+        getQuestions();
+    }
+    return (
+        <div>
+            <title>{quiz.nameQuiz}</title>
+            <div className="sidenav">
+                <h3> Welcome {User.FirstName.toString()}</h3>
+                <a onClick={clickDash}>Dashboard</a>
+                <a onClick={clickAnnouncementsTab}>Announcements</a>
+                <a href="#">Lessons</a>
+                <a onClick={clickQuizzes}>Quizzes</a>
+                <a onClick={clickVideoTab}>Videos</a>
+                <a onClick={clickTacticTab}>Tactics</a>
+            </div>
+            <div className="content">
+                <QuestionsList questions = {questions}/>
+            </div>
+            <div className="bottom">
+                <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
+                <a href="#" className="save-button">Submit</a>
+
+            </div>
+        </div>
+
+    );
+
+
+
+
+}
+function clickDash() {
+    ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+}
+
+function clickTacticTab() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function clickVideoTab() {
+    if (User.UserType.toString() === 'A')  {
+        ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
+    } else {
+        ReactDOM.render(<Videos/>, document.getElementById('root'));
+    }
+
+}
+
+function gotoChessTactic() {
+    ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
+}
+
+function clickAnnouncementsTab() {
+    if (User.UserType === "T") {
+        ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+    } else if (User.UserType === "S") {
+        ReactDOM.render(<Announcements/>, document.getElementById('root'));
+    }
+
+}
+
+function clickQuizzes() {
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+
+
+    }
+    else if (User.UserType === "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
+}
+function saveClick() {
+    ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+}
+
+
+
