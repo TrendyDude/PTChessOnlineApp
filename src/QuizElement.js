@@ -75,7 +75,6 @@ export default function QuizElement({quiz}) {
                     } else {
                         let answersStr = data1.Payload.toString();
                         let answers = answersStr.split(',');
-                        alert(answers);
                         for (var i = 0; i < answers.length; i++) {
                             var choices = document.getElementsByTagName("input");
                             for (var j = i * 5; j < i * 5 + 5; j++) {
