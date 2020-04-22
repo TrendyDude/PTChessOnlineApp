@@ -14,25 +14,112 @@ import TeacherQuizzes from "./TeacherQuizzes";
 import Announcements from "./Announcements";
 import Lesson from "./Lesson";
 import './ViewLesson.css'
+import QuizElement from "./QuizElement";
+
+var videoSelected = true;
+var quizSelected = false;
+var tacticSelected = false;
+var loadedQuizzes = false;
 
 export default function ViewLesson({lesson}) {
-    function select1() {
+    //mysqlGetSingleQuizForUserWithLessonId
+    function getQuizzes() {
+        const AWS = require('aws-sdk');
+        const config = require('./config');
+        AWS.config.region = "us-east-1";
+        AWS.config.accessKeyId = config.accessKey;
+        AWS.config.secretAccessKey = config.secretKey;
+        var lambda = new AWS.Lambda();
+        var params = {
+            FunctionName: 'mysqlGetSingleQuizForUserWithLessonId',
+            Payload: JSON.stringify({"username": User.UserName, "lessonId": lesson.Lessons_LessonID})
+        };
+
+
+        lambda.invoke(params, function (err, data1) {
+            if (err) {
+                console.log(err);
+                alert(JSON.stringify(err));
+            } else {
+                var objectThing = data1.Payload.toString();
+                var vars = objectThing.split(',');
+                var quizId = vars[0];
+                var quizName = vars[1];
+                var submitted = vars[2];
+                setQuiz(prevQuizzes => {
+                    return [...prevQuizzes, {idQuiz: quizId,
+                        nameQuiz: quizName,
+                        avgQuiz: "N/A",
+                        userQuiz: User.UserName,
+                        submitted: submitted,
+                        isLesson: true
+                    }]
+                });
+                    // var params1 = {
+                    //     FunctionName: 'mysqlGetQuizAvgForStudent',
+                    //     Payload: JSON.stringify({"username": User.UserName, "quizId": parseInt(quizId)})
+                    // };
+                    // lambda.invoke(params1, function (err, data2) {
+                    //     if (err) {
+                    //         console.log(err);
+                    //         alert(JSON.stringify(err));
+                    //     } else {
+                    //         setQuiz(prevQuizzes => {
+                    //             return [...prevQuizzes, {idQuiz: quizId,
+                    //                 nameQuiz: quizName,
+                    //                 avgQuiz: data2.Payload,
+                    //                 userQuiz: User.UserName,
+                    //                 submitted: submitted,
+                    //                 isLesson: true
+                    //             }]
+                    //         })
+                    //     }
+                    // });
+
+            }
+        });
+    }
+
+    const [quiz, setQuiz] = useState([]);
+    if (quiz.length == 0 && loadedQuizzes != true) {
+        loadedQuizzes = true;
+        getQuizzes();
+    }
+    function videoSelect() {
         //console.log("clicked");
+        videoSelected = true;
+        quizSelected = false;
+        tacticSelected = false;
         document.getElementById("button1").className = "btn btn-info";
+        document.getElementById("videoRow").removeAttribute("hidden");
         document.getElementById("button2").className = "btn btn-secondary";
+        document.getElementById("quizRow").setAttribute("hidden", "hidden");
         document.getElementById("button3").className = "btn btn-secondary";
+        document.getElementById("tacticRow").setAttribute("hidden", "hidden");
 
     }
-    function select2() {
+    function quizSelect() {
+        videoSelected = false;
+        quizSelected = true;
+        tacticSelected = false;
         document.getElementById("button1").className = "btn btn-secondary";
+        document.getElementById("videoRow").setAttribute("hidden", "hidden");
         document.getElementById("button2").className = "btn btn-info";
+        document.getElementById("quizRow").removeAttribute("hidden");
         document.getElementById("button3").className = "btn btn-secondary";
+        document.getElementById("tacticRow").setAttribute("hidden", "hidden");
 
     }
-    function select3() {
+    function tacticSelect() {
+        videoSelected = false;
+        quizSelected = false;
+        tacticSelected = true;
         document.getElementById("button1").className = "btn btn-secondary";
+        document.getElementById("videoRow").setAttribute("hidden", "hidden");
         document.getElementById("button2").className = "btn btn-secondary";
+        document.getElementById("quizRow").setAttribute("hidden", "hidden");
         document.getElementById("button3").className = "btn btn-info";
+        document.getElementById("tacticRow").removeAttribute("hidden");
 
     }
 
@@ -72,20 +159,54 @@ export default function ViewLesson({lesson}) {
                         <div className="row">
                             <div className="col-sm-8">
                                 <div className="btn-group btn-group-toggle d-flex justify-content-center" data-toggle="buttons">
-                                    <label id="button1" className="btn btn-secondary">
+                                    <label id="button1" className="btn btn-info">
 
-                                        <input type="radio" name="options" id="option1" autoComplete="off" onClick={select1}/>
+                                        <input type="radio" name="options" id="option1" autoComplete="off" onClick={videoSelect}/>
                                         Video
                                     </label>
                                     <label id="button2" className="btn btn-secondary">
-                                        <input type="radio" name="options" id="option2" autoComplete="off" onClick={select2}/>
+                                        <input type="radio" name="options" id="option2" autoComplete="off" onClick={quizSelect}/>
                                         Quiz
                                     </label>
                                     <label  id="button3" className="btn btn-secondary">
-                                        <input type="radio" name="options" id="option3" autoComplete="off" onClick={select3} />
+                                        <input type="radio" name="options" id="option3" autoComplete="off" onClick={tacticSelect} />
                                         Tactics
                                     </label>
                                 </div>
+                            </div>
+                        </div>
+                        <div className="row" id="videoRow">
+                            <div className="col-sm-8">
+                                <div className="row">
+                                    <h3>{lesson.videoName}</h3>
+                                </div>
+                                <div className="row">
+
+                                    <iframe src={lesson.VideoURL}
+                                            width="600" height="400"
+                                            frameBorder='0'
+                                            allow='autoplay; encrypted-media'
+                                            allowFullScreen
+                                            title='video'
+                                    />
+                                </div>
+
+                            </div>
+                        </div>
+                        <div className="row" hidden id="quizRow">
+                            <div className="col-sm-8">
+
+                                <QuizElement quiz = {quiz[0]} />
+                            </div>
+                        </div>
+                        <div className="row" hidden id="tacticRow">
+                            <div className="col-sm-8">
+
+                                <iframe src={"https://livetactics.chessbase.com"} width="600" height="400" frameBorder='0'>
+
+                                </iframe>
+
+
                             </div>
                         </div>
                         {/*<div className="dueDate">*/}

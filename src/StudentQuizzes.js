@@ -56,7 +56,13 @@ function StudentQuizzes(){
                             alert(JSON.stringify(err));
                         } else {
                             setQuiz(prevQuizzes => {
-                                return [...prevQuizzes, {idQuiz: quizId, nameQuiz: quizName, avgQuiz: data2.Payload, userQuiz: User.UserName, submitted: submitted}]
+                                return [...prevQuizzes, {idQuiz: quizId,
+                                    nameQuiz: quizName,
+                                    avgQuiz: data2.Payload,
+                                    userQuiz: User.UserName,
+                                    submitted: submitted,
+                                    isLesson: false
+                                }]
                             })
                         }
                     });

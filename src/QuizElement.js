@@ -18,6 +18,14 @@ import QuestionsList from "./QuestionsList";
 
 var loadedQuestions = false;
 export default function QuizElement({quiz}) {
+
+    if (quiz != null) {
+        if (quiz.isLesson) {
+            document.getElementById("quizzesPage").setAttribute("hidden", "hidden");
+            document.getElementById("lessonsPage").removeAttribute("hidden");
+        }
+    }
+
     function getQuestions() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -153,29 +161,44 @@ export default function QuizElement({quiz}) {
     const [questions, setQuestions] = useState([]);
     if (questions.length === 0 && loadedQuestions !== true) {
         loadedQuestions = true;
-        getQuestions();
+        if (quiz != null) {
+            getQuestions();
+        }
     }
     return (
-        <div>
-            <title>{quiz.nameQuiz}</title>
-            <div className="sidenav">
-                <h3> Welcome {User.FirstName.toString()}</h3>
-                <a onClick={clickDash}>Dashboard</a>
-                <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
-                <a onClick={clickQuizzes}>Quizzes</a>
-                <a onClick={clickVideoTab}>Videos</a>
-                <a onClick={clickTacticTab}>Tactics</a>
-            </div>
-            <div className="content">
-                <QuestionsList questions = {questions}/>
-            </div>
-            <div className="bottom">
-                <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
-                <a href="#" className="save-button" onClick={submitClick}>Submit</a>
+        <>
+            <div id="lessonsPage" hidden>
+                <title>{quiz.nameQuiz}</title>
+                <div className="content">
+                    <QuestionsList questions = {questions}/>
+                </div>
+                <div className="bottom">
+                    <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
+                    <a href="#" className="save-button" onClick={submitClick}>Submit</a>
 
+                </div>
             </div>
-        </div>
+            <div id="quizzesPage">
+                <title>{quiz.nameQuiz}</title>
+                <div className="sidenav">
+                    <h3> Welcome {User.FirstName.toString()}</h3>
+                    <a onClick={clickDash}>Dashboard</a>
+                    <a onClick={clickAnnouncementsTab}>Announcements</a>
+                    <a href="#">Lessons</a>
+                    <a onClick={clickQuizzes}>Quizzes</a>
+                    <a onClick={clickVideoTab}>Videos</a>
+                    <a onClick={clickTacticTab}>Tactics</a>
+                </div>
+                <div className="content">
+                    <QuestionsList questions = {questions}/>
+                </div>
+                <div className="bottom">
+                    <a href="#" className="cancel-button" onClick={saveClick}>Save</a>
+                    <a href="#" className="save-button" onClick={submitClick}>Submit</a>
+
+                </div>
+            </div>
+        </>
 
     );
 
