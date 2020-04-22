@@ -14,7 +14,8 @@ import TeacherQuizzes from "./TeacherQuizzes";
 import Announcements from "./Announcements";
 import Lesson from "./Lesson";
 import './ViewLesson.css'
-import QuizElement from "./QuizElement";
+import QuizElementList from "./QuizElementList";
+import AnnouncementListComponent from "./AnnouncementListComponent";
 
 var videoSelected = true;
 var quizSelected = false;
@@ -44,16 +45,17 @@ export default function ViewLesson({lesson}) {
                 console.log(err);
                 alert(JSON.stringify(err));
             } else {
-                var objectThing = data1.Payload.toString();
+                var objectThing = data1.Payload.toString().replace('\"', '').replace('"', '');
                 var vars = objectThing.split(',');
-                var quizId = vars[0];
+
+                var quizId = parseInt(vars[0]);
                 var quizName = vars[1];
                 var submitted = vars[2];
                 setQuiz(prevQuizzes => {
                     return [...prevQuizzes, {idQuiz: quizId,
                         nameQuiz: quizName,
                         avgQuiz: "N/A",
-                        userQuiz: User.UserName,
+                        userQuiz: user.UserName,
                         submitted: submitted,
                         isLesson: true
                     }]
@@ -83,8 +85,8 @@ export default function ViewLesson({lesson}) {
         });
     }
 
-    const [quiz, setQuiz] = useState([]);
-    if (quiz.length == 0 && loadedQuizzes != true) {
+    const [quizzes, setQuiz] = useState([]);
+    if (quizzes.length == 0 && loadedQuizzes != true) {
         loadedQuizzes = true;
         getQuizzes();
     }
@@ -199,7 +201,8 @@ export default function ViewLesson({lesson}) {
                         <div className="row" hidden id="quizRow">
                             <div className="col-sm-8">
 
-                                <QuizElement quiz = {quiz[0]} />
+
+                                <QuizElementList quizzes = {quizzes} />
                             </div>
                         </div>
                         <div className="row" hidden id="tacticRow">

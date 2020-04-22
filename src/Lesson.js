@@ -62,7 +62,7 @@ function Lesson() {
                                     VideoId: lessonAttributes[4],
                                     videoName: lessonAttributes[5],
                                     VideoURL: lessonAttributes[6],
-                                    BigUser: {user}
+                                    BigUser: user
                                 }]
                             });
                         } else {
@@ -74,7 +74,7 @@ function Lesson() {
                                     VideoId: lessonAttributes[4],
                                     videoName: lessonAttributes[5],
                                     VideoURL: lessonAttributes[6],
-                                    BigUser: {user}
+                                    BigUser: user
                                 }]
                             });
                         }

@@ -16,14 +16,20 @@ import Dashboard from "./Dashboard";
 import QuestionsList from "./QuestionsList";
 
 var loadedQuestions = false;
+var pageLoaded = false;
 export default function QuizElement({quiz}) {
 
-    if (quiz != null) {
-        if (quiz.isLesson) {
-            document.getElementById("quizzesPage").setAttribute("hidden", "hidden");
-            document.getElementById("lessonsPage").removeAttribute("hidden");
+    function makeTheQuiz() {
+        if (quiz != null) {
+            if (quiz.isLesson) {
+
+                document.getElementById("quizzesPage").setAttribute("hidden", "hidden");
+                document.getElementById("lessonsPage").removeAttribute("hidden");
+
+            }
         }
     }
+
 
     function getQuestions() {
         const AWS = require('aws-sdk');
@@ -80,11 +86,19 @@ export default function QuizElement({quiz}) {
                         console.log(err);
                         alert(JSON.stringify(err));
                     } else {
-                        let answersStr = data1.Payload.toString();
+                        let answersStr = data1.Payload.toString().replace('\"', '').replace('"', '');
                         let answers = answersStr.split(',');
+                        var choices = document.getElementsByClassName("answers_buttons");
+                        alert(choices.length);
                         for (var i = 0; i < answers.length; i++) {
-                            var choices = document.getElementsByClassName("answers_buttons");
                             for (var j = i * 5; j < i * 5 + 5; j++) {
+                                if (choices[j].id === answers[i].replace('"', '')) {
+                                    choices[j].checked = 'checked';
+                                    break;
+                                }
+                            }
+
+                            for (var j = answers.length * 5 + i * 5; j < answers.length * 5 + i * 5 + 5; j++) {
                                 if (choices[j].id === answers[i].replace('"', '')) {
                                     choices[j].checked = 'checked';
                                     break;
@@ -99,16 +113,21 @@ export default function QuizElement({quiz}) {
 
     }
     function saveClick() {
-        var choices = document.getElementsByTagName("input");
+        var choices = document.getElementsByClassName("answers_buttons");
         var answers = {};
         var i = 1;
-        var max = choices.length/5;
+        var max = choices.length/10;
         var itemsSeen = 0;
         var choiceSelected = false;
         var j = 0;
+        var anothervar = max * 5 + j;
         while (i <= max) {
-            if (choices[j].checked === true) {
+            if (choices[j].checked === true && document.getElementById("quizzesPage").hidden) {
                 answers[i.toString()] =  choices[j].id;
+                choiceSelected = true;
+            }
+            if (choices[anothervar].checked === true && document.getElementById("lessonsPage").hidden) {
+                answers[i.toString()] =  choices[anothervar].id;
                 choiceSelected = true;
             }
             itemsSeen++;
@@ -120,6 +139,7 @@ export default function QuizElement({quiz}) {
                 }
             }
             j++;
+            anothervar++;
 
         }
         answers = JSON.stringify(answers);
@@ -197,6 +217,7 @@ export default function QuizElement({quiz}) {
 
                 </div>
             </div>
+            <script>makeTheQuiz()</script>
         </>
 
     );
