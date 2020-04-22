@@ -19,6 +19,7 @@ import QuizList from "./QuizList";
 import uuidv4 from "uuid/v4";
 import StudentQuizzes from "./StudentQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
+import Lesson from "./Lesson";
 
 
 var loadedLessons = false;
@@ -225,7 +226,7 @@ function NewQuizAdmin(){
 
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
-                    <a href="#">Lessons</a>
+                    <a onClick={clickLessons}>Lessons</a>
                     <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
@@ -378,6 +379,11 @@ function NewQuizAdmin(){
 function openModal() {
     var modal = document.getElementById("myModal");
     modal.style.display = "block";
+}
+
+function clickLessons() {
+
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function closeModal() {

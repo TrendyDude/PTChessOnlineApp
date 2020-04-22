@@ -15,6 +15,7 @@ import NewQuizAdmin from "./NewQuizAdmin";
 import QuizList from "./QuizList"
 import uuidv4 from "uuid/v4";
 import {load} from "dotenv";
+import Lesson from "./Lesson";
 export let SelectedQuiz;
 
 
@@ -99,7 +100,7 @@ function AdminQuizzes(){
 
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
-                    <a href="#">Lessons</a>
+                    <a onClick={clickLessons}>Lessons</a>
                     <a onClick={clickQuizzesAdmin}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
@@ -163,6 +164,10 @@ function AdminQuizzes(){
         </body>
         </html>
     );
+}
+function clickLessons() {
+    loadedQuizzes = false;
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickDash() {

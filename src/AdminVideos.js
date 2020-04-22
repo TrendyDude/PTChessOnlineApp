@@ -19,6 +19,7 @@ import Announcements from "./Announcements";
 import AdminQuizzes from "./AdminQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
+import Lesson from "./Lesson";
 export let Lessons;
 
 
@@ -217,7 +218,7 @@ function AdminVideos() {
 
                      <a onClick={gotoDashboard}>Dashboard</a>
                      <a onClick={clickAnnouncementsTab}>Announcements</a>
-                     <a href="#">Lessons</a>
+                     <a onClick={clickLessons}>Lessons</a>
                      <a onClick={clickQuizzes}>Quizzes</a>
                      <a onClick={clickVideoTab}>Videos</a>
                      <a onClick={clickTacticTab}>Tactics</a>
@@ -358,7 +359,11 @@ function AdminVideos() {
      );
 }
 
-
+function clickLessons() {
+    loadedVideos = false;
+    loadedLessons = false;
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+}
 
 function gotoDashboard() {
     loadedVideos = false;

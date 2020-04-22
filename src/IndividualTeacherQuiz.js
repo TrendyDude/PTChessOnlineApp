@@ -13,6 +13,7 @@ import TeacherQuizzes from "./TeacherQuizzes";
 import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizzes.css'
+import Lesson from "./Lesson";
 
 var loadedQuizzes = false;
 
@@ -44,24 +45,25 @@ export default function IndividualTeacherQuiz({quiz}){
                     var studentLastName = vars[2].toString().replace('"','');
                     var params1 = {
                         FunctionName: 'mysqlGetQuizAvgForStudent',
-                        Payload: JSON.stringify({"user": studentUser, "quizId": quiz.idQuiz})
+                        Payload: JSON.stringify({"username": studentUser, "quizId": quiz.idQuiz})
                     };
                     lambda.invoke(params1, function (err, data2) {
                         if (err) {
                             console.log(err);
                             alert(JSON.stringify(err));
                         } else {
-                            alert(data2.Payload);
-                            var results = data2.Payload.toString();
-                            var vars = results.split(',');
+
+                            var results = data2.Payload.toString().split(',');
+
                             setQuiz(prevQuizzes => {
                                 return [...prevQuizzes, {
                                     idQuiz: quiz.idQuiz,
                                     nameQuiz: quiz.nameQuiz,
-                                    avgQuiz: vars[0].replace('"', ''),
+                                    avgQuiz: results[0].replace('"', ''),
                                     studentUser: studentUser,
                                     studentFirstName: studentFirstName,
-                                    studentLastName: studentLastName
+                                    studentLastName: studentLastName,
+                                    submitted: results[1].replace('"', '')
                                 }]
                             })
                         }
@@ -84,7 +86,7 @@ export default function IndividualTeacherQuiz({quiz}){
 
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickQuizzesTeacher}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -96,7 +98,7 @@ export default function IndividualTeacherQuiz({quiz}){
                 </div>
 
                 <div className="container">
-                    <IndividualTeacherQuizList quizzes = {quizzes}/>
+                    <IndividualTeacherQuizList quizzes = {studentQuizzes}/>
                     {loadedQuizzes = false}
                 </div>
 
@@ -107,6 +109,10 @@ export default function IndividualTeacherQuiz({quiz}){
 
         </div>
     );
+}
+function clickLessons() {
+
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickDash() {

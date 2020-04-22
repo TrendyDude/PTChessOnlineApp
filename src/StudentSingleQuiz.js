@@ -16,6 +16,7 @@ import './TeacherQuizzes.css'
 import StudentQuizzes from "./StudentQuizzes";
 import './StudentSingleQuiz.css'
 import './NewQuizAdmin.css'
+import Lesson from "./Lesson";
 
 function StudentSingleQuiz(){
     return(
@@ -27,7 +28,7 @@ function StudentSingleQuiz(){
 
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickStudentQuizzes}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -80,6 +81,10 @@ function StudentSingleQuiz(){
 
         </div>
     );
+}
+
+function clickLessons() {
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function saveClick() {

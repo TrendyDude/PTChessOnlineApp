@@ -14,6 +14,7 @@ import StudentQuizzes from "./StudentQuizzes";
 import Announcements from "./Announcements";
 import Dashboard from "./Dashboard";
 import QuestionsList from "./QuestionsList";
+import Lesson from "./Lesson";
 
 var loadedQuestions = false;
 var pageLoaded = false;
@@ -89,7 +90,7 @@ export default function QuizElement({quiz}) {
                         let answersStr = data1.Payload.toString().replace('\"', '').replace('"', '');
                         let answers = answersStr.split(',');
                         var choices = document.getElementsByClassName("answers_buttons");
-                        alert(choices.length);
+
                         for (var i = 0; i < answers.length; i++) {
                             for (var j = i * 5; j < i * 5 + 5; j++) {
                                 if (choices[j].id === answers[i].replace('"', '')) {
@@ -203,7 +204,7 @@ export default function QuizElement({quiz}) {
                     <h3> Welcome {User.FirstName.toString()}</h3>
                     <a onClick={clickDash}>Dashboard</a>
                     <a onClick={clickAnnouncementsTab}>Announcements</a>
-                    <a href="#">Lessons</a>
+                    <a onClick={clickLessons}>Lessons</a>
                     <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a onClick={clickTacticTab}>Tactics</a>
@@ -226,6 +227,12 @@ export default function QuizElement({quiz}) {
 
 
 }
+
+function clickLessons() {
+    loadedQuestions = false;
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+}
+
 function clickDash() {
     loadedQuestions = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));

@@ -11,6 +11,7 @@ import AdminVideos from "./AdminVideos";
 
 import uuidv4 from 'uuid/v4';
 import AnnouncementList from "./AnnouncementList";
+import Lesson from "./Lesson";
 
 var loadedAnnouncements = false;
 
@@ -132,7 +133,7 @@ function TeacherAnnouncements() {
                     <h3> Welcome {User.FirstName.toString()}</h3>
                     <a onClick={clickDash}>Dashboard</a>
                     <a href="#">Announcements</a>
-                    <a href="#">Lessons</a>
+                    <a onClick={clickLessons}>Lessons</a>
                     <a href="#">Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
                     <a href="#">Tactics</a>
@@ -228,6 +229,10 @@ function TeacherAnnouncements() {
             </body>
         </>
     )
+}
+function clickLessons() {
+    loadedAnnouncements = false;
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickDash() {

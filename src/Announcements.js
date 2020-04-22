@@ -13,6 +13,7 @@ import AdminQuizzes from "./AdminQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
 import StudentAnnouncementList from "./StudentAnnouncementList";
+import Lesson from "./Lesson";
 
 var loadedAnnouncements = false;
 
@@ -77,7 +78,7 @@ function Announcements() {
                 <h3> Welcome {User.FirstName.toString()}</h3>
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickQuizzes}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -105,6 +106,11 @@ function Announcements() {
 function clickDash() {
     loadedAnnouncements = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
+}
+
+function clickLessons() {
+    loadedAnnouncements = false;
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickTacticTab() {

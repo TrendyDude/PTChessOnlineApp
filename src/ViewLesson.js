@@ -152,7 +152,7 @@ export default function ViewLesson({lesson}) {
                         <h3> Welcome {User.FirstName.toString()}</h3>
                         <a onClick={clickDash}>Dashboard</a>
                         <a onClick={clickAnnouncementsTab}>Announcements</a>
-                        <a href="#">Lessons</a>
+                        <a onClick={clickLessons}>Lessons</a>
                         <a onClick={clickQuizzes}>Quizzes</a>
                         <a onClick={clickVideoTab}>Videos</a>
                         <a onClick={clickTacticTab}>Tactics</a>
@@ -244,6 +244,11 @@ export default function ViewLesson({lesson}) {
         </html>
 
     )
+}
+
+function clickLessons() {
+
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 

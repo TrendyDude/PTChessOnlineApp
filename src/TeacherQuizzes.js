@@ -14,11 +14,14 @@ import {User, UserConstructor} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import TeacherQuizList from "./TeacherQuizList";
 import './TeacherQuizzes.css'
+import Lesson from "./Lesson";
 
 var loadedQuizzes = false;
 
 function TeacherQuizzes(){
-    var groupId = User.groupID;
+    var user = User;
+    var groupId = user.GroupId;
+    console.log(groupId);
     function getQuizzes() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -28,7 +31,7 @@ function TeacherQuizzes(){
         var lambda = new AWS.Lambda();
         var params = {
             FunctionName: 'mysqlGetQuizzesForGroup',
-            Payload: JSON.stringify({"groupId": User.GroupId})
+            Payload: JSON.stringify({"groupId": groupId})
         };
 
 
@@ -45,7 +48,7 @@ function TeacherQuizzes(){
                     var quizName = vars[1];
                     var params1 = {
                         FunctionName: 'mysqlGetQuizAvgForGroup',
-                        Payload: JSON.stringify({"groupId": User.GroupId, "quizId": quizId})
+                        Payload: JSON.stringify({"groupId": groupId, "quizId": quizId})
                     };
                     lambda.invoke(params1, function (err, data2) {
                         if (err) {
@@ -82,7 +85,7 @@ function TeacherQuizzes(){
 
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickQuizzesTeacher}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -105,6 +108,11 @@ function TeacherQuizzes(){
 
         </div>
     );
+}
+
+function clickLessons() {
+
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickDash() {

@@ -56,10 +56,11 @@ function StudentQuizzes(){
                             console.log(err);
                             alert(JSON.stringify(err));
                         } else {
+                            var results = data2.Payload.toString().split(",");
                             setQuiz(prevQuizzes => {
                                 return [...prevQuizzes, {idQuiz: quizId,
                                     nameQuiz: quizName,
-                                    avgQuiz: data2.Payload,
+                                    avgQuiz: results[0].replace('"',''),
                                     userQuiz: User.UserName,
                                     submitted: submitted,
                                     isLesson: false

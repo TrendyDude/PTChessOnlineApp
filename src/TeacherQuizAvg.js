@@ -13,6 +13,7 @@ import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizAvg.css';
 import './NewQuizAdmin.css';
+import Lesson from "./Lesson";
 
 
 function TeacherQuizAvg(){
@@ -25,7 +26,7 @@ function TeacherQuizAvg(){
 
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href="#">Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickQuizzesTeacher}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -74,6 +75,11 @@ function TeacherQuizAvg(){
 
         </div>
     );
+}
+
+function clickLessons() {
+
+    ReactDOM.render(<Lesson/>, document.getElementById('root'));
 }
 
 function clickDash() {
