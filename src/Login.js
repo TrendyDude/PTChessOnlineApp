@@ -72,7 +72,6 @@ function checkAccount(userName, password) {
                 var userList = data.Payload.split(',');
                 User = new UserConstructor(userList[0].split('\"')[1], userList[5], userList[4], userList[2], userList[3],userList[1], userList[6].split('\"')[0]);
                 ReactDOM.render(<Dashboard/>, document.getElementById('root'));
-                localStorage.setItem("User", User);
 
             }
         }

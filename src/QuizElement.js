@@ -84,7 +84,7 @@ export default function QuizElement({quiz}) {
                         let answersStr = data1.Payload.toString();
                         let answers = answersStr.split(',');
                         for (var i = 0; i < answers.length; i++) {
-                            var choices = document.getElementsByTagName("input");
+                            var choices = document.getElementsByClassName("answers_buttons");
                             for (var j = i * 5; j < i * 5 + 5; j++) {
                                 if (choices[j].id === answers[i].replace('"', '')) {
                                     choices[j].checked = 'checked';

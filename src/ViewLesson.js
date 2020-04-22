@@ -21,9 +21,11 @@ var quizSelected = false;
 var tacticSelected = false;
 var loadedQuizzes = false;
 
-export default function ViewLesson({lesson}) {
+function ViewLesson({lesson}) {
     //mysqlGetSingleQuizForUserWithLessonId
+
     function getQuizzes() {
+        var user = User;
         const AWS = require('aws-sdk');
         const config = require('./config');
         AWS.config.region = "us-east-1";
@@ -32,7 +34,7 @@ export default function ViewLesson({lesson}) {
         var lambda = new AWS.Lambda();
         var params = {
             FunctionName: 'mysqlGetSingleQuizForUserWithLessonId',
-            Payload: JSON.stringify({"username": User.UserName, "lessonId": lesson.Lessons_LessonID})
+            Payload: JSON.stringify({"username": lesson.username, "lessonId": lesson.Lessons_LessonID})
         };
 
 
@@ -43,14 +45,15 @@ export default function ViewLesson({lesson}) {
             } else {
                 var objectThing = data1.Payload.toString();
                 var vars = objectThing.split(',');
-                var quizId = vars[0];
+                var quizId = parseInt(vars[0].toString().replace('"', ''));
                 var quizName = vars[1];
                 var submitted = vars[2];
+                alert(lesson.username);
                 setQuiz(prevQuizzes => {
                     return [...prevQuizzes, {idQuiz: quizId,
                         nameQuiz: quizName,
                         avgQuiz: "N/A",
-                        userQuiz: User.UserName,
+                        userQuiz: lesson.username,
                         submitted: submitted,
                         isLesson: true
                     }]
@@ -81,7 +84,7 @@ export default function ViewLesson({lesson}) {
     }
 
     const [quiz, setQuiz] = useState([]);
-    if (quiz.length == 0 && loadedQuizzes != true) {
+    if (quiz.length === 0 && loadedQuizzes !== true) {
         loadedQuizzes = true;
         getQuizzes();
     }
@@ -196,7 +199,7 @@ export default function ViewLesson({lesson}) {
                         <div className="row" hidden id="quizRow">
                             <div className="col-sm-8">
 
-                                <QuizElement quiz = {quiz[0]} />
+                                <QuizElement quiz = {quiz} />
                             </div>
                         </div>
                         <div className="row" hidden id="tacticRow">
@@ -286,3 +289,5 @@ function clickQuizzes() {
 
     }
 }
+
+export default ViewLesson;
