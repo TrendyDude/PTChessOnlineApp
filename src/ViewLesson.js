@@ -25,6 +25,7 @@ var user;
 export default function ViewLesson({lesson}) {
     //mysqlGetSingleQuizForUserWithLessonId
     user = lesson.BigUser;
+    console.log(user);
     function getQuizzes() {
         const AWS = require('aws-sdk');
         const config = require('./config');
