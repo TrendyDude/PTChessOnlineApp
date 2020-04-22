@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="14dd54f2-7ece-487c-95fd-7e5c91891280" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/QuizElement.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/QuizElement.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/StudentQuizzes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/StudentQuizzes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Lesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lesson.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/ViewLesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/ViewLesson.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -212,7 +211,9 @@
       <workItem from="1587506737370" duration="1386000" />
       <workItem from="1587509673023" duration="682000" />
       <workItem from="1587521952444" duration="1268000" />
-      <workItem from="1587524231965" duration="964000" />
+      <workItem from="1587524231965" duration="1228000" />
+      <workItem from="1587526105121" duration="884000" />
+      <workItem from="1587528707490" duration="638000" />
     </task>
     <task id="LOCAL-00001" summary="Merge branch 'master' of https://github.com/TrendyDude/PTChessOnlineApp&#10;Updated Dashboard&#10;# Conflicts:&#10;#&#9;README.md">
       <created>1579895685267</created>
@@ -515,14 +516,14 @@
     </state>
     <state x="120" y="143" width="1200" height="594" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.837@0.23.1440.837" timestamp="1583686837519" />
     <state x="120" y="143" width="1200" height="594" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.23.1440.838@0.23.1440.838" timestamp="1583686946648" />
-    <state x="390" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1587524250695">
+    <state x="390" y="275" key="com.intellij.ide.util.TipDialog" timestamp="1587528706423">
       <screen x="0" y="23" width="1440" height="837" />
     </state>
     <state x="390" y="273" key="com.intellij.ide.util.TipDialog/0.23.1440.832@0.23.1440.832" timestamp="1582686148253" />
     <state x="390" y="273" key="com.intellij.ide.util.TipDialog/0.23.1440.833@0.23.1440.833" timestamp="1582690396905" />
     <state x="390" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.834@0.23.1440.834" timestamp="1587315281400" />
     <state x="390" y="274" key="com.intellij.ide.util.TipDialog/0.23.1440.835@0.23.1440.835" timestamp="1587052660948" />
-    <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.837@0.23.1440.837" timestamp="1587524250695" />
+    <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.837@0.23.1440.837" timestamp="1587528706423" />
     <state x="390" y="275" key="com.intellij.ide.util.TipDialog/0.23.1440.838@0.23.1440.838" timestamp="1586228820372" />
     <state x="377" y="63" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1586221035721">
       <screen x="0" y="23" width="1440" height="838" />

@@ -61,7 +61,8 @@ function Lesson() {
                                     QuizID: lessonAttributes[3],
                                     VideoId: lessonAttributes[4],
                                     videoName: lessonAttributes[5],
-                                    VideoURL: lessonAttributes[6]
+                                    VideoURL: lessonAttributes[6],
+                                    BigUser: {user}
                                 }]
                             });
                         } else {
@@ -72,7 +73,8 @@ function Lesson() {
                                     QuizID: lessonAttributes[3],
                                     VideoId: lessonAttributes[4],
                                     videoName: lessonAttributes[5],
-                                    VideoURL: lessonAttributes[6]
+                                    VideoURL: lessonAttributes[6],
+                                    BigUser: {user}
                                 }]
                             });
                         }

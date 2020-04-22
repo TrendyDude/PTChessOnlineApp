@@ -20,9 +20,11 @@ var videoSelected = true;
 var quizSelected = false;
 var tacticSelected = false;
 var loadedQuizzes = false;
+var user;
 
 export default function ViewLesson({lesson}) {
     //mysqlGetSingleQuizForUserWithLessonId
+    user = lesson.BigUser;
     function getQuizzes() {
         const AWS = require('aws-sdk');
         const config = require('./config');
@@ -32,7 +34,7 @@ export default function ViewLesson({lesson}) {
         var lambda = new AWS.Lambda();
         var params = {
             FunctionName: 'mysqlGetSingleQuizForUserWithLessonId',
-            Payload: JSON.stringify({"username": User.UserName, "lessonId": lesson.Lessons_LessonID})
+            Payload: JSON.stringify({"username": user.UserName, "lessonId": lesson.Lessons_LessonID})
         };
 
 
