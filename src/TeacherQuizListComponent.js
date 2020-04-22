@@ -1,10 +1,18 @@
 import React from 'react';
-import './StudentSingleQuiz.css'
-export default function TeacherQuizListComponent({quiz}) {
+import ReactDOM from 'react-dom';
+import IndividualTeacherQuiz from "./IndividualTeacherQuiz";
+
+export default function QuizzesListComponent({quiz}) {
+    function handleQuiz() {
+        ReactDOM.render(<IndividualTeacherQuiz quiz = {quiz}/>, document.getElementById("root"));
+    }
     return (
-        <a href="#" className="quiz-item-button">
+
+        <a onClick={handleQuiz} className="quiz-item-button">
             <span>{quiz.nameQuiz}</span>
-            <span className="right-align">Class Average: {quiz.avgQuiz}</span>
+            <span className="right-align">{"Grade: " + quiz.avgQuiz}</span>
         </a>
+
     )
+
 }

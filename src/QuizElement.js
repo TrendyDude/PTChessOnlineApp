@@ -11,7 +11,6 @@ import TeacherAnnouncements from "./TeacherAnnouncements";
 import AdminQuizzes from "./AdminQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
-import RecentAnnouncementsList from "./RecentAnnouncementsList";
 import Announcements from "./Announcements";
 import Dashboard from "./Dashboard";
 import QuestionsList from "./QuestionsList";

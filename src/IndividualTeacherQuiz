@@ -8,18 +8,17 @@ import ChessTactic from "./ChessTactic";
 import Dashboard from "./Dashboard";
 import './AdminQuizzes.css';
 import TeacherQuizAvg from "./TeacherQuizAvg";
-
-
-import {User, UserConstructor} from "./Login";
+import IndividualTeacherQuizList from "./IndividualTeacherQuizList";
+import TeacherQuizzes from "./TeacherQuizzes";
+import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
-import TeacherQuizList from "./TeacherQuizList";
 import './TeacherQuizzes.css'
 
 var loadedQuizzes = false;
 
-function TeacherQuizzes(){
-    var groupId = User.groupID;
+export default function IndividualTeacherQuiz({quiz}){
     function getQuizzes() {
+        var groupId = quiz.groupId;
         const AWS = require('aws-sdk');
         const config = require('./config');
         AWS.config.region = "us-east-1";
@@ -27,39 +26,42 @@ function TeacherQuizzes(){
         AWS.config.secretAccessKey = config.secretKey;
         var lambda = new AWS.Lambda();
         var params = {
-            FunctionName: 'mysqlGetQuizzesForGroup',
-            Payload: JSON.stringify({"groupId": User.GroupId})
+            FunctionName: 'mysqlGetStudentsForGroup',
+            Payload: JSON.stringify({"groupId": groupId})
         };
-
 
         lambda.invoke(params, function (err, data) {
             if (err) {
                 console.log(err);
                 alert(JSON.stringify(err));
             } else {
-                var QuizObjects = data.Payload.toString().split('|');
-                QuizObjects.forEach(function (quiz) {
+                var StudentObjects = data.Payload.toString().split('|');
+                StudentObjects.forEach(function (student) {
 
-                    var vars = quiz.split(',');
-                    var quizId = parseInt(vars[0].toString().replace('"',''));
-                    var quizName = vars[1];
+                    var vars = student.split(',');
+                    var studentUser = vars[0].toString().replace('"','');
+                    var studentFirstName = vars[1].toString().replace('"','');
+                    var studentLastName = vars[2].toString().replace('"','');
                     var params1 = {
-                        FunctionName: 'mysqlGetQuizAvgForGroup',
-                        Payload: JSON.stringify({"groupId": User.GroupId, "quizId": quizId})
+                        FunctionName: 'mysqlGetQuizAvgForStudent',
+                        Payload: JSON.stringify({"user": studentUser, "quizId": quiz.idQuiz})
                     };
                     lambda.invoke(params1, function (err, data2) {
                         if (err) {
                             console.log(err);
                             alert(JSON.stringify(err));
                         } else {
+                            alert(data2.Payload);
                             var results = data2.Payload.toString();
                             var vars = results.split(',');
                             setQuiz(prevQuizzes => {
                                 return [...prevQuizzes, {
-                                    idQuiz: quizId,
-                                    nameQuiz: vars[0].replace('"', ''),
-                                    avgQuiz: vars[1].replace('"', ''),
-                                    groupId: groupId
+                                    idQuiz: quiz.idQuiz,
+                                    nameQuiz: quiz.nameQuiz,
+                                    avgQuiz: vars[0].replace('"', ''),
+                                    studentUser: studentUser,
+                                    studentFirstName: studentFirstName,
+                                    studentLastName: studentLastName
                                 }]
                             })
                         }
@@ -68,8 +70,8 @@ function TeacherQuizzes(){
             }
         });
     }
-    const [quizzes, setQuiz] = useState([]);
-    if (quizzes.length === 0 && loadedQuizzes !== true) {
+    const [studentQuizzes, setQuiz] = useState([]);
+    if (studentQuizzes.length === 0 && loadedQuizzes !== true) {
         loadedQuizzes = true;
         getQuizzes();
     }
@@ -94,7 +96,7 @@ function TeacherQuizzes(){
                 </div>
 
                 <div className="container">
-                    <TeacherQuizList quizzes = {quizzes}/>
+                    <IndividualTeacherQuizList quizzes = {quizzes}/>
                     {loadedQuizzes = false}
                 </div>
 
@@ -140,5 +142,3 @@ function clickQuizzesTeacher() {
 function clickSingleQuizTeacher(){
     ReactDOM.render(<TeacherQuizAvg/>, document.getElementById('root'));
 }
-
-export default TeacherQuizzes
