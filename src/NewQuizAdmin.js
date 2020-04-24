@@ -27,6 +27,7 @@ var loadedLessons = false;
 var loadedQuestions = false;
 var quizMade = false;
 var QuizID = 0;
+var firstQuestion = true;
 
 function NewQuizAdmin(){
     var quizId = uuidv4();
@@ -98,109 +99,118 @@ function NewQuizAdmin(){
 
     }
 
-    function handleAddQuiz(e) {
-        const QuizName = quizNameRef.current.value;
-        const lessonId = lessonRef.current.value;
-        QuizID = uuidv4();
 
-        const AWS = require('aws-sdk');
-        const config = require('./config');
-        AWS.config.region = "us-east-1";
-        AWS.config.accessKeyId = config.accessKey;
-        AWS.config.secretAccessKey = config.secretKey;
-        var lambda = new AWS.Lambda();
-        var params = {
-            FunctionName: 'mysqlAddQuiz',
-            Payload: JSON.stringify({
-                "QuizId": QuizID,
-                "Lessons_LessonID": lessonId,
-                "Name": QuizName
-            })
-        };
-        lambda.invoke(params, function (err, data) {
-            if(err) {
-                console.log(err);
-                alert(JSON.stringify(err));
-
-            } else {
-                console.log("DOG UPLOADED");
-            }
-        });
-    }
     function handleAddQuestion(e){
-        if (quizMade != true) {
-            quizMade = true;
-            handleAddQuiz(e)
 
-        }
-        const question = questionRef.current.value;
-        const choiceA = choiceARef.current.value;
-        const choiceB = choiceBRef.current.value;
-        const choiceC = choiceCRef.current.value;
-        const choiceD = choiceDRef.current.value;
-        const choiceE = choiceERef.current.value;
-        const lessonId = lessonRef.current.value.split(' ')[1];
-        const id = uuidv4();
-        const correctAnswer = correctAnswerRef.current.value;
-        const questionNumber = questionNumRef.current.value;
+            const question = questionRef.current.value;
+            const choiceA = choiceARef.current.value;
+            const choiceB = choiceBRef.current.value;
+            const choiceC = choiceCRef.current.value;
+            const choiceD = choiceDRef.current.value;
+            const choiceE = choiceERef.current.value;
+            const lessonId = lessonRef.current.value.split(' ')[1];
+            const id = parseInt(Math.random() * (0 + (99999999) - 0), 10);
+            const correctAnswer = correctAnswerRef.current.value;
+            const questionNumber = questionNumRef.current.value;
 
 
 
 
-        setQuestions(prevQuestions => {
+            setQuestions(prevQuestions => {
 
-            return [...prevQuestions, { QuestionID : id, Question : question, ChoiceA: choiceA, ChoiceB: choiceB, ChoiceC: choiceC, ChoiceD: choiceD, ChoiceE: choiceE, CorrectAnswer: correctAnswer, Quizzes_QuizID: 0, QuestionNum: questionNumber}]
-        })
-        //lessonId.current.value = null;
-        questionRef.current.value = null;
-        choiceARef.current.value = null;
-        choiceBRef.current.value = null;
-        choiceCRef.current.value = null;
-        choiceDRef.current.value = null;
-        choiceERef.current.value = null;
-        correctAnswerRef.current.value = null;
-        //questionNumber.current.value = null;
-
-
-
-        const AWS = require('aws-sdk');
-        const config = require('./config');
-        AWS.config.region = "us-east-1";
-        AWS.config.accessKeyId = config.accessKey;
-        AWS.config.secretAccessKey = config.secretKey;
-        var lambda = new AWS.Lambda();
-        var params = {
-            FunctionName: 'mysqlAddQuestion',
-            Payload: JSON.stringify({
-                "QuestionID": id,
-                "Question": question,
-                "ChoiceA": choiceA,
-                "ChoiceB": choiceB,
-                "ChoiceC": choiceC,
-                "ChoiceD": choiceD,
-                "ChoiceE": choiceE,
-                "CorrectAnswer": correctAnswer,
-                "Quizzes_QuizID": QuizID,
-                "QuestionNum": questionNumber
-
-
+                return [...prevQuestions, { QuestionID : id, Question : question, ChoiceA: choiceA, ChoiceB: choiceB, ChoiceC: choiceC, ChoiceD: choiceD, ChoiceE: choiceE, CorrectAnswer: correctAnswer, Quizzes_QuizID: 0, QuestionNum: questionNumber}]
             })
-        };
-        lambda.invoke(params, function (err, data) {
-            if(err) {
-                console.log(err);
-                alert(JSON.stringify(err));
+            //lessonId.current.value = null;
+            questionRef.current.value = null;
+            choiceARef.current.value = null;
+            choiceBRef.current.value = null;
+            choiceCRef.current.value = null;
+            choiceDRef.current.value = null;
+            choiceERef.current.value = null;
+            correctAnswerRef.current.value = null;
+            //questionNumber.current.value = null;
 
-            } else {
-                console.log("DOG UPLOADED");
-            }
-        });
+
+
+            const AWS = require('aws-sdk');
+            const config = require('./config');
+            AWS.config.region = "us-east-1";
+            AWS.config.accessKeyId = config.accessKey;
+            AWS.config.secretAccessKey = config.secretKey;
+            var lambda = new AWS.Lambda();
+            var params = {
+                FunctionName: 'mysqlAddQuestion',
+                Payload: JSON.stringify({
+                    "QuestionID": id,
+                    "Question": question,
+                    "ChoiceA": choiceA,
+                    "ChoiceB": choiceB,
+                    "ChoiceC": choiceC,
+                    "ChoiceD": choiceD,
+                    "ChoiceE": choiceE,
+                    "CorrectAnswer": correctAnswer,
+                    "Quizzes_QuizID": QuizID,
+                    "QuestionNum": questionNumber
+
+
+                })
+            };
+            lambda.invoke(params, function (err, data) {
+                if(err) {
+                    console.log(err);
+                    alert(JSON.stringify(err));
+
+                } else {
+                    console.log("DOG UPLOADED");
+                }
+            });
+
+
+
         var modal = document.getElementById("myModal");
         modal.style.display = "none";
     }
 
     function GoBack() {
+        firstQuestion = true;
+        loadedLessons = false;
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    function openModal() {
+        if (firstQuestion) {
+            firstQuestion = false;
+            const QuizName = quizNameRef.current.value;
+            const lessonId = lessonRef.current.value;
+            QuizID = parseInt(Math.random() * (0 + (99999999) - 0), 10);
+
+            const AWS = require('aws-sdk');
+            const config = require('./config');
+            AWS.config.region = "us-east-1";
+            AWS.config.accessKeyId = config.accessKey;
+            AWS.config.secretAccessKey = config.secretKey;
+            var lambda = new AWS.Lambda();
+            var params = {
+                FunctionName: 'mysqlAddQuiz',
+                Payload: JSON.stringify({
+                    "QuizID": QuizID,
+                    "Lessons_LessonID": lessonId,
+                    "Name": QuizName
+                })
+            };
+            lambda.invoke(params, function (err, data) {
+                if(err) {
+                    console.log(err);
+                    alert(JSON.stringify(err));
+
+                } else {
+                    console.log("DOG UPLOADED");
+                }
+            });
+
+        }
+        var modal = document.getElementById("myModal");
+        modal.style.display = "block";
 
     }
 
@@ -377,12 +387,11 @@ function NewQuizAdmin(){
 
 
 // When the user clicks the button, open the modal
-function openModal() {
-    var modal = document.getElementById("myModal");
-    modal.style.display = "block";
-}
+
 
 function clickLessons() {
+    firstQuestion = true;
+    loadedLessons = false;
 
     if (User.UserType === "A") {
         ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
@@ -399,6 +408,7 @@ function closeModal() {
 }
 
 window.onclick = function(event) {
+
     var modal = document.getElementById("myModal");
     if (event.target == modal) {
         modal.style.display = "none";
@@ -407,6 +417,8 @@ window.onclick = function(event) {
 
 
 function clickVideoTab() {
+    firstQuestion = true;
+    loadedLessons = false;
     if (User.UserType.toString() === 'A')  {
         ReactDOM.render(<AdminVideos/>, document.getElementById('root'));
     } else {
@@ -416,19 +428,27 @@ function clickVideoTab() {
 }
 
 function clickDash() {
+    firstQuestion = true;
+    loadedLessons = false;
     ReactDOM.render(<Dashboard/>, document.getElementById('root'));
 }
 
 function clickTacticTab() {
+    firstQuestion = true;
+    loadedLessons = false;
     ReactDOM.render(<ChessTactic/>, document.getElementById('root'));
 }
 
 
 function clickAnnouncementsTab() {
+    firstQuestion = true;
+    loadedLessons = false;
     ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
 }
 
 function clickQuizzes() {
+    firstQuestion = true;
+    loadedLessons = false;
     if (User.UserType == "A") {
         ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
 
