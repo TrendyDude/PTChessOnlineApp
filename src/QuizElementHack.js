@@ -106,7 +106,6 @@ export default function QuizElementHack({quiz}) {
                                     break;
                                 }
                             }
-
                         }
                     }
                 });
@@ -171,7 +170,6 @@ export default function QuizElementHack({quiz}) {
             } else {
                 alert("Answers Saved!");
                 loadedQuestions = false;
-                ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
             }
         });
     }

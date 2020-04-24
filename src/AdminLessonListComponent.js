@@ -2,8 +2,6 @@ import React, {useState, useRef} from 'react';
 import ReactDOM from "react-dom";
 import AdminLessons from "./AdminLessons";
 
-
-
 export default function AdminLessonListComponent({lesson}) {
     function editClick() {
         //ReactDOM.render(<NewAnnouncement/>, document.getElementById('root'));
