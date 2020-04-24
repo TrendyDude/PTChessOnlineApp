@@ -15,6 +15,7 @@ import TeacherAnnouncements from "./TeacherAnnouncements";
 import TeacherQuizList from "./TeacherQuizList";
 import './TeacherQuizzes.css'
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 var loadedQuizzes = false;
 
@@ -112,7 +113,13 @@ function TeacherQuizzes(){
 
 function clickLessons() {
 
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function clickDash() {

@@ -20,6 +20,7 @@ import AdminQuizzes from "./AdminQuizzes";
 import StudentQuizzes from "./StudentQuizzes";
 import TeacherQuizzes from "./TeacherQuizzes";
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 export let Lessons;
 
 
@@ -362,7 +363,13 @@ function AdminVideos() {
 function clickLessons() {
     loadedVideos = false;
     loadedLessons = false;
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function gotoDashboard() {

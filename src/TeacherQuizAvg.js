@@ -14,6 +14,7 @@ import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizAvg.css';
 import './NewQuizAdmin.css';
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 
 function TeacherQuizAvg(){
@@ -78,8 +79,13 @@ function TeacherQuizAvg(){
 }
 
 function clickLessons() {
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
 
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function clickDash() {

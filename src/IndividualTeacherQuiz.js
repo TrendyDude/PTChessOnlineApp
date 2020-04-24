@@ -14,6 +14,7 @@ import {User} from "./Login";
 import TeacherAnnouncements from "./TeacherAnnouncements";
 import './TeacherQuizzes.css'
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 var loadedQuizzes = false;
 
@@ -112,7 +113,13 @@ export default function IndividualTeacherQuiz({quiz}){
 }
 function clickLessons() {
 
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function clickDash() {

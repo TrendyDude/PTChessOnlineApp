@@ -86,7 +86,7 @@ export default function VideoListComponent({video}) {
                 </td>
             </tr>
             <tr id={video.VideoId + "edit"} hidden>
-                <td colSpan="3">
+                <td colSpan="5">
                     <div className="card" >
                         <div className="card-header">Edit Video</div>
                         <div className="card-body">
@@ -129,9 +129,13 @@ export default function VideoListComponent({video}) {
                                 <div className="row">
                                     <div className="col-sm-8">
                                         <label>&nbsp;</label>
-                                        <video controls>
-                                            <source src={video.videoUrl} type="video/ogg"/>
-                                        </video>
+                                        <iframe src={video.videoUrl}
+                                                width="200" height="100"
+                                                frameBorder='0'
+                                                allow='autoplay; encrypted-media'
+                                                allowFullScreen
+                                                title='video'
+                                        />
 
 
 

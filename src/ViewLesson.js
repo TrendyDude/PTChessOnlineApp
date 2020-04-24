@@ -14,8 +14,9 @@ import TeacherQuizzes from "./TeacherQuizzes";
 import Announcements from "./Announcements";
 import Lesson from "./Lesson";
 import './ViewLesson.css'
-import QuizElementList from "./QuizElementList";
+import QuizElementListHack from "./QuizElementListHack";
 import AnnouncementListComponent from "./AnnouncementListComponent";
+import AdminLessons from "./AdminLessons";
 
 var videoSelected = true;
 var quizSelected = false;
@@ -200,9 +201,12 @@ export default function ViewLesson({lesson}) {
                         </div>
                         <div className="row" hidden id="quizRow">
                             <div className="col-sm-8">
+                                <div className="container">
+                                    <QuizElementListHack quizzes = {quizzes}/>
+                                </div>
 
 
-                                <QuizElementList quizzes = {quizzes} />
+
                             </div>
                         </div>
                         <div className="row" hidden id="tacticRow">
@@ -248,7 +252,13 @@ export default function ViewLesson({lesson}) {
 
 function clickLessons() {
 
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 

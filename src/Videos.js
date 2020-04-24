@@ -15,6 +15,7 @@ import ChessTactic from "./ChessTactic";
 import StudentVideoList from "./StudentVideoList";
 import Announcements from "./Announcements";
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 
 var loadedVideos = false;
@@ -128,7 +129,13 @@ function Videos() {
 
 function clickLessons() {
     loadedVideos = false;
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function clickDash() {

@@ -17,6 +17,7 @@ import StudentQuizzes from "./StudentQuizzes";
 import './StudentSingleQuiz.css'
 import './NewQuizAdmin.css'
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 function StudentSingleQuiz(){
     return(
@@ -84,7 +85,13 @@ function StudentSingleQuiz(){
 }
 
 function clickLessons() {
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function saveClick() {

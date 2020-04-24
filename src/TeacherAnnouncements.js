@@ -12,6 +12,10 @@ import AdminVideos from "./AdminVideos";
 import uuidv4 from 'uuid/v4';
 import AnnouncementList from "./AnnouncementList";
 import Lesson from "./Lesson";
+import AdminQuizzes from "./AdminQuizzes";
+import StudentQuizzes from "./StudentQuizzes";
+import TeacherQuizzes from "./TeacherQuizzes";
+import AdminLessons from "./AdminLessons";
 
 var loadedAnnouncements = false;
 
@@ -134,9 +138,9 @@ function TeacherAnnouncements() {
                     <a onClick={clickDash}>Dashboard</a>
                     <a href="#">Announcements</a>
                     <a onClick={clickLessons}>Lessons</a>
-                    <a href="#">Quizzes</a>
+                    <a onClick={clickQuizzes}>Quizzes</a>
                     <a onClick={clickVideoTab}>Videos</a>
-                    <a href="#">Tactics</a>
+                    <a onClick={gotoChessTactic}>Tactics</a>
                 </div>
                 <div className="content">
                     <div className="row">
@@ -232,7 +236,13 @@ function TeacherAnnouncements() {
 }
 function clickLessons() {
     loadedAnnouncements = false;
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 }
 
 function clickDash() {
@@ -263,6 +273,21 @@ function gotoChessTactic() {
 function clickAnnouncementsTab() {
     loadedAnnouncements = false;
     ReactDOM.render(<TeacherAnnouncements/>, document.getElementById('root'));
+}
+function clickQuizzes() {
+    loadedAnnouncements = false;
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<StudentQuizzes/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "T") {
+        ReactDOM.render(<TeacherQuizzes/>, document.getElementById('root'));
+
+    }
 }
 function createAnnouncement() {
     //ReactDOM.render(<NewAnnouncement/>, document.getElementById('root'));

@@ -16,8 +16,10 @@ import './TeacherQuizzes.css'
 import StudentSingleQuiz from "./StudentSingleQuiz";
 import QuizzesList from "./QuizzesList";
 import Lessons from "./Lesson";
-import {parseExpression} from "@babel/parser";
+
 import QuizElement from "./QuizzesListComponent";
+import AdminLessons from "./AdminLessons";
+import Lesson from "./Lesson";
 
 var loadedQuizzes = false;
 
@@ -86,7 +88,7 @@ function StudentQuizzes(){
 
                 <a onClick={clickDash}>Dashboard</a>
                 <a onClick={clickAnnouncementsTab}>Announcements</a>
-                <a href={clickLessons}>Lessons</a>
+                <a onClick={clickLessons}>Lessons</a>
                 <a onClick={clickStudentQuizzes}>Quizzes</a>
                 <a onClick={clickVideoTab}>Videos</a>
                 <a onClick={clickTacticTab}>Tactics</a>
@@ -122,7 +124,13 @@ function clickDash() {
 }
 function clickLessons() {
     loadedQuizzes = false;
-    ReactDOM.render(<Lessons/>, document.getElementById('root'));
+    if (User.UserType === "A") {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
 
 }
 

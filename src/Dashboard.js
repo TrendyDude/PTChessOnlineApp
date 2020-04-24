@@ -15,6 +15,7 @@ import RecentAnnouncementsList from "./RecentAnnouncementsList";
 import Announcements from "./Announcements";
 import DashboardAnnouncementList from "./DashboardAnnouncementList";
 import Lesson from "./Lesson";
+import AdminLessons from "./AdminLessons";
 
 var loadedAnnouncements = false;
 
@@ -207,6 +208,13 @@ function clickQuizzes() {
 
 function clickLessons() {
     loadedAnnouncements = false;
-    ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    if (User.UserType === 'A') {
+        ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
+
+    }
+    else if (User.UserType === "S") {
+        ReactDOM.render(<Lesson/>, document.getElementById('root'));
+    }
+
 }
 export default Dashboard

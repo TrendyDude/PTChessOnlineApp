@@ -19,7 +19,7 @@ import AdminLessons from "./AdminLessons";
 
 var loadedQuestions = false;
 var pageLoaded = false;
-export default function QuizElement({quiz}) {
+export default function QuizElementHack({quiz}) {
 
     function makeTheQuiz() {
         if (quiz != null) {
@@ -188,7 +188,7 @@ export default function QuizElement({quiz}) {
     }
     return (
         <>
-            <div id="lessonsPage" hidden>
+            <div id="lessonsPage" >
                 <title>{quiz.nameQuiz}</title>
 
                 <div className="row">
@@ -202,7 +202,7 @@ export default function QuizElement({quiz}) {
 
 
             </div>
-            <div id="quizzesPage">
+            <div id="quizzesPage" hidden>
                 <title>{quiz.nameQuiz}</title>
                 <div className="sidenav">
                     <h3> Welcome {User.FirstName.toString()}</h3>
@@ -239,7 +239,8 @@ function clickLessons() {
     if (User.UserType === "A") {
         ReactDOM.render(<AdminLessons/>, document.getElementById('root'));
 
-    } else if (User.UserType === "S") {
+    }
+    else if (User.UserType === "S") {
         ReactDOM.render(<Lesson/>, document.getElementById('root'));
     }
 }
