@@ -1,8 +1,0 @@
-{
-  "dbhost": "ptchessdbofficial1.cowprkys1qfc.us-east-1.rds.amazonaws.com",
-  "dbuser": "admin",
-  "dbpass": "4lMvgE8TpN79K9EBsHuA",
-  "dbname": "ptchessdbofficial1",
-  "accessKey" : "AKIAYDF6HFID5LONFJA3",
-  "secretKey" : "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"
-}
